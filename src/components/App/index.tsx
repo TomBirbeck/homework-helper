@@ -6,6 +6,7 @@ import ParentHomepage from '../ParentHomepage'
 import NewTaskForm from '../NewTaskForm'
 import Tasks from '../Tasks'
 import TaskList from '../TasksList'
+import list from '../../data/data'
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
       <ParentHomepage/>
       <NewTaskForm/>
       <Tasks/>
-      <TaskList/>
+      <TaskList props={list}/>
     </div>
   )
 }
