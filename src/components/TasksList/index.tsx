@@ -1,17 +1,30 @@
-import { FunctionComponent, ReactElement } from "react"
-import { Listprops } from "../../Types"
+import { FunctionComponent, useState } from "react"
+import Topic from "../Topics"
 
-const TaskList: FunctionComponent<{props: Listprops[]}> = ({props}) => {
+interface Iprops {
+    subject: String,
+    topic: String,
+    due: String,
+    description?: String,
+    completed: Boolean
+}
+
+const TaskList: FunctionComponent<Iprops> = (props) => {
+    const [complete, setComplete] = useState<Boolean>(false)
+    const [open, setOpen] = useState<Boolean>(false)
+    const {subject, topic, description, due, completed} = props
     return (
-        <>
-        {props.map((prop)=>{return (
-            <div>
-                <h1>{prop.subject}</h1>
-                <h2>{prop.topic}</h2>
-                <h3>{prop.due}</h3>
+            <div className="flex gap-1">
+                <h1>{subject}<button onClick={()=>{setOpen(!open)}}>^</button></h1>
+                {
+                    open && (
+                        <>
+                <Topic topic={topic} description={description} due={due}/>
+                        </>
+                    )
+                }
+                <button onClick={()=>{setComplete(!complete)}}>Completed</button>
             </div>
-        )})}
-        </>
     )
 }
 

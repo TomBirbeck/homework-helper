@@ -9,6 +9,7 @@ import TaskList from '../TasksList'
 import list from '../../data/data'
 
 function App() {
+  console.log(list)
 
   return (
     <div className="m-10">
@@ -16,8 +17,7 @@ function App() {
       <StudentHomepage/>
       <ParentHomepage/>
       <NewTaskForm/>
-      <Tasks/>
-      <TaskList props={list}/>
+      <Tasks tasks={list}/>
     </div>
   )
 }
