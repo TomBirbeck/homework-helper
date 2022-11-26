@@ -6,8 +6,9 @@ const Tasks: FunctionComponent<{tasks: Task[]}> = ({tasks}) =>{
     return (
         <>
         {
-            tasks.map((task) => {return (
+            tasks.map((task, index) => {return (
             <TaskList
+                key={index}
                 subject={task.subject}
                 topic={task.topic}
                 due={task.due}
