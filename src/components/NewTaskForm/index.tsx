@@ -18,7 +18,7 @@ const NewTaskForm = () => {
             e.preventDefault();
             handleSubmit();
           }}
-        className="grid grid-cols-5 border-solid border-4 border-black space-around"
+        className="w-1/2 grid grid-cols-2 border-solid border-4 border-black space-around"
         >
             <label htmlFor="subject" className="flex gap-1">
                 Subject:
@@ -41,8 +41,8 @@ const NewTaskForm = () => {
             </label>
             <label htmlFor="description" className="flex gap-1">
                 Description:
-                <input type='text'
-                className="border-solid border-2 border-grey-700 w-24"
+                <input type='text-area'
+                className="border-solid border-2 border-grey-700 w-1/2"
                 value={description}
                 placeholder='description'
                 onChange={(e) => setDescription(e.target.value)}
