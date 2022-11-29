@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import LoginPage from '../Login'
+import {Routes, Route} from 'react-router-dom'
 import './App.css'
+import LoginPage from '../Login'
 import StudentHomepage from '../StudentHomepage'
 import ParentHomepage from '../ParentHomepage'
 import NewTaskForm from '../NewTaskForm'
@@ -13,11 +14,13 @@ function App() {
 
   return (
     <div className="m-10">
-      <LoginPage/>
-      <StudentHomepage/>
-      <ParentHomepage/>
-      <NewTaskForm setTasks={setTasks}/>
-      <Tasks tasks={tasks}/>
+    <Routes>
+    <Route path="/" element={ <LoginPage/> } />
+    <Route path="/student" element={ <StudentHomepage/> } />
+    <Route path="/parent" element={ <ParentHomepage/>} />
+      {/* <NewTaskForm setTasks={setTasks}/>
+      <Tasks tasks={tasks}/> */}
+</Routes>
     </div>
   )
 }
