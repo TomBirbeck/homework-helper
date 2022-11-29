@@ -1,8 +1,15 @@
 import { FunctionComponent } from "react"
-import { Task } from "../../Types"
 import TaskList from "../TasksList"
 
-const Tasks: FunctionComponent<{tasks: Task[]}> = ({tasks}) =>{
+interface Tasks {
+        subject: String,
+        topic: String,
+        due: String,
+        description?: String,
+        completed: Boolean
+}
+
+const Tasks: FunctionComponent<Tasks[]> = (tasks: Tasks[]) =>{
     return (
         <>
         {
