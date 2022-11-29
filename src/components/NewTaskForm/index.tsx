@@ -1,6 +1,12 @@
-import { useState } from "react"
+import { FunctionComponent, SetStateAction, useState } from "react"
+import list from "../../data/data"
 
-const NewTaskForm = () => {
+interface FormIProps{
+        setTasks: React.Dispatch<React.SetStateAction<any[]>>
+      
+}
+
+const NewTaskForm = ({setTasks} : FormIProps) => {
     const [subject, setSubject] = useState('')
     const [topic, setTopic] = useState('')
     const [description, setDescription] = useState('')
@@ -8,6 +14,7 @@ const NewTaskForm = () => {
 
     const handleSubmit = () => {
         console.log(subject, topic, description, due)
+        setTasks([...list, {subject: subject, topic: topic, description: description, due: due}])
     }
 
     return (

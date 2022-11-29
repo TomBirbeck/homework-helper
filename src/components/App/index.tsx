@@ -16,7 +16,7 @@ function App() {
       <LoginPage/>
       <StudentHomepage/>
       <ParentHomepage/>
-      <NewTaskForm/>
+      <NewTaskForm setTasks={setTasks}/>
       <Tasks tasks={tasks}/>
     </div>
   )
