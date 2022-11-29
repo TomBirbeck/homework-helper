@@ -1,4 +1,5 @@
 import { FunctionComponent } from "react"
+import { Task } from "../../Types"
 import TaskList from "../TasksList"
 
 interface Tasks {
@@ -9,11 +10,11 @@ interface Tasks {
         completed: Boolean
 }
 
-const Tasks: FunctionComponent<Tasks[]> = (tasks: Tasks[]) =>{
+const Tasks: FunctionComponent<{tasks : Task[]}> = ({tasks}) =>{
     return (
         <>
-        {
-            tasks.map((task, index) => {return (
+        {tasks && 
+            tasks.map((task: Tasks, index: any) => {return (
             <TaskList
                 key={index}
                 subject={task.subject}
@@ -24,6 +25,7 @@ const Tasks: FunctionComponent<Tasks[]> = (tasks: Tasks[]) =>{
         }
         </>
     )
+    
 }
 
 export default Tasks

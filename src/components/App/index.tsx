@@ -9,8 +9,7 @@ import list from '../../data/data'
 
 
 function App() {
-  console.log(list)
-  const [tasks, setTasks] = useState(list)
+  const [tasks, setTasks] = useState<Array<any>>(list)
 
   return (
     <div className="m-10">
