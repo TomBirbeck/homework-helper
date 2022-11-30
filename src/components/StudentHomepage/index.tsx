@@ -1,6 +1,19 @@
+import { useState } from "react"
+import Tasks from "../Tasks"
+import list from "../../data/data"
+import NewTaskForm from "../NewTaskForm"
+
 const StudentHomepage = () => {
+
+  const [tasks, setTasks] = useState<Array<any>>(list)
+
+
     return(
-        <h1>Hello from StudentHomepage</h1>
+        <div>
+            <h1>Hello from StudentHomepage</h1>
+            <NewTaskForm setTasks={setTasks}/>
+            <Tasks tasks={tasks}/>
+        </div>
     )
 }
 
