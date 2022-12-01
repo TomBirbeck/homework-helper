@@ -14,19 +14,27 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
   const { subject, topic, description, due, completed } = props;
   console.log("description", description);
   return (
-    <div className='flex justify-between gap-2 bg-slate-400 w-full'>
-      <div className='grid grid-cols-5 w-1/2 justify-between w-full ml-2'>
+    <div className='flex justify-between gap-2 w-full mb-1'>
+      <div className='grid grid-cols-5 w-1/2 justify-between w-full'>
         <p>{subject}</p>
         <p>{topic}</p>
         <p>{due}</p>
         {description? <p className='truncate'>{description}</p>: <p></p>}
-        <button
+        { complete? <button
+        className='w-1/2 border-solid border-2 border-black rounded bg-green-500'
         onClick={() => {
           setComplete(!complete);
         }}
       >
         Completed
-      </button>
+      </button> : <button
+      className=' w-1/2 border-solid border-2 border-black rounded bg-red-500'
+        onClick={() => {
+          setComplete(!complete);
+        }}
+      >
+        Outstanding
+      </button> }
         </div>
         {/* <button
           onClick={() => {

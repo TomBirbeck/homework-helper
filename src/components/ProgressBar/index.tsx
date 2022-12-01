@@ -20,9 +20,22 @@ const ProgressBar = () => {
     },[])
 
     return(
-        <div className='w-full h-10 bg-red-500'>
+        <div className='w-full h-10 bg-red-500 mt-4 border-solid border-2 border-black'>
             {progress <=20 ? 
-            <div className="flex h-10 w-1/5 bg-green-500"><span>20%</span></div> : progress <= 40? <div className="h-10 w-2/5 bg-green-500"><span>40%</span></div>: progress <= 60? <div className="h-10 w-3/5 bg-green-500"><span>60%</span></div> : progress < 100? <div className="h-10 w-4/5 bg-green-500"><span>80%</span></div> : progress === 100? <div className="h-10 w-35/5 bg-green-500"><span>100%</span></div>  : null
+            <div className="flex h-full w-1/5 bg-green-500">
+                <span className="w-full h-full flex items-center justify-center">20%</span>
+                </div> : progress <= 40? 
+                <div className="h-full w-2/5 bg-green-500">
+                    <span className="w-full h-full flex items-center justify-center">40%</span>
+                    </div>: progress <= 60? 
+                    <div className="h-full w-3/5 bg-green-500">
+                        <span className="w-full h-full flex items-center justify-center">60%</span>
+                        </div> : progress < 100? 
+                        <div className="h-full w-4/5 bg-green-500">
+                            <span className="w-full h-full flex items-center justify-center">80%</span>
+                            </div> : progress === 100? 
+                            <div className="h-full w-35/5 bg-green-500">
+                                <span className="w-full h-full flex items-center justify-center">100%</span></div>  : null
             }
         </div>
     ) 
