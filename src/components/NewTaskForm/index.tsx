@@ -1,4 +1,4 @@
-import { FunctionComponent, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import list from '../../data/data';
 
 interface FormIProps {
@@ -12,10 +12,10 @@ const NewTaskForm = ({ setTasks }: FormIProps) => {
   const [due, setDue] = useState('');
 
   const handleSubmit = () => {
-    console.log(subject, topic, description, due);
+    console.log(subject, topic, description, due.split('-').reverse().join('-'));
     setTasks([
       ...list,
-      { subject: subject, topic: topic, description: description, due: due },
+      { subject: subject, topic: topic, description: description, due: due.split('-').reverse().join('-') },
     ]);
   };
 
