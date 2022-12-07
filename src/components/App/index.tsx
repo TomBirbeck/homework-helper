@@ -3,9 +3,11 @@ import './App.css'
 import LoginPage from '../Login'
 import StudentHomepage from '../StudentHomepage'
 import ParentHomepage from '../ParentHomepage'
+import { useState } from 'react'
 
 
 function App() {
+  const studentId = useState<Number>(0)
 
   return (
     <div className="m-10">

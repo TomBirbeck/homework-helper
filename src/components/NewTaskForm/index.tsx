@@ -1,39 +1,54 @@
 import { useEffect, useState } from 'react';
-import list from '../../data/data';
 
-interface FormIProps {
-  setTasks: React.Dispatch<React.SetStateAction<any[]>>;
-}
+// interface FormIProps {
+//   setNewTask: React.Dispatch<React.SetStateAction<{
+//     subject: string;
+//     topic: string;
+//     description: string;
+//     due: string;
+//     completed: boolean;
+// }>>;
+//   newTask: {
+//     subject: String,
+//     topic: String,
+//     description?: String,
+//     due: String,
+//     completed: Boolean
+//   }
+// }
 
-const NewTaskForm = ({ setTasks }: FormIProps) => {
+
+const NewTaskForm = (studentID:any) => {
   const [subject, setSubject] = useState('');
   const [topic, setTopic] = useState('');
   const [description, setDescription] = useState('');
   const [due, setDue] = useState('');
   const [newTask, setNewTask] = useState({subject:'', topic: '', description: '', due: '', completed: false})
 
+
   useEffect(() => {
-    async function createTask() {
-      let res = await fetch('https://homeworkhelper.onrender.com/tasks/1',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(newTask),
-        }
-      );
-      let result = await res.json();
-      console.log("new task posted", result)
-    }
-    createTask()
+    async function createTask(studentId: Number) {
+        let res = await fetch(`https://homeworkhelper.onrender.com/tasks/${studentId}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newTask),
+          }
+        );
+        let result = await res.json();
+         console.log("new task posted", result)
+      } 
+      createTask(studentID)
   }, [newTask]);
 
   const handleSubmit = () => {
-    console.log(subject, topic, description, due.split('-').reverse().join('-'));
-    setTasks([
-      ...list,
-      { subject: subject, topic: topic, description: description, due: due.split('-').reverse().join('-')},
-    ]);
+    // setTasks([
+    //   ...list,
+    //   { subject: subject, topic: topic, description: description, due: due.split('-').reverse().join('-')},
+    // ]);
     setNewTask({ subject: subject, topic: topic, description: description, due: due.split('-').reverse().join('-'), completed: false })
+    // setNewTask({subject:'', topic: '', description: '', due: '', completed: false})
+
   };
 
   return (
@@ -49,6 +64,7 @@ const NewTaskForm = ({ setTasks }: FormIProps) => {
         <label htmlFor='subject' className='flex gap-1'>
           Subject:
           <input
+            required
             type='text'
             className='border-solid border-2 border-grey-700 w-24 h-7 bg-slate-50'
             value={subject}
