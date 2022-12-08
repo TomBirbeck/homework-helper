@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // interface FormIProps {
 //   setNewTask: React.Dispatch<React.SetStateAction<{
@@ -8,47 +8,50 @@ import { useEffect, useState } from 'react';
 //     due: string;
 //     completed: boolean;
 // }>>;
-//   newTask: {
-//     subject: String,
-//     topic: String,
-//     description?: String,
-//     due: String,
-//     completed: Boolean
-//   }
+  type Tasks = {
+    subject: String,
+    topic: String,
+    description?: String,
+    due: String,
+    completed: Boolean
+  }
 // }
 
+type formProps = {
+  studentID: Number
+}
 
-const NewTaskForm = (studentID:any) => {
+const NewTaskForm = ({studentID}:formProps) => {
   const [subject, setSubject] = useState('');
   const [topic, setTopic] = useState('');
   const [description, setDescription] = useState('');
   const [due, setDue] = useState('');
   const [newTask, setNewTask] = useState({subject:'', topic: '', description: '', due: '', completed: false})
+  const [complete, setComplete] = useState<Boolean>(false)
 
-
-  useEffect(() => {
-    async function createTask(studentId: Number) {
-        let res = await fetch(`https://homeworkhelper.onrender.com/tasks/${studentId}`,
+  // useEffect(() => {
+    async function createTask(task:Tasks) {
+      console.log(task)
+        let res = await fetch(`https://homeworkhelper.onrender.com/tasks/${studentID}`,
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newTask),
+            body: JSON.stringify(task),
           }
         );
         let result = await res.json();
          console.log("new task posted", result)
       } 
-      createTask(studentID)
-  }, [newTask]);
+      // createTask(newTask)
+  // },[newTask]);
+
+  const handleTask = () => {
+    setNewTask({ subject: subject, topic: topic, description: description, due: due.split('-').reverse().join('-'), completed: false })
+  }
 
   const handleSubmit = () => {
-    // setTasks([
-    //   ...list,
-    //   { subject: subject, topic: topic, description: description, due: due.split('-').reverse().join('-')},
-    // ]);
-    setNewTask({ subject: subject, topic: topic, description: description, due: due.split('-').reverse().join('-'), completed: false })
-    // setNewTask({subject:'', topic: '', description: '', due: '', completed: false})
-
+    handleTask()
+    createTask(newTask)
   };
 
   return (
@@ -57,7 +60,8 @@ const NewTaskForm = (studentID:any) => {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          handleSubmit();
+          handleSubmit()
+          
         }}
         className='w-1/2 h-60 grid grid-flow-row-dense grid-cols-3 border-solid border-2 border-black bg-orange-100 space-around p-1 rounded my-2'
       >

@@ -4,10 +4,11 @@ import list from '../../data/data';
 import NewTaskForm from '../NewTaskForm';
 import ProgressBar from '../ProgressBar';
 
+
 const StudentHomepage = () => {
   const [tasks, setTasks] = useState<Array<any>>(list);
   // const [newTask, setNewTask] = useState({subject:'', topic: '', description: '', due: '', completed: false})
-  const [studentId, setStudentId] = useState(1)
+  const [studentId, setStudentId] = useState(4)
 
   useEffect( () => {
     async function getTasks(){
@@ -17,7 +18,7 @@ const StudentHomepage = () => {
             setTasks(data.payload)
         }
         getTasks()
-    }, [tasks]) 
+    }, []) 
 
   return (
     <div>
