@@ -9,6 +9,8 @@ const StudentHomepage = () => {
   const [tasks, setTasks] = useState<Array<any>>(list);
   const [student, setStudent] = useState<{student_id: Number, firstname: String, surname: String}>()
   const [studentId, setStudentId] = useState(4)
+  const [progress, setProgress] = useState(0)
+  const [total, setTotal] = useState(0)
 
   async function getStudent(){
     const res = await fetch(`https://homeworkhelper.onrender.com/student/${studentId}`)
@@ -23,9 +25,15 @@ const StudentHomepage = () => {
           const res = await fetch(`https://homeworkhelper.onrender.com/student/tasks/${studentId}`)
           const data = await res.json()
           setTasks(data.payload)
+           setTotal(data.payload.length)
+           for (let i = 0; i < data.payload.length; i++){
+            if(!data.payload[i].completed){
+              setProgress((prev) => prev + 1)
+            }
+           }
           console.log("get tasks ran")
       }
-
+console.log("total",total,"progress", progress)
       async function createTask(task:Tasks) {
         console.log("task", task)
         let res = await fetch(`https://homeworkhelper.onrender.com/tasks/${studentId}`,
@@ -47,10 +55,10 @@ const StudentHomepage = () => {
 
   return (
     <div>
-      {student ? <h1>Hello ... {student.firstname}... </h1> :null}
+      {student && <h1>Hello ... {student.firstname}... </h1>}
       <NewTaskForm createTask={createTask}/>
-      <Tasks tasks={tasks} />
-      <ProgressBar/>
+        <Tasks tasks={tasks} />
+      <ProgressBar progress={progress} total={total}/>
     </div>
   );
 };
