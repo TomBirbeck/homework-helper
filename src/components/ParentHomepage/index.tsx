@@ -24,7 +24,7 @@ const ParentHomepage = () => {
     useEffect( () => {
         async function getTasks(){
             if (parent.childId > 0) {
-                const res = await fetch(`https://homeworkhelper.onrender.com/student/${parent.childId}`)
+                const res = await fetch(`https://homeworkhelper.onrender.com/student/tasks/${parent.childId}`)
                 const data = await res.json()
                 setApi(data.payload)
             }

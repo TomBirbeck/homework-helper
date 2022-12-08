@@ -12,8 +12,6 @@ const ProgressBar = () => {
         setProgress(percent)
     }
 
-    console.log(progress)
-
     useEffect(()=>{
         percentage(tasks, completed)
 
