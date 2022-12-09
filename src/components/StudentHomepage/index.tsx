@@ -3,6 +3,7 @@ import Tasks from '../Tasks';
 import list from '../../data/data';
 import NewTaskForm from '../NewTaskForm';
 import ProgressBar from '../ProgressBar';
+import CompletedContext from '../../context/completedContext';
 
 
 const StudentHomepage = () => {
@@ -27,13 +28,13 @@ const StudentHomepage = () => {
           setTasks(data.payload)
            setTotal(data.payload.length)
            for (let i = 0; i < data.payload.length; i++){
-            if(!data.payload[i].completed){
+            if(data.payload[i].completed){
               setProgress((prev) => prev + 1)
             }
            }
           console.log("get tasks ran")
       }
-console.log("total",total,"progress", progress)
+
       async function createTask(task:Tasks) {
         console.log("task", task)
         let res = await fetch(`https://homeworkhelper.onrender.com/tasks/${studentId}`,
@@ -53,12 +54,16 @@ console.log("total",total,"progress", progress)
         getStudent()
     }, []) 
 
+    const completed = useState(true)
+
   return (
     <div>
+      <CompletedContext.Provider value={completed}>
       {student && <h1>Hello ... {student.firstname}... </h1>}
       <NewTaskForm createTask={createTask}/>
         <Tasks tasks={tasks} />
       <ProgressBar progress={progress} total={total}/>
+    </CompletedContext.Provider>
     </div>
   );
 };
