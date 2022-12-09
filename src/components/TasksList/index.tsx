@@ -35,26 +35,24 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
   }
 
   return (
-    <div className='flex justify-between gap-2 w-full mb-1'>
+    <div className='flex justify-between gap-3 w-full p-2 mb-1 bg-yellow-300 border-none rounded-lg'>
       <div className='grid grid-cols-5 w-1/2 justify-between w-full'>
-        <p>{subject}</p>
-        <p>{topic}</p>
-        <p>{due}</p>
-        {description? <p className='truncate'>{description}</p>: <p></p>}
+        <p className='border-solid border-r-2 border-purple-800 pl-2'>{subject}</p>
+        <p className='border-solid border-r-2 border-purple-800 pl-2'>{topic}</p>
+        <p className='border-solid border-r-2 border-purple-800 pl-2'>{due}</p>
+        {description? <p className='truncate border-solid border-r-2 border-purple-800 pl-2'>{description}</p>: <p></p>}
         { completed? <button
-        className='w-1/2 border-solid border-2 border-black rounded bg-green-500'
+        className='ml-2 w-1/2 border-solid border-2 border-black rounded bg-green-500'
         onClick={handleComplete}
       >
         Completed
       </button> : <button
-      className=' w-1/2 border-solid border-2 border-black rounded bg-red-500'
+      className='ml-2 w-1/2 border-solid border-2 border-black rounded bg-red-500'
         onClick={handleComplete}
       >
         Outstanding
       </button> }
         </div>
-       {/* {!completed ? <button onClick={handleComplete}>outstading</button> : complete ? <button onClick={handleComplete}>completed</button> : null} */}
-      
     </div>
   );
 };

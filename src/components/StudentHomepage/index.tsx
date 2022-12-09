@@ -19,7 +19,7 @@ const StudentHomepage = () => {
           setStudent(data.payload)
       }
 
-      // console.log("student",student && student.student_id)
+      console.log("student",student && student.student_id)
   
   async function getTasks(){
     
@@ -60,9 +60,9 @@ const StudentHomepage = () => {
     <div>
       <CompletedContext.Provider value={completed}>
       {student && <h1>Hello ... {student.firstname}... </h1>}
-      <NewTaskForm createTask={createTask}/>
         <Tasks tasks={tasks} />
       <ProgressBar progress={progress} total={total}/>
+      <NewTaskForm createTask={createTask}/>
     </CompletedContext.Provider>
     </div>
   );

@@ -42,7 +42,7 @@ const NewTaskForm = ({createTask}:formProps) => {
 
 
   return (
-    <div>
+    <div className='flex flex-col justify-center items-center'>
       Add new homework task
       <form
         onSubmit={
@@ -52,7 +52,7 @@ const NewTaskForm = ({createTask}:formProps) => {
             setNewTask({subject:'', topic: '', description: '', due: '', completed: false})
           }
         }
-        className='w-1/2 h-60 grid grid-flow-row-dense grid-cols-3 border-solid border-2 border-black bg-orange-100 space-around p-1 rounded my-2'
+        className='w-1/2 h-60 grid grid-flow-row-dense grid-cols-3 border-solid rounded-lg border-2 border-black bg-yellow-300 space-around p-1 rounded my-2'
       >
         <label htmlFor='subject' className='flex gap-1'>
           Subject:

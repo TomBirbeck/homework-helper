@@ -15,8 +15,8 @@ const Tasks: FunctionComponent<{tasks : Task[]}> = ({tasks}) =>{
     console.log("taskid in tasks", tasks[0].task_id)
     return (
         <>
-        <div className="grid grid-cols-5 w-full mb-2 border-solid border-b-2 border-black">
-        <h2 className="font-bold text-lg">Subject</h2>
+        <div className="grid grid-cols-5 w-full mb-2 border-solid border-b-2 border-black pl-2">
+        <h2 className="font-bold text-lg pl-2">Subject</h2>
         <h2 className="font-bold text-lg">Topic</h2>
         <h2 className="font-bold text-lg">Due</h2>
         <h2 className="font-bold text-lg">Description</h2>

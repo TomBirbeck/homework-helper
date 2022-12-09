@@ -10,7 +10,7 @@ function App() {
   const studentId = useState<Number>(0)
 
   return (
-    <div className="m-10">
+    <div className="m-0 p-2 bg-purple-800">
     <Routes>
     <Route path="/" element={ <LoginPage/> } />
     <Route path="/student" element={ <StudentHomepage/> } />
