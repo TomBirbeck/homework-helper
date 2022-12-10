@@ -6,7 +6,7 @@ import ParentHomepage from '../ParentHomepage';
 
 function App() {
   return (
-    <div className='m-0 p-2 bg-purple-800 min-h-full w-screen'>
+    <div className='m-0 p-2 bg-purple-800 min-h-screen w-screen'>
       <Routes>
         <Route path='/' element={<LoginPage />} />
         <Route path='/student' element={<StudentHomepage />} />
