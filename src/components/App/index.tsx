@@ -3,13 +3,10 @@ import './App.css';
 import LoginPage from '../Login';
 import StudentHomepage from '../StudentHomepage';
 import ParentHomepage from '../ParentHomepage';
-import { useState } from 'react';
 
 function App() {
-  const studentId = useState<Number>(0);
-
   return (
-    <div className='m-0 p-2 bg-purple-800 h-screen w-screen'>
+    <div className='m-0 p-2 bg-purple-800 min-h-full w-screen'>
       <Routes>
         <Route path='/' element={<LoginPage />} />
         <Route path='/student' element={<StudentHomepage />} />

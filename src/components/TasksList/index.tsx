@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent } from 'react';
 
 interface Iprops {
   taskId: Number;
@@ -50,14 +50,14 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
         )}
         {completed ? (
           <button
-            className='ml-2 w-1/2 border-solid border-2 border-black rounded bg-green-500'
+            className='ml-2 w-1/2 border-solid border-2 border-black rounded bg-green-600'
             onClick={handleComplete}
           >
             Completed
           </button>
         ) : (
           <button
-            className='ml-2 w-1/2 border-solid border-2 border-black rounded bg-red-500'
+            className='ml-2 w-1/2 border-solid border-2 border-black rounded bg-red-600'
             onClick={handleComplete}
           >
             Outstanding
