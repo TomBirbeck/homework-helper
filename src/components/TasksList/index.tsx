@@ -27,9 +27,23 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
     // getTasks()
   };
 
+  const deleteTasks = async (id: Number) => {
+    let res = await fetch(`https://homeworkhelper.onrender.com/tasks/${id}`, 
+    {
+      method: 'DELETE',
+      headers: {'Content-Type': 'application/json'}
+    })
+    let result = await res.json()
+    console.log('task deleted', result)
+  }
+
   const handleComplete = () => {
     completeTask(taskId);
   };
+
+  const handleDelete = () => {
+    deleteTasks(taskId);
+  }
 
   return (
     <div className='flex justify-between gap- w-full p-2 mb-1.5 bg-yellow-300 border-none rounded-lg'>
@@ -49,12 +63,15 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
           <p></p>
         )}
         {completed ? (
+          <div className='grid grid-cols-2'>
           <button
-            className='ml-2 w-1/2 border-solid border-2 border-black rounded bg-green-600'
+            className='ml-2 border-solid border-2 border-black rounded bg-green-600'
             onClick={handleComplete}
           >
             Completed
           </button>
+          <button onClick={handleDelete}>X</button>
+          </div>
         ) : (
           <button
             className='ml-2 w-1/2 border-solid border-2 border-black rounded bg-red-600'
