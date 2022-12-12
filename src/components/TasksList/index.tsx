@@ -10,11 +10,9 @@ interface Iprops {
 }
 
 const TaskList: FunctionComponent<Iprops> = (props) => {
-  // const [complete, setComplete] = useState<Boolean>(false);
-  const { taskId, subject, topic, description, due, completed } = props;
+  const { taskId, subject, topic, description, due, completed} = props;
 
   const completeTask = async (id: Number) => {
-    // console.log("taskid", taskId)
     let res = await fetch(
       `https://homeworkhelper.onrender.com/tasks/completed/${id}`,
       {
@@ -27,7 +25,7 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
     // getTasks()
   };
 
-  const deleteTasks = async (id: Number) => {
+  const deleteTask = async (id: Number) => {
     let res = await fetch(`https://homeworkhelper.onrender.com/tasks/${id}`, 
     {
       method: 'DELETE',
@@ -35,15 +33,34 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
     })
     let result = await res.json()
     console.log('task deleted', result)
+    // getTasks()
   }
 
+  const deleteMultipleTasks = async (ids: Array<Number>) => {
+    
+    for (let i = 0; i < ids.length; i++){
+      let res = await fetch(`https://homeworkhelper.onrender.com/tasks/${ids[i]}`, 
+      {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'}
+      })
+      let result = await res.json()
+      console.log('task deleted', ids[i], result)
+}
+
+  }
+  
   const handleComplete = () => {
     completeTask(taskId);
   };
 
   const handleDelete = () => {
-    deleteTasks(taskId);
+    deleteTask(taskId);
   }
+
+  // const handleMultipleDeletes = () => {
+  //deleteMultipleTasks()
+  // }
 
   return (
     <div className='flex justify-between gap- w-full p-2 mb-1.5 bg-yellow-300 border-none rounded-lg'>

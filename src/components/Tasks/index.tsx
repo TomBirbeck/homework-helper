@@ -11,7 +11,7 @@ interface Tasks {
   completed: Boolean;
 }
 
-const Tasks: FunctionComponent<{ tasks: Task[] }> = ({ tasks }) => {
+const Tasks: FunctionComponent<{ tasks: Task[]  }> = ({ tasks }) => {
   return (
     <>
       <div className='grid grid-cols-5 w-full mb-2 border-solid border-b-2 border-white pl-2'>

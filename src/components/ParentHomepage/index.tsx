@@ -19,20 +19,36 @@ const ParentHomepage = () => {
       creator_id: Number;
     }>
   >();
-
   useEffect(() => {
     async function getStudent() {
-      const res = await fetch('https://homeworkhelper.onrender.com/parent/4');
+      const email = 'parentfour@email.com'
+      const res = await fetch(`https://homeworkhelper.onrender.com/parent?email=${email}`);
       const data = await res.json();
-      setStudent(data.payload[0].child_id);
+      console.log(data)
+      setStudent(data.payload[1].child_id);
       setParent({
-        firstname: data.payload[0].firstname,
-        surname: data.payload[0].surname,
-        childId: data.payload[0].child_id,
+        firstname: data.payload[1].firstname,
+        surname: data.payload[1].surname,
+        childId: data.payload[1].child_id,
       });
     }
     getStudent();
   }, []);
+
+
+  // useEffect(() => {
+  //   async function getStudent() {
+  //     const res = await fetch('https://homeworkhelper.onrender.com/parent/4');
+  //     const data = await res.json();
+  //     setStudent(data.payload[0].child_id);
+  //     setParent({
+  //       firstname: data.payload[0].firstname,
+  //       surname: data.payload[0].surname,
+  //       childId: data.payload[0].child_id,
+  //     });
+  //   }
+  //   getStudent();
+  // }, []);
   console.log(student);
   console.log(parent);
 
@@ -49,7 +65,7 @@ const ParentHomepage = () => {
     getTasks();
   }, [student]);
 
-  console.log(api);
+  // console.log(api);
   return (
     <>
       <h1 className='font-bold text-white text-3xl mb-5 text-center'>

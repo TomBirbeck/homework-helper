@@ -3,7 +3,6 @@ import Tasks from '../Tasks';
 import list from '../../data/data';
 import NewTaskForm from '../NewTaskForm';
 import ProgressBar from '../ProgressBar';
-import CompletedContext from '../../context/completedContext';
 
 const StudentHomepage = () => {
   const [tasks, setTasks] = useState<Array<any>>(list);
@@ -12,23 +11,24 @@ const StudentHomepage = () => {
     firstname: String;
     surname: String;
   }>();
-  const [studentId, setStudentId] = useState(4);
+  // const [studentId, setStudentId] = useState(4);
   const [progress, setProgress] = useState(0);
   const [total, setTotal] = useState(0);
-
+  
   async function getStudent() {
+    const studentEmail = 'test2email@email.com'
+    console.log(studentEmail)
     const res = await fetch(
-      `https://homeworkhelper.onrender.com/student/${studentId}`
+      `https://homeworkhelper.onrender.com/student?email=${studentEmail}`
     );
     const data = await res.json();
-    setStudent(data.payload[0]);
+      setStudent(data.payload[0]);
   }
 
   console.log('student', student && student.student_id);
-
   async function getTasks() {
     const res = await fetch(
-      `https://homeworkhelper.onrender.com/student/tasks/${studentId}`
+      `https://homeworkhelper.onrender.com/student/tasks/${student?.student_id}`
     );
     const data = await res.json();
     setTasks(data.payload);
@@ -45,7 +45,7 @@ const StudentHomepage = () => {
   async function createTask(task: Tasks) {
     console.log('task', task);
     let res = await fetch(
-      `https://homeworkhelper.onrender.com/tasks/${studentId}`,
+      `https://homeworkhelper.onrender.com/tasks/${student?.student_id}`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -58,24 +58,23 @@ const StudentHomepage = () => {
   }
 
   useEffect(() => {
-    getTasks();
     getStudent();
-  }, []);
+    if (student?.student_id){
+      getTasks();
 
-  const completed = useState(true);
+    }
+  },[]);
 
   return (
     <div>
-      <CompletedContext.Provider value={completed}>
         {student && (
           <h1 className='font-bold text-white text-3xl mb-5 text-center'>
             Hello {student.firstname}, Welcome to Homework Helper!
           </h1>
         )}
-        <Tasks tasks={tasks} />
+        <Tasks tasks={tasks}/>
         <ProgressBar progress={progress} total={total} />
         <NewTaskForm createTask={createTask} />
-      </CompletedContext.Provider>
     </div>
   );
 };
