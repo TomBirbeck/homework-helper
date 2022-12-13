@@ -1,4 +1,5 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useContext } from 'react';
+import { GetTasksContext } from '../../context/GetTasksContext';
 
 interface Iprops {
   taskId: Number;
@@ -11,6 +12,7 @@ interface Iprops {
 
 const TaskList: FunctionComponent<Iprops> = (props) => {
   const { taskId, subject, topic, description, due, completed} = props;
+  const getTasks = useContext(GetTasksContext)
 
   const completeTask = async (id: Number) => {
     let res = await fetch(
@@ -22,7 +24,7 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
     );
     let result = await res.json();
     console.log('task completed', result);
-    // getTasks()
+    getTasks()
   };
 
   const deleteTask = async (id: Number) => {
@@ -33,7 +35,7 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
     })
     let result = await res.json()
     console.log('task deleted', result)
-    // getTasks()
+    getTasks()
   }
 
   const deleteMultipleTasks = async (ids: Array<Number>) => {

@@ -3,6 +3,7 @@ import Tasks from '../Tasks';
 import list from '../../data/data';
 import NewTaskForm from '../NewTaskForm';
 import ProgressBar from '../ProgressBar';
+import { GetTasksContext } from '../../context/GetTasksContext';
 
 const StudentHomepage = () => {
   const [tasks, setTasks] = useState<Array<any>>(list);
@@ -72,7 +73,9 @@ const StudentHomepage = () => {
             Hello {student.firstname}, Welcome to Homework Helper!
           </h1>
         )}
+        <GetTasksContext.Provider value={getTasks}>
         <Tasks tasks={tasks}/>
+        </GetTasksContext.Provider>
         <ProgressBar progress={progress} total={total} />
         <NewTaskForm createTask={createTask} />
     </div>
