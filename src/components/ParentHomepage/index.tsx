@@ -1,4 +1,6 @@
+import { useAuth0 } from '@auth0/auth0-react';
 import { useEffect, useState } from 'react';
+import LogoutButton from '../LogoutButton';
 import ParentTasks from '../ParentTasks';
 
 const ParentHomepage = () => {
@@ -19,10 +21,14 @@ const ParentHomepage = () => {
       creator_id: Number;
     }>
   >();
+
+  const {user} = useAuth0()
+
+
   useEffect(() => {
     async function getStudent() {
-      const email = 'parentfour@email.com'
-      const res = await fetch(`https://homeworkhelper.onrender.com/parent?email=${email}`);
+      // const email = 'parentfour@email.com'
+      const res = await fetch(`https://homeworkhelper.onrender.com/parent?email=${user?.email}`);
       const data = await res.json();
       console.log(data)
       setStudent(data.payload[1].child_id);
@@ -76,6 +82,7 @@ const ParentHomepage = () => {
           This is how your child is progressing...
         </h2>
       )}
+      <LogoutButton/>
       {api && <ParentTasks tasks={api} />}
     </>
   );

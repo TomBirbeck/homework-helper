@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import LoginButton from '../LoginButton';
 import LogoutButton from '../LogoutButton';
 import {useAuth0} from '@auth0/auth0-react'
@@ -7,36 +7,38 @@ import {useAuth0} from '@auth0/auth0-react'
 
 const LoginPage = () => {
   const {user, isAuthenticated} = useAuth0()
-  console.log(user)
+  console.log(user?.email)
 
-  const [person, setPerson] = useState(user)
+  const [person, setPerson] = useState('')
 
  
     async function findStudent() {
       const checkStudent = await fetch(
-        `https://homeworkhelper.onrender.com/parent?email=${user?.email}`
+        `https://homeworkhelper.onrender.com/student?email=${user?.email}`
         // `https://homeworkhelper.onrender.com/student?email=${email}`
       );
       const studentData = await checkStudent.json();
       if (studentData.payload.length > 0) {
-       console.log('user is student'); }
+       setPerson('student'); }
       }
-
+      
+      async function findParent() {
+        const parentCheck = await fetch(
+          // `https://homeworkhelper.onrender.com/parent?email=${user.email}`
+        `https://homeworkhelper.onrender.com/parent?email=${user?.email}`
+        );
+        const parentData = await parentCheck.json();
+        if (parentData.payload.length > 0) {
+        setPerson('parent');
+      }
+    }
+  
       useEffect(()=>{
         findStudent()
-      },[person])
+        findParent()
+      },[user])
 
-//       async function findParent() {
-//         const parentCheck = await fetch(
-//           // `https://homeworkhelper.onrender.com/parent?email=${user.email}`
-//         `https://homeworkhelper.onrender.com/parent?email=${email}`
-//         );
-//         const parentData = await parentCheck.json();
-//         if (parentData.payload.length > 0) {
-//         console.log('user is parent');
-//       }
-//     }
-  
+
 
 //   return (
 //     <div>
@@ -55,10 +57,9 @@ const LoginPage = () => {
 //     </div>
 //   );
 
-
 return (
   <>
-  {isAuthenticated ?  <LogoutButton/> : <LoginButton/>}
+  {isAuthenticated && person === 'student'? <Navigate to='/student'/> : isAuthenticated && person === 'parent'? <Navigate to='/parent'/> : <LoginButton/>}
   </>
 )
 };
