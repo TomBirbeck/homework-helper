@@ -3,11 +3,12 @@ import { Navigate } from 'react-router-dom';
 import LoginButton from '../LoginButton';
 import LogoutButton from '../LogoutButton';
 import {useAuth0} from '@auth0/auth0-react'
+import SignupForm from '../SignupForm';
 
 
 const LoginPage = () => {
   const {user, isAuthenticated} = useAuth0()
-  console.log(user?.email)
+  console.log("user",user)
 
   const [person, setPerson] = useState('')
 
@@ -15,7 +16,6 @@ const LoginPage = () => {
     async function findStudent() {
       const checkStudent = await fetch(
         `https://homeworkhelper.onrender.com/student?email=${user?.email}`
-        // `https://homeworkhelper.onrender.com/student?email=${email}`
       );
       const studentData = await checkStudent.json();
       if (studentData.payload.length > 0) {
@@ -24,7 +24,6 @@ const LoginPage = () => {
       
       async function findParent() {
         const parentCheck = await fetch(
-          // `https://homeworkhelper.onrender.com/parent?email=${user.email}`
         `https://homeworkhelper.onrender.com/parent?email=${user?.email}`
         );
         const parentData = await parentCheck.json();
@@ -59,7 +58,19 @@ const LoginPage = () => {
 
 return (
   <>
-  {isAuthenticated && person === 'student'? <Navigate to='/student'/> : isAuthenticated && person === 'parent'? <Navigate to='/parent'/> : <LoginButton/>}
+  {isAuthenticated && person === 'student'?
+   <Navigate to='/student'/> : 
+   isAuthenticated && person === 'parent'? 
+   <Navigate to='/parent'/> : 
+   person !=='student' && person !=='parent' && isAuthenticated ? 
+   <div>
+    <div>
+    <SignupForm setPerson={setPerson}/>
+    </div>
+    <LogoutButton/>
+   </div>
+   :
+   <LoginButton/>}
   </>
 )
 };
