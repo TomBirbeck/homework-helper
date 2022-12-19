@@ -6,21 +6,17 @@ interface ProgressIProps {
 }
 
 const ProgressBar = ({ progress, total }: ProgressIProps) => {
+  
   const [progressed, setProgressed] = useState<Number>(0);
-  // const [bgColor, setBgColor] = useState<String>("red-500")
-  // const [completed, setCompleted] = useState<Array<Number>>([1,2])
-
-  console.log('total', total);
 
   const percentage = (tasks: number, completed: number) => {
     const percent = (completed / tasks) * 100;
     setProgressed(percent);
-    console.log('progress ran');
   };
 
   useEffect(() => {
     percentage(total, progress);
-  }, [progress]);
+  }, [total, progress]);
 
   return (
     <>
@@ -28,7 +24,11 @@ const ProgressBar = ({ progress, total }: ProgressIProps) => {
         Progress
       </h3>
       <div className='w-full h-10 bg-red-500 mt-4 border-solid border-2 border-black rounded-lg'>
-        {progressed <= 20 ? (
+        {progressed === 0 ? (
+            <span className='w-full h-full flex items-center justify-center'>
+              0%
+            </span>
+            ) : progressed <= 20 ? (
           <div className='flex h-full w-1/5 bg-green-500 border-none rounded-l-md'>
             <span className='w-full h-full flex items-center justify-center'>
               20%

@@ -31,11 +31,11 @@ const ParentHomepage = () => {
       const res = await fetch(`https://homeworkhelper.onrender.com/parent?email=${user?.email}`);
       const data = await res.json();
       console.log(data)
-      setStudent(data.payload[1].child_id);
+      setStudent(data.payload[0].child_id);
       setParent({
-        firstname: data.payload[1].firstname,
-        surname: data.payload[1].surname,
-        childId: data.payload[1].child_id,
+        firstname: data.payload[0].firstname,
+        surname: data.payload[0].surname,
+        childId: data.payload[0].child_id,
       });
     }
     getStudent();
@@ -74,6 +74,7 @@ const ParentHomepage = () => {
   // console.log(api);
   return (
     <>
+      <LogoutButton/>
       <h1 className='font-bold text-white text-3xl mb-5 text-center'>
         Hello {parent.firstname}
       </h1>
@@ -82,7 +83,6 @@ const ParentHomepage = () => {
           This is how your child is progressing...
         </h2>
       )}
-      <LogoutButton/>
       {api && <ParentTasks tasks={api} />}
     </>
   );

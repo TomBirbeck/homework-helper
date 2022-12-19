@@ -26,7 +26,7 @@ const StudentHomepage = () => {
       setStudent({...student, student_id: data.payload[0].student_id, firstname: data.payload[0].firstname, surname: data.payload[0].surname});
   }
 
-  console.log("student", student)
+  // console.log("student", student)
 
   async function getTasks() {
     const res = await fetch(
@@ -35,12 +35,14 @@ const StudentHomepage = () => {
     const data = await res.json();
     setTasks(data.payload);
     setTotal(data.payload.length);
+    let count = 0
     for (let i = 0; i < data.payload.length; i++) {
       if (data.payload[i].completed) {
-        setProgress((prev) => prev + 1);
+        count++
       }
+      setProgress(count);
     }
-    console.log('get tasks ran');
+    // console.log('get tasks ran');
   }
 
   async function createTask(task: Tasks) {
@@ -53,7 +55,7 @@ const StudentHomepage = () => {
       }
     );
     let result = await res.json();
-    console.log('new task posted', result);
+    // console.log('new task posted', result);
     getTasks();
   }
 
@@ -64,16 +66,16 @@ const StudentHomepage = () => {
 
   return (
     <div>
+      <LogoutButton/>
         {student && (
           <h1 className='font-bold text-white text-3xl mb-5 text-center'>
             Hello {student.firstname}, Welcome to Homework Helper!
           </h1>
         )}
-        <LogoutButton/>
         <GetTasksContext.Provider value={getTasks}>
         <Tasks tasks={tasks}/>
         </GetTasksContext.Provider>
-        <ProgressBar progress={progress} total={total} />
+        <ProgressBar progress={progress} total={total}/>
         <NewTaskForm createTask={createTask} />
     </div>
   );
