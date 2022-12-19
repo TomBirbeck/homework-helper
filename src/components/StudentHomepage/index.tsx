@@ -13,6 +13,7 @@ const StudentHomepage = () => {
     student_id: Number;
     firstname: String;
     surname: String;
+    student_code: String;
   }>();
   const [progress, setProgress] = useState(0);
   const [total, setTotal] = useState(0);
@@ -23,7 +24,7 @@ const StudentHomepage = () => {
       `https://homeworkhelper.onrender.com/student?email=${user?.email}`
     );
     const data = await res.json();
-      setStudent({...student, student_id: data.payload[0].student_id, firstname: data.payload[0].firstname, surname: data.payload[0].surname});
+      setStudent({...student, student_id: data.payload[0].student_id, firstname: data.payload[0].firstname, surname: data.payload[0].surname, student_code: data.payload[0].student_code});
   }
 
   // console.log("student", student)

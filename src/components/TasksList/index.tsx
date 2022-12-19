@@ -89,7 +89,9 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
           >
             Completed
           </button>
-          <button onClick={handleDelete}>X</button>
+          <button
+          className='ml-2 w-1/2 border-solid border-2 border-black rounded bg-red-600 items-end'
+           onClick={handleDelete}>Clear</button>
           </div>
         ) : (
           <button

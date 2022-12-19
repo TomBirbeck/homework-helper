@@ -30,6 +30,7 @@ const SignupForm = ({setPerson} : SignUpIProps) => {
                 }
               );
               let result = await res.json();
+              console.log("result",result)
               void setPerson('student')
         }
        else if (user.role === 'parent'){
