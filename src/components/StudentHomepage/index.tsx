@@ -5,6 +5,7 @@ import NewTaskForm from '../NewTaskForm';
 import ProgressBar from '../ProgressBar';
 import { GetTasksContext } from '../../context/GetTasksContext';
 import LogoutButton from '../LogoutButton';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const StudentHomepage = () => {
   const [tasks, setTasks] = useState<Array<any>>(list);
@@ -13,21 +14,20 @@ const StudentHomepage = () => {
     firstname: String;
     surname: String;
   }>();
-  // const [studentId, setStudentId] = useState(4);
   const [progress, setProgress] = useState(0);
   const [total, setTotal] = useState(0);
+  const {user} = useAuth0()
   
   async function getStudent() {
-    const studentEmail = 'test2email@email.com'
-    console.log(studentEmail)
     const res = await fetch(
-      `https://homeworkhelper.onrender.com/student?email=${studentEmail}`
+      `https://homeworkhelper.onrender.com/student?email=${user?.email}`
     );
     const data = await res.json();
-      setStudent(data.payload[0]);
+      setStudent({...student, student_id: data.payload[0].student_id, firstname: data.payload[0].firstname, surname: data.payload[0].surname});
   }
 
-  console.log('student', student && student.student_id);
+  console.log("student", student)
+
   async function getTasks() {
     const res = await fetch(
       `https://homeworkhelper.onrender.com/student/tasks/${student?.student_id}`
@@ -38,14 +38,12 @@ const StudentHomepage = () => {
     for (let i = 0; i < data.payload.length; i++) {
       if (data.payload[i].completed) {
         setProgress((prev) => prev + 1);
-        console.log('progress on main', progress);
       }
     }
     console.log('get tasks ran');
   }
 
   async function createTask(task: Tasks) {
-    console.log('task', task);
     let res = await fetch(
       `https://homeworkhelper.onrender.com/tasks/${student?.student_id}`,
       {
@@ -61,11 +59,8 @@ const StudentHomepage = () => {
 
   useEffect(() => {
     getStudent();
-    if (student?.student_id){
-      getTasks();
-
-    }
-  },[]);
+    getTasks()
+  },[student?.student_id]);
 
   return (
     <div>
