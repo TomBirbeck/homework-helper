@@ -5,7 +5,7 @@ type UserProps = {
     email: String | undefined;
     firstname: String;
     surname: String;
-    child_id: Number;
+    child_id: String;
     role: String
 }
 
@@ -15,7 +15,7 @@ type SignUpIProps = {
 
 const SignupForm = ({setPerson} : SignUpIProps) => {
     const {user} = useAuth0()
-    const [newUser, setNewUser] = useState({email: user?.email, firstname: '', surname: '', child_id: 0, role: ''})
+    const [newUser, setNewUser] = useState({email: user?.email, firstname: '', surname: '', child_id: '', role: ''})
     
     const CreateUser = async (user: UserProps) => {
         if (user.role === 'student'){
@@ -97,13 +97,15 @@ const SignupForm = ({setPerson} : SignUpIProps) => {
           <option value='parent'>Parent</option>
           <option value='student'>Student</option>
           </select>
-          <label htmlFor="childId" className="flex flex-col">
-                Child Id (Parent account only)
-                <input type='number' className="pl-2" value={newUser.child_id} onChange={handleChildId} placeholder="Please enter your Child's id"/>
+          <label htmlFor="studentCode" className="flex flex-col">
+                Student Code (Parent account only)
+                <input type='text' className="pl-2" value={newUser.child_id} onChange={handleChildId} placeholder="Please enter your Child's student code"/>
             </label>
           <button type="submit" className="border solid-2 border-black rounded-md w-1/2 self-center bg-green-500">Submit</button>
         </form>
     )
 }
+
+// 23f7872d-c4d5-4973-a8e9-26af69edfd8f
 
 export default SignupForm

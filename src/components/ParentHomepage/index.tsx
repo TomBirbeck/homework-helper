@@ -4,12 +4,12 @@ import LogoutButton from '../LogoutButton';
 import ParentTasks from '../ParentTasks';
 
 const ParentHomepage = () => {
-  const [student, setStudent] = useState<Number>(0);
+  const [student, setStudent] = useState<String>('');
   const [parent, setParent] = useState<{
     firstname: String;
     surname: String;
-    childId: Number;
-  }>({ firstname: '', surname: '', childId: 0 });
+    childId: String;
+  }>({ firstname: '', surname: '', childId: '' });
   const [api, setApi] = useState<
     Array<{
       task_id: Number;
@@ -27,10 +27,8 @@ const ParentHomepage = () => {
 
   useEffect(() => {
     async function getStudent() {
-      // const email = 'parentfour@email.com'
       const res = await fetch(`https://homeworkhelper.onrender.com/parent?email=${user?.email}`);
       const data = await res.json();
-      console.log(data)
       setStudent(data.payload[0].child_id);
       setParent({
         firstname: data.payload[0].firstname,
@@ -55,17 +53,18 @@ const ParentHomepage = () => {
   //   }
   //   getStudent();
   // }, []);
-  console.log(student);
-  console.log(parent);
+  // console.log("student", student);
+  console.log("parent", parent);
 
   useEffect(() => {
     async function getTasks() {
-      if (parent.childId > 0) {
+      if (parent.childId.length) {
         const res = await fetch(
-          `https://homeworkhelper.onrender.com/student/tasks/${parent.childId}`
+          `https://homeworkhelper.onrender.com/studenttasks?code=${parent.childId}`
         );
         const data = await res.json();
         setApi(data.payload);
+        console.log("tasks", data.payload)
       }
     }
     getTasks();
