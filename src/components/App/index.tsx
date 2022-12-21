@@ -11,7 +11,8 @@ function App() {
   const {user} = useAuth0()
  
   return (
-    <div className='m-0 p-2 bg-purple-800 min-h-screen w-screen'>
+    <div className="m-0 p-2 bg-universe min-h-screen w-screen">
+    {/* <div className="m-0 p-2 bg-[url('/src/assets/tree.jpg')] min-h-screen w-screen"> */}
       <Routes>
         <Route path='/' element={<LoginPage />} />
         <Route element={<ProtectedRoute/>}>

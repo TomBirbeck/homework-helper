@@ -32,4 +32,19 @@ const list = [
 
 ]
 
+//space image gerd altman
+//Image by <a href="https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2742113">Gerd Altmann</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2742113">Pixabay</a>
+
+//boat image pladicon 2012
+// Image by <a href="https://pixabay.com/users/pladicon2012acacias-15473339/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4899802">pladicon2012acacias</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4899802">Pixabay</a>
+
+// aurora image noel bauza
+//Image by <a href="https://pixabay.com/users/noel_bauza-2019050/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1197753">Noel Bauza</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1197753">Pixabay</a>
+
+// ruin frank winkler
+// Image by <a href="https://pixabay.com/users/frankwinkler-64960/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=540835">Frank Winkler</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=540835">Pixabay</a>
+
+//tree bessi 
+// https://pixabay.com/users/bessi-909086/
+
 export default list

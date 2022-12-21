@@ -39,23 +39,6 @@ const ParentHomepage = () => {
     getStudent();
   }, []);
 
-
-  // useEffect(() => {
-  //   async function getStudent() {
-  //     const res = await fetch('https://homeworkhelper.onrender.com/parent/4');
-  //     const data = await res.json();
-  //     setStudent(data.payload[0].child_id);
-  //     setParent({
-  //       firstname: data.payload[0].firstname,
-  //       surname: data.payload[0].surname,
-  //       childId: data.payload[0].child_id,
-  //     });
-  //   }
-  //   getStudent();
-  // }, []);
-  // console.log("student", student);
-  console.log("parent", parent);
-
   useEffect(() => {
     async function getTasks() {
       if (parent.childId.length) {
@@ -64,7 +47,7 @@ const ParentHomepage = () => {
         );
         const data = await res.json();
         setApi(data.payload);
-        console.log("tasks", data.payload)
+        // console.log("tasks", data.payload)
       }
     }
     getTasks();
