@@ -15,19 +15,19 @@ const Tasks: FunctionComponent<{ tasks: Task[]  }> = ({ tasks }) => {
   return (
     <>
       <div className='grid grid-cols-5 w-full mb-2 border-solid border-b-2 border-white pl-2'>
-        <h2 className='font-bold text-2xl text-center text-yellow-300 font-mono'>
+        <h2 className='font-bold text-2xl text-center text-white font-mono'>
           Subject
         </h2>
-        <h2 className='font-bold text-2xl text-center text-yellow-300 font-mono'>
+        <h2 className='font-bold text-2xl text-center text-white font-mono'>
           Topic
         </h2>
-        <h2 className='font-bold text-2xl text-center text-yellow-300 font-mono'>
+        <h2 className='font-bold text-2xl text-center text-white font-mono'>
           Due
         </h2>
-        <h2 className='font-bold text-2xl text-center text-yellow-300 font-mono'>
+        <h2 className='font-bold text-2xl text-center text-white font-mono'>
           Description
         </h2>
-        <h2 className='font-bold text-2xl col-center-5 text-center text-yellow-300 font-mono'>
+        <h2 className='font-bold text-2xl col-center-5 text-center text-white font-mono'>
           Completed ?
         </h2>
       </div>

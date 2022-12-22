@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-const ThemeContext = createContext<[string, (theme: string) => void]>([
+const ThemeContext = createContext<[string, (display: string) => void]>([
   'universe',
   () => {},
 ]);

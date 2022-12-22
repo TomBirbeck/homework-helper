@@ -1,9 +1,14 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import { useEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
 import LogoutButton from '../LogoutButton';
 import ParentTasks from '../ParentTasks';
 
-const ParentHomepage = () => {
+type ParentHomepageIProps = {
+  display : String,
+  setDisplay: React.Dispatch<React.SetStateAction<string>>
+}
+
+const ParentHomepage = ({setDisplay} : ParentHomepageIProps) => {
   const [student, setStudent] = useState<String>('');
   const [parent, setParent] = useState<{
     firstname: String;
@@ -56,6 +61,23 @@ const ParentHomepage = () => {
   // console.log(api);
   return (
     <>
+    <form>
+    <label htmlFor='theme'>
+          Theme
+          <select
+            // value={display}
+            onChange={(e) => setDisplay(e.target.value)}
+            onBlur={(e) => setDisplay(e.target.value)}
+          >
+            <option value=''>None</option>
+            <option value='boat'>Boat</option>
+            <option value='universe'>Universe</option>
+            <option value='ruin'>Ruin</option>
+            <option value='tree'>Tree</option>
+            <option value='aurora'>Aurora</option>
+          </select>
+        </label>
+    </form>
       <LogoutButton/>
       <h1 className='font-bold text-white text-3xl mb-5 text-center'>
         Hello {parent.firstname}
