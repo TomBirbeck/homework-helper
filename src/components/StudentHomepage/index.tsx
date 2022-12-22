@@ -89,7 +89,7 @@ const StudentHomepage = () => {
       <StudentTopBar student_code={student?.student_code}/>
         {student && (
           <h1 className={display === 'boat' ? 'font-bold text-black text-3xl mb-5 text-center' :'font-bold text-white text-3xl mb-5 text-center'}>
-            Hello {student.firstname}, Welcome to Study Staxx!
+            Hello {student.firstname}, Welcome to Study Staxx
           </h1>
         )}
         <form>

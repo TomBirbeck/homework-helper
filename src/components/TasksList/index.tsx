@@ -70,11 +70,11 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
 
   return (
     // <div className='flex justify-between gap- w-full p-2 mb-1.5 bg-yellow-300 border-none rounded-lg'>
-    <div className={display[0] === 'tree'? 'flex justify-between w-full p-2 mb-1.5 bg-none bg-opacity-20 backdrop-blur-lg border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
-    : display[0] === 'universe'? 'flex justify-between gap- w-full p-2 mb-1.5 bg-none bg-opacity-20 backdrop-blur-lg border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
-    : display[0] === 'boat'? 'flex justify-between gap- w-full p-2 mb-1.5 bg-white bg-opacity-20 backdrop-blur-lg border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
-    : display[0] === 'ruin'? 'flex justify-between gap- w-full p-2 mb-1.5 bg-white bg-opacity-20 backdrop-blur-lg border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
-    : display[0] === 'aurora' ? 'flex justify-between gap- w-full p-2 mb-1.5 bg-white bg-opacity-20 backdrop-blur-lg border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
+    <div className={display[0] === 'tree'? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
+    : display[0] === 'universe'? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
+    : display[0] === 'boat'? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
+    : display[0] === 'ruin'? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
+    : display[0] === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
     : 'flex justify-between gap- w-full p-2 mb-1.5 bg-yellow-300 border-none rounded-lg'} >
       <div className='grid grid-cols-5 justify-between w-full'>
         <p className='border-solid border-r-2 border-white pl-2'>
@@ -94,18 +94,18 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
         {completed ? (
           <div className='grid grid-cols-2'>
           <button
-            className='ml-2 border-solid border-2 border-white rounded bg-green-600'
+            className='ml-2 border-solid border-2 border-white rounded bg-green-400'
             onClick={handleComplete}
           >
             Completed
           </button>
           <button
-          className='ml-2 w-1/2 border-solid border-2 border-white rounded bg-red-600 items-end'
+          className='ml-2 w-1/2 border-solid border-2 border-white rounded bg-red-400 items-end'
            onClick={handleDelete}>Clear</button>
           </div>
         ) : (
           <button
-            className='ml-2 w-1/2 border-solid border-2 border-white rounded bg-red-600'
+            className='ml-2 w-1/2 border-solid border-2 border-white rounded bg-red-400'
             onClick={handleComplete}
           >
             Outstanding

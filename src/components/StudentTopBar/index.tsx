@@ -11,7 +11,7 @@ const StudentTopBar = ({student_code} : BarIProps) => {
         <div className="flex justify-between">
             <LogoutButton/>
             <div className="flex flex-col">
-                <span onClick={()=>{setShowCode(!showCode)}} className='border solid-2 border-black rounded-md bg-green-600 px-2 py-0.5'>Show Student Code</span>
+                <span onClick={()=>{setShowCode(!showCode)}} className='border solid-2 border-white rounded-md bg-green-400 px-2 py-0.5 text-white'>Show Student Code</span>
                 {showCode && <span className="border solid-2 rounded-md px-2 bg-white">{student_code}</span>}
             </div>
         </div>
