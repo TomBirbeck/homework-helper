@@ -1,5 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import {useEffect, useState } from 'react';
+import {useContext, useEffect, useState } from 'react';
+import ThemeContext from '../../context/ThemeContext';
 import LogoutButton from '../LogoutButton';
 import ParentTasks from '../ParentTasks';
 
@@ -8,7 +9,7 @@ type ParentHomepageIProps = {
   setDisplay: React.Dispatch<React.SetStateAction<string>>
 }
 
-const ParentHomepage = ({setDisplay} : ParentHomepageIProps) => {
+const ParentHomepage = () => {
   const [student, setStudent] = useState<String>('');
   const [parent, setParent] = useState<{
     firstname: String;
@@ -26,7 +27,7 @@ const ParentHomepage = ({setDisplay} : ParentHomepageIProps) => {
       creator_id: Number;
     }>
   >();
-
+  const [display, setDisplay] = useContext(ThemeContext)
   const {user} = useAuth0()
 
 
@@ -60,7 +61,12 @@ const ParentHomepage = ({setDisplay} : ParentHomepageIProps) => {
 
   // console.log(api);
   return (
-    <>
+    <div className={display === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-screen'
+    : display === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-screen' 
+    : display === 'boat'? 'm-0 p-2 bg-cover bg-boat min-h-screen w-screen' 
+    : display === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-screen' 
+    : display === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
+    : 'm-0 p-2 bg-purple-600 min-h-screen w-screen'} >
     <form>
     <label htmlFor='theme'>
           Theme
@@ -88,7 +94,7 @@ const ParentHomepage = ({setDisplay} : ParentHomepageIProps) => {
         </h2>
       )}
       {api && <ParentTasks tasks={api} />}
-    </>
+    </div>
   );
 };
 

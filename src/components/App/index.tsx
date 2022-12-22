@@ -27,6 +27,7 @@ function App() {
         <Route element={<ProtectedRoute/>}>
         <Route path='/student' element={<StudentHomepage />} />
         {/* <Route path='/student' element={<StudentHomepage display={display} setDisplay={setDisplay}/>} /> */}
+        <Route path='/parent' element={<ParentHomepage />} />
         {/* <Route path='/parent' element={<ParentHomepage display={display} setDisplay={setDisplay}/>} /> */}
         </Route>
       </Routes>
