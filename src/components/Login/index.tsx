@@ -36,27 +36,10 @@ const LoginPage = () => {
         findParent()
       },[user])
 
-
-
-//   return (
-//     <div>
-//       <h1 className='font-bold text-white italic text-5xl my-36 text-center'>
-//         Welcome to homework helper
-//       </h1>
-//       <button>Login</button>
-//       <div className='min-h-screen flex justify-center align-middle gap-1'>
-//         <Link to='student'>
-//           <button className='bg-green-600'>Login as Student</button>
-//         </Link>
-//         <Link to='parent'>
-//           <button className='bg-red-600'>Login as Parent</button>
-//         </Link>
-//       </div>
-//     </div>
-//   );
+      const {loginWithPopup, loginWithRedirect} = useAuth0()
 
 return (
-  <>
+  <div  className='flex content-center justify-center m-0 p-2 bg-purple-200 min-h-screen w-100vw'>
   {isAuthenticated && !isLoading && person === 'student'?
    <Navigate to='/student'/> : 
    isAuthenticated && !isLoading && person === 'parent'? 
@@ -69,9 +52,10 @@ return (
     <SignupForm setPerson={setPerson}/>
    </div>
 </div>
-   :
-   <LoginButton/>}
-  </>
+   : person !=='student' && person !=='parent' && !isAuthenticated && !isLoading?
+  //  <LoginButton/>}
+  <>{loginWithRedirect()}</>: null}
+  </div>
 )
 };
 
