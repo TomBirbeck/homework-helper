@@ -5,10 +5,11 @@ const ThemeForm = () => {
 
 const [display, setDisplay] = useContext(ThemeContext)
  return (
-<form className="text-black">
+<form className="text-white">
     <label htmlFor='theme' className="flex flex-col">
           Change Theme
           <select
+            className="text-white bg-black w-1/2"
             onChange={(e) => setDisplay(e.target.value)}
             onBlur={(e) => setDisplay(e.target.value)}
           >

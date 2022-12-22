@@ -4,7 +4,6 @@ import list from '../../data/data';
 import NewTaskForm from '../NewTaskForm';
 import ProgressBar from '../ProgressBar';
 import { GetTasksContext } from '../../context/GetTasksContext';
-import StudentTopBar from '../StudentTopBar';
 import { useAuth0 } from '@auth0/auth0-react';
 import ThemeContext from '../../context/ThemeContext';
 import SideMenu from '../SideMenu';
@@ -85,7 +84,6 @@ const StudentHomepage = () => {
     : display[0] === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
     : display[0] === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
     : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
-      {/* <StudentTopBar student_code={student?.student_code}/> */}
       <span className='fixed right-0 top-0 text-white text-2xl pr-4' onClick={()=>{setOpenMenu(!openMenu)}}>Menu</span>
       {openMenu && <SideMenu name={student?.firstname} Id={student?.student_code}/>}
         {student && (
