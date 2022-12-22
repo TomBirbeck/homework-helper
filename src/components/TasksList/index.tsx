@@ -16,8 +16,6 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
   const getTasks = useContext(GetTasksContext)
   const display = useContext(ThemeContext)
 
-  console.log("display", display)
-
   const completeTask = async (id: Number) => {
     let res = await fetch(
       `https://homeworkhelper.onrender.com/tasks/completed/${id}`,
@@ -27,7 +25,7 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
       }
     );
     let result = await res.json();
-    console.log('task completed', result);
+    // console.log('task completed', result);
     getTasks()
   };
 
@@ -38,7 +36,7 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
       headers: {'Content-Type': 'application/json'}
     })
     let result = await res.json()
-    console.log('task deleted', result)
+    // console.log('task deleted', result)
     getTasks()
   }
 

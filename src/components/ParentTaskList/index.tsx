@@ -8,7 +8,6 @@ interface Iprops {
 }
 
 const ParentTaskList: FunctionComponent<Iprops> = (props) => {
-  // const [complete, setComplete] = useState<Boolean>(false);
   const { subject, topic, due, completed } = props;
 
   return (

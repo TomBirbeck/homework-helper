@@ -8,12 +8,6 @@ import StudentTopBar from '../StudentTopBar';
 import { useAuth0 } from '@auth0/auth0-react';
 import ThemeContext from '../../context/ThemeContext';
 
-type StudentHomepageIProps = {
-  display : String,
-  setDisplay: React.Dispatch<React.SetStateAction<string>>
-}
-
-// const StudentHomepage = ({display, setDisplay}: StudentHomepageIProps ) => {
 const StudentHomepage = () => {
   const [tasks, setTasks] = useState<Array<any>>(list);
   const [student, setStudent] = useState<{
@@ -26,13 +20,15 @@ const StudentHomepage = () => {
   const [total, setTotal] = useState(0);
   const {user} = useAuth0()
   const [display, setDisplay] = useContext(ThemeContext)
+
+  console.log(user)
   
   async function getStudent() {
     const res = await fetch(
       `https://homeworkhelper.onrender.com/student?email=${user?.email}`
     );
     const data = await res.json();
-    console.log("student", data.payload[0])
+    // console.log("student", data.payload[0])
       setStudent({...student, student_id: data.payload[0].student_id, firstname: data.payload[0].firstname, surname: data.payload[0].surname, student_code: data.payload[0].student_code});
   }
 
@@ -46,7 +42,7 @@ const StudentHomepage = () => {
         `https://homeworkhelper.onrender.com/studenttasks?code=${student?.student_code}`
       );
       const data = await res.json();
-      console.log("Tasks", data)
+      // console.log("Tasks", data)
       setTasks(data.payload);
       setTotal(data.payload.length);
       let count = 0
@@ -56,7 +52,7 @@ const StudentHomepage = () => {
         }
         setProgress(count);
     }
-    console.log('get tasks ran', student?.student_code);
+    // console.log('get tasks ran', student?.student_code);
   }
 
   async function createTask(task: Tasks) {
@@ -70,7 +66,7 @@ const StudentHomepage = () => {
       }
     );
     let result = await res.json();
-    console.log('new task posted', result);
+    // console.log('new task posted', result);
     getTasks();
   }
 
@@ -80,12 +76,12 @@ const StudentHomepage = () => {
   },[student?.student_code]);
 
   return (
-    <div className={display === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-screen'
-    : display === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-screen' 
-    : display === 'boat'? 'm-0 p-2 bg-cover bg-boat min-h-screen w-screen' 
-    : display === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-screen' 
+    <div className={display === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
+    : display === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw' 
+    : display === 'boat'? 'm-0 p-2 bg-cover bg-boat min-h-screen w-100vw' 
+    : display === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
     : display === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
-    : 'm-0 p-2 bg-purple-600 min-h-screen w-screen'} >
+    : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
       <StudentTopBar student_code={student?.student_code}/>
         {student && (
           <h1 className={display === 'boat' ? 'font-bold text-black text-3xl mb-5 text-center' :'font-bold text-white text-3xl mb-5 text-center'}>

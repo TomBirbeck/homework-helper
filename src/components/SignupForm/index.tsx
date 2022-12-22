@@ -30,8 +30,9 @@ const SignupForm = ({setPerson} : SignUpIProps) => {
                 }
               );
               let result = await res.json();
-              console.log("result",result)
+              // console.log("result",result)
               void setPerson('student')
+              return result
         }
        else if (user.role === 'parent'){
             const newUser = {email: user.email, firstname: user.firstname, surname: user.surname, child_id: user.child_id}
@@ -46,6 +47,7 @@ const SignupForm = ({setPerson} : SignUpIProps) => {
               );
               let result = await res.json();
               setPerson('student')
+              return result
         }
     }
 
@@ -105,7 +107,5 @@ const SignupForm = ({setPerson} : SignUpIProps) => {
         </form>
     )
 }
-
-// 23f7872d-c4d5-4973-a8e9-26af69edfd8f
 
 export default SignupForm

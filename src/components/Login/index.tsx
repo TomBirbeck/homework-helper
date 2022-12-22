@@ -7,8 +7,10 @@ import SignupForm from '../SignupForm';
 
 
 const LoginPage = () => {
-  const {user, isAuthenticated} = useAuth0()
+  const {user, isAuthenticated, isLoading} = useAuth0()
   const [person, setPerson] = useState('')
+
+  console.log("loading", isLoading)
 
     async function findStudent() {
       const checkStudent = await fetch(
@@ -55,11 +57,11 @@ const LoginPage = () => {
 
 return (
   <>
-  {isAuthenticated && person === 'student'?
+  {isAuthenticated && !isLoading && person === 'student'?
    <Navigate to='/student'/> : 
-   isAuthenticated && person === 'parent'? 
+   isAuthenticated && !isLoading && person === 'parent'? 
    <Navigate to='/parent'/> : 
-   person !=='student' && person !=='parent' && isAuthenticated ? 
+   person !=='student' && person !=='parent' && isAuthenticated && !isLoading? 
    <div className='flex flex-col items-center'>
    <div className='flex flex-col items-center bg-yellow-300 border-solid-2 rounded-lg p-2'>
      <LogoutButton/>
@@ -74,7 +76,5 @@ return (
 };
 
 export default LoginPage;
-
-
 
 

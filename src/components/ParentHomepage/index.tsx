@@ -4,11 +4,6 @@ import ThemeContext from '../../context/ThemeContext';
 import LogoutButton from '../LogoutButton';
 import ParentTasks from '../ParentTasks';
 
-type ParentHomepageIProps = {
-  display : String,
-  setDisplay: React.Dispatch<React.SetStateAction<string>>
-}
-
 const ParentHomepage = () => {
   const [student, setStudent] = useState<String>('');
   const [parent, setParent] = useState<{
@@ -30,7 +25,8 @@ const ParentHomepage = () => {
   const [display, setDisplay] = useContext(ThemeContext)
   const {user} = useAuth0()
 
-
+//uses the parent email to get the child id and pass it to setStudent so that the correct students tasks will be shown
+//also sets parents details in state
   useEffect(() => {
     async function getStudent() {
       const res = await fetch(`https://homeworkhelper.onrender.com/parent?email=${user?.email}`);
@@ -45,6 +41,8 @@ const ParentHomepage = () => {
     getStudent();
   }, []);
 
+
+//gets the students tasks for the parent
   useEffect(() => {
     async function getTasks() {
       if (parent.childId.length) {
@@ -61,12 +59,12 @@ const ParentHomepage = () => {
 
   // console.log(api);
   return (
-    <div className={display === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-screen'
-    : display === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-screen' 
-    : display === 'boat'? 'm-0 p-2 bg-cover bg-boat min-h-screen w-screen' 
-    : display === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-screen' 
+    <div className={display === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
+    : display === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw' 
+    : display === 'boat'? 'm-0 p-2 bg-cover bg-boat min-h-screen w-100vw' 
+    : display === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
     : display === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
-    : 'm-0 p-2 bg-purple-600 min-h-screen w-screen'} >
+    : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
     <form>
     <label htmlFor='theme'>
           Theme
