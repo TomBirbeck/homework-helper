@@ -69,7 +69,7 @@ const ParentHomepage = () => {
       <span className='fixed right-0 top-0 text-white text-2xl pr-4' onClick={()=>{setOpenMenu(!openMenu)}}>Menu</span>
     {openMenu &&<SideMenu name={parent.firstname}/>}
       <h1 className='font-bold text-white text-3xl mb-5 text-center'>
-        Hello {parent.firstname}
+        Welcome to Study Staxx
       </h1>
       {api && (
         <h2 className='font-bold text-white text-2xl mb-5 text-center'>

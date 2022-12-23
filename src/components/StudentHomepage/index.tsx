@@ -88,7 +88,7 @@ const StudentHomepage = () => {
       {openMenu && <SideMenu name={student?.firstname} Id={student?.student_code}/>}
         {student && (
           <h1 className={display[0] === 'boat' ? 'font-bold text-black text-3xl mb-5 text-center' :'font-bold text-white text-3xl mb-5 text-center'}>
-            Hello {student.firstname}, Welcome to Study Staxx
+            Welcome to Study Staxx
           </h1>
         )}
         <GetTasksContext.Provider value={getTasks}>

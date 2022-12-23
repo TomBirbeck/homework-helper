@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import LoginButton from '../LoginButton';
 import LogoutButton from '../LogoutButton';
 import {useAuth0} from '@auth0/auth0-react'
 import SignupForm from '../SignupForm';
 
 
 const LoginPage = () => {
-  const {user, isAuthenticated, isLoading} = useAuth0()
+  const {user, isAuthenticated, isLoading, loginWithRedirect} = useAuth0()
   const [person, setPerson] = useState('')
 
   console.log("loading", isLoading)
@@ -36,7 +35,7 @@ const LoginPage = () => {
         findParent()
       },[user])
 
-      const {loginWithPopup, loginWithRedirect} = useAuth0()
+     
 
 return (
   <div  className='flex content-center justify-center m-0 p-2 bg-purple-200 min-h-screen w-100vw'>

@@ -5,9 +5,9 @@ const ThemeForm = () => {
 
 const [display, setDisplay] = useContext(ThemeContext)
  return (
-<form className="text-white">
+<form className="text-white my-2">
     <label htmlFor='theme' className="flex flex-col">
-          Change Theme
+          Change Page Theme
           <select
             className="text-white bg-black w-1/2"
             onChange={(e) => setDisplay(e.target.value)}
