@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
-import LoginButton from '../LoginButton';
 import LogoutButton from '../LogoutButton';
 import {useAuth0} from '@auth0/auth0-react'
 import SignupForm from '../SignupForm';
 
 
 const LoginPage = () => {
-  const {user, isAuthenticated, isLoading} = useAuth0()
+  const {user, isAuthenticated, isLoading, loginWithRedirect} = useAuth0()
   const [person, setPerson] = useState('')
 
   console.log("loading", isLoading)
@@ -36,27 +35,10 @@ const LoginPage = () => {
         findParent()
       },[user])
 
-
-
-//   return (
-//     <div>
-//       <h1 className='font-bold text-white italic text-5xl my-36 text-center'>
-//         Welcome to homework helper
-//       </h1>
-//       <button>Login</button>
-//       <div className='min-h-screen flex justify-center align-middle gap-1'>
-//         <Link to='student'>
-//           <button className='bg-green-600'>Login as Student</button>
-//         </Link>
-//         <Link to='parent'>
-//           <button className='bg-red-600'>Login as Parent</button>
-//         </Link>
-//       </div>
-//     </div>
-//   );
+     
 
 return (
-  <>
+  <div  className='flex content-center justify-center m-0 p-2 bg-purple-200 min-h-screen w-100vw'>
   {isAuthenticated && !isLoading && person === 'student'?
    <Navigate to='/student'/> : 
    isAuthenticated && !isLoading && person === 'parent'? 
@@ -69,9 +51,10 @@ return (
     <SignupForm setPerson={setPerson}/>
    </div>
 </div>
-   :
-   <LoginButton/>}
-  </>
+   : person !=='student' && person !=='parent' && !isAuthenticated && !isLoading?
+  //  <LoginButton/>}
+  <>{loginWithRedirect()}</>: null}
+  </div>
 )
 };
 

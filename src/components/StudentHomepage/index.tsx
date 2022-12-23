@@ -4,9 +4,9 @@ import list from '../../data/data';
 import NewTaskForm from '../NewTaskForm';
 import ProgressBar from '../ProgressBar';
 import { GetTasksContext } from '../../context/GetTasksContext';
-import StudentTopBar from '../StudentTopBar';
 import { useAuth0 } from '@auth0/auth0-react';
 import ThemeContext from '../../context/ThemeContext';
+import SideMenu from '../SideMenu';
 
 const StudentHomepage = () => {
   const [tasks, setTasks] = useState<Array<any>>(list);
@@ -18,8 +18,10 @@ const StudentHomepage = () => {
   }>();
   const [progress, setProgress] = useState(0);
   const [total, setTotal] = useState(0);
+  const [openMenu, setOpenMenu] = useState(false)
   const {user} = useAuth0()
-  const [display, setDisplay] = useContext(ThemeContext)
+  const display = useContext(ThemeContext)
+
 
   console.log(user)
   
@@ -76,35 +78,19 @@ const StudentHomepage = () => {
   },[student?.student_code]);
 
   return (
-    <div className={display === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
-    : display === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw' 
-    : display === 'boat'? 'm-0 p-2 bg-cover bg-boat min-h-screen w-100vw' 
-    : display === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
-    : display === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
+    <div className={display[0] === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
+    : display[0] === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw' 
+    : display[0] === 'boat'? 'm-0 p-2 bg-cover bg-boat min-h-screen w-100vw' 
+    : display[0] === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
+    : display[0] === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
     : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
-      <StudentTopBar student_code={student?.student_code}/>
+      <span className='fixed right-0 top-0 text-white text-2xl pr-4' onClick={()=>{setOpenMenu(!openMenu)}}>Menu</span>
+      {openMenu && <SideMenu name={student?.firstname} Id={student?.student_code}/>}
         {student && (
-          <h1 className={display === 'boat' ? 'font-bold text-black text-3xl mb-5 text-center' :'font-bold text-white text-3xl mb-5 text-center'}>
-            Hello {student.firstname}, Welcome to Study Staxx
+          <h1 className={display[0] === 'boat' ? 'font-bold text-black text-3xl mb-5 text-center' :'font-bold text-white text-3xl mb-5 text-center'}>
+            Welcome to Study Staxx
           </h1>
         )}
-        <form>
-    <label htmlFor='theme'>
-          Theme
-          <select
-            // value={display}
-            onChange={(e) => setDisplay(e.target.value)}
-            onBlur={(e) => setDisplay(e.target.value)}
-          >
-            <option value=''></option>
-            <option value='boat'>Boat</option>
-            <option value='universe'>Universe</option>
-            <option value='ruin'>Ruin</option>
-            <option value='tree'>Tree</option>
-            <option value='aurora'>Aurora</option>
-          </select>
-        </label>
-    </form>
         <GetTasksContext.Provider value={getTasks}>
          <Tasks tasks={tasks}/>
         </GetTasksContext.Provider>
