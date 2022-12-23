@@ -1,5 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
 import {useContext, useEffect, useState } from 'react';
+import {GiHamburgerMenu} from 'react-icons/gi'
 import ThemeContext from '../../context/ThemeContext';
 import ParentTasks from '../ParentTasks';
 import SideMenu from '../SideMenu';
@@ -74,7 +75,7 @@ const ParentHomepage = () => {
     : theme === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
     : theme === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
     : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
-      <span className='fixed right-0 top-0 text-white text-2xl pr-4' onClick={()=>{setOpenMenu(!openMenu)}}>Menu</span>
+      <span className='fixed right-0 top-0 text-white text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
     {openMenu &&<SideMenu name={parent.firstname}/>}
       <h1 className='font-bold text-white text-3xl mb-5 text-center'>
         Welcome to Study Staxx

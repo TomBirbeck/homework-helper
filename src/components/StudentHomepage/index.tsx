@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import {GiHamburgerMenu} from 'react-icons/gi'
 import Tasks from '../Tasks';
 import list from '../../data/data';
 import NewTaskForm from '../NewTaskForm';
@@ -19,6 +20,7 @@ const StudentHomepage = () => {
   const [progress, setProgress] = useState(0);
   const [total, setTotal] = useState(0);
   const [openMenu, setOpenMenu] = useState(false)
+  const [openStaxx, setOpenStaxx] = useState(false)
   const {user} = useAuth0()
   const display = useContext(ThemeContext)
   const [theme, setTheme] = useState<String | null>()
@@ -90,7 +92,7 @@ const StudentHomepage = () => {
     : theme === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
     : theme === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
     : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
-      <span className='fixed right-0 top-0 text-white text-2xl pr-4' onClick={()=>{setOpenMenu(!openMenu)}}>Menu</span>
+      <span className='fixed right-0 top-0 text-white text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
       {openMenu && <SideMenu name={student?.firstname} Id={student?.student_code}/>}
         {student && (
           <h1 className={theme === 'boat' ? 'font-bold text-black text-3xl mb-5 text-center' :'font-bold text-white text-3xl mb-5 text-center'}>
@@ -98,10 +100,13 @@ const StudentHomepage = () => {
           </h1>
         )}
         <GetTasksContext.Provider value={getTasks}>
+        <h3 className='font-bold text-2xl text-center text-white font-mono my-3' onClick={()=>{setOpenStaxx(!openStaxx)}}>
+        Add Staxx +
+      </h3>
+        {openStaxx && <NewTaskForm createTask={createTask} />}
          <Tasks tasks={tasks}/>
         </GetTasksContext.Provider>
         <ProgressBar progress={progress} total={total}/>
-        <NewTaskForm createTask={createTask} />
     </div>
   );
 };

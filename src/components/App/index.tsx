@@ -4,15 +4,11 @@ import LoginPage from '../Login';
 import StudentHomepage from '../StudentHomepage';
 import ParentHomepage from '../ParentHomepage';
 import ProtectedRoute from '../protectedRoutes/ProtectedRoutes';
-import { useAuth0 } from '@auth0/auth0-react';
 import { useState } from 'react';
 import ThemeContext from '../../context/ThemeContext';
 
 function App() {
-  const {user} = useAuth0()
   const display = useState(localStorage.getItem('Theme') || 'stream')
-
-  console.log(user)
 
   return (
     <div>

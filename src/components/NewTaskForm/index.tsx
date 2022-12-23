@@ -48,9 +48,6 @@ const NewTaskForm = ({ createTask }: formProps) => {
 
   return (
     <div className='flex flex-col justify-center items-center mb-4'>
-      <h3 className='font-bold text-2xl text-center text-white font-mono my-3'>
-        Add Staxx
-      </h3>
       <form
         onSubmit={(e) => {
           e.preventDefault();

@@ -23,8 +23,6 @@ const [theme, setTheme] = useState<String | null>()
     setTheme(localStorage.getItem('StudentTheme'))
   },[display])
 
-  console.log(theme)
-
   const completeTask = async (id: Number) => {
     let res = await fetch(
       `https://homeworkhelper.onrender.com/tasks/completed/${id}`,
@@ -87,7 +85,7 @@ const [theme, setTheme] = useState<String | null>()
         </p>
         <p className='border-solid border-r-2 border-white pl-2'>{due}</p>
         {description ? (
-          <p className='truncate border-solid border-r-2 border-white pl-2'>
+          <p className='border-solid border-r-2 border-white pl-2 truncate'>
             {description}
           </p>
         ) : (
