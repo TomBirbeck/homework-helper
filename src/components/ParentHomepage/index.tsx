@@ -26,6 +26,15 @@ const ParentHomepage = () => {
   const display = useContext(ThemeContext)
   const {user} = useAuth0()
 
+  const [theme, setTheme] = useState<String | null>()
+
+  
+  useEffect(()=>{
+    localStorage.setItem('ParentTheme', display[0]);
+    setTheme(localStorage.getItem('ParentTheme'))
+  },[display])
+
+  console.log(localStorage)
 //uses the parent email to get the child id and pass it to setStudent so that the correct students tasks will be shown
 //also sets parents details in state
   useEffect(() => {
@@ -60,11 +69,11 @@ const ParentHomepage = () => {
 
   // console.log(api);
   return (
-    <div className={display[0] === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
-    : display[0] === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw' 
-    : display[0] === 'boat'? 'm-0 p-2 bg-cover bg-boat min-h-screen w-100vw' 
-    : display[0] === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
-    : display[0] === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
+    <div className={theme === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
+    : theme === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw' 
+    : theme === 'boat'? 'm-0 p-2 bg-cover bg-boat min-h-screen w-100vw' 
+    : theme === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
+    : theme === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
     : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
       <span className='fixed right-0 top-0 text-white text-2xl pr-4' onClick={()=>{setOpenMenu(!openMenu)}}>Menu</span>
     {openMenu &&<SideMenu name={parent.firstname}/>}

@@ -21,9 +21,15 @@ const StudentHomepage = () => {
   const [openMenu, setOpenMenu] = useState(false)
   const {user} = useAuth0()
   const display = useContext(ThemeContext)
+  const [theme, setTheme] = useState<String | null>()
 
-
-  console.log(user)
+  
+  useEffect(()=>{
+    localStorage.setItem('StudentTheme', display[0]);
+    setTheme(localStorage.getItem('StudentTheme'))
+  },[display])
+  
+  // console.log(user)
   
   async function getStudent() {
     const res = await fetch(
@@ -78,16 +84,16 @@ const StudentHomepage = () => {
   },[student?.student_code]);
 
   return (
-    <div className={display[0] === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
-    : display[0] === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw' 
-    : display[0] === 'boat'? 'm-0 p-2 bg-cover bg-boat min-h-screen w-100vw' 
-    : display[0] === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
-    : display[0] === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
+    <div className={theme === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
+    : theme === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw' 
+    : theme === 'boat'? 'm-0 p-2 bg-cover bg-boat min-h-screen w-100vw' 
+    : theme === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
+    : theme === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
     : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
       <span className='fixed right-0 top-0 text-white text-2xl pr-4' onClick={()=>{setOpenMenu(!openMenu)}}>Menu</span>
       {openMenu && <SideMenu name={student?.firstname} Id={student?.student_code}/>}
         {student && (
-          <h1 className={display[0] === 'boat' ? 'font-bold text-black text-3xl mb-5 text-center' :'font-bold text-white text-3xl mb-5 text-center'}>
+          <h1 className={theme === 'boat' ? 'font-bold text-black text-3xl mb-5 text-center' :'font-bold text-white text-3xl mb-5 text-center'}>
             Welcome to Study Staxx
           </h1>
         )}

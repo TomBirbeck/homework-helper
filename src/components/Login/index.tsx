@@ -5,11 +5,10 @@ import {useAuth0} from '@auth0/auth0-react'
 import SignupForm from '../SignupForm';
 
 
+
 const LoginPage = () => {
   const {user, isAuthenticated, isLoading, loginWithRedirect} = useAuth0()
   const [person, setPerson] = useState('')
-
-  console.log("loading", isLoading)
 
     async function findStudent() {
       const checkStudent = await fetch(
@@ -52,7 +51,6 @@ return (
    </div>
 </div>
    : person !=='student' && person !=='parent' && !isAuthenticated && !isLoading?
-  //  <LoginButton/>}
   <>{loginWithRedirect()}</>: null}
   </div>
 )

@@ -1,4 +1,5 @@
-import { FunctionComponent, useContext } from 'react';
+import test from 'node:test';
+import { FunctionComponent, useContext, useEffect, useState } from 'react';
 import { GetTasksContext } from '../../context/GetTasksContext';
 import ThemeContext from '../../context/ThemeContext';
 
@@ -15,6 +16,13 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
   const { taskId, subject, topic, description, due, completed} = props;
   const getTasks = useContext(GetTasksContext)
   const display = useContext(ThemeContext)
+const [theme, setTheme] = useState<String | null>()
+
+  
+  useEffect(()=>{
+    localStorage.setItem('StudentTheme', display[0]);
+    setTheme(localStorage.getItem('StudentTheme'))
+  },[display])
 
   const completeTask = async (id: Number) => {
     let res = await fetch(
@@ -68,7 +76,7 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
 
   return (
     // <div className='flex justify-between gap- w-full p-2 mb-1.5 bg-yellow-300 border-none rounded-lg'>
-    <div className={display[0] === 'tree' || display[0] === 'universe' || display[0] === 'ruin' || display[0] === 'boat' || display[0] === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
+    <div className={theme === 'tree' || theme === 'universe' || theme === 'ruin' || theme === 'boat' || theme === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
     // : display[0] === 'universe'? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
     // : display[0] === 'boat'? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
     // : display[0] === 'ruin'? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
