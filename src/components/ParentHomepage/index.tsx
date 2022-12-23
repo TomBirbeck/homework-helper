@@ -34,7 +34,6 @@ const ParentHomepage = () => {
     setTheme(localStorage.getItem('ParentTheme'))
   },[display])
 
-  console.log(localStorage)
 //uses the parent email to get the child id and pass it to setStudent so that the correct students tasks will be shown
 //also sets parents details in state
   useEffect(() => {

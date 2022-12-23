@@ -98,24 +98,26 @@ const [theme, setTheme] = useState<String | null>()
           <p></p>
         )}
         {completed ? (
-          <div className='grid grid-cols-2'>
+          <div className='grid place-items-center'>
           <button
-            className='ml-2 border-solid border-2 border-white rounded bg-green-400'
+            className='ml-2 border-solid border-2 border-white rounded bg-green-400 w-1/2'
             onClick={handleComplete}
           >
             Completed
           </button>
-          <button
+          {/* <button
           className='ml-2 w-1/2 border-solid border-2 border-white rounded bg-red-400 items-end'
-           onClick={handleDelete}>Clear</button>
+           onClick={handleDelete}>Clear</button> */}
           </div>
         ) : (
+          <div className='grid place-items-center'>
           <button
             className='ml-2 w-1/2 border-solid border-2 border-white rounded bg-red-400'
             onClick={handleComplete}
           >
             Outstanding
           </button>
+          </div>
         )}
       </div>
     </div>
