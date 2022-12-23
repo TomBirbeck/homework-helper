@@ -5,9 +5,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'universe': "url('/src/assets/universe.jpg')",
+        'universe': "url('/src/assets/space.jpg')",
         'tree': "url('/src/assets/tree.jpg')",
-        'boat': "url('/src/assets/boat.jpg')",
+        'stream': "url('/src/assets/stream.jpg')",
         'aurora': "url('/src/assets/aurora.jpg')",
         'ruin': "url('/src/assets/ruin.jpg')",
       }

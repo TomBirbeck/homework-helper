@@ -32,6 +32,12 @@ const list = [
 
 ]
 
+//stream
+// Photo by Ian Turnell: https://www.pexels.com/photo/body-of-water-between-green-leaf-trees-709552/
+
+//space2 Miriam Espacio
+//Photo by Miriam Espacio: https://www.pexels.com/photo/blue-pink-and-white-andromeda-galaxy-way-110854/
+
 //space image gerd altman
 //Image by <a href="https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2742113">Gerd Altmann</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2742113">Pixabay</a>
 

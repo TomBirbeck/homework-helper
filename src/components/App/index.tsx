@@ -10,11 +10,13 @@ import ThemeContext from '../../context/ThemeContext';
 
 function App() {
   const {user} = useAuth0()
-  const display = useState(localStorage.getItem('Theme') || 'boat')
+  const display = useState(localStorage.getItem('Theme') || 'stream')
+
+  console.log(user)
 
   return (
-    <ThemeContext.Provider value={display}>
     <div>
+      <ThemeContext.Provider value={display}>
       <Routes>
         <Route path='/' element={<LoginPage />} />
         <Route element={<ProtectedRoute/>}>
@@ -22,8 +24,8 @@ function App() {
         <Route path='/parent' element={<ParentHomepage />} />
         </Route>
       </Routes>
-    </div>
     </ThemeContext.Provider>
+    </div>
   );
 }
 

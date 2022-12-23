@@ -30,8 +30,8 @@ const ParentHomepage = () => {
 
   
   useEffect(()=>{
-    localStorage.setItem('ParentTheme', display[0]);
-    setTheme(localStorage.getItem('ParentTheme'))
+    localStorage.setItem('Theme', display[0]);
+    setTheme(localStorage.getItem('Theme'))
   },[display])
 
 //uses the parent email to get the child id and pass it to setStudent so that the correct students tasks will be shown
@@ -70,7 +70,7 @@ const ParentHomepage = () => {
   return (
     <div className={theme === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
     : theme === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw' 
-    : theme === 'boat'? 'm-0 p-2 bg-cover bg-boat min-h-screen w-100vw' 
+    : theme === 'stream'? 'm-0 p-2 bg-cover bg-stream min-h-screen w-100vw' 
     : theme === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
     : theme === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
     : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >

@@ -14,7 +14,7 @@ const [display, setDisplay] = useContext(ThemeContext)
             onBlur={(e) => setDisplay(e.target.value)}
           >
             <option value=''>Default</option>
-            <option value='boat'>Boat</option>
+            <option value='stream'>Stream</option>
             <option value='universe'>Universe</option>
             <option value='ruin'>Ruin</option>
             <option value='tree'>Tree</option>

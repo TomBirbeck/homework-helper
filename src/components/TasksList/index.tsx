@@ -1,4 +1,3 @@
-import test from 'node:test';
 import { FunctionComponent, useContext, useEffect, useState } from 'react';
 import { GetTasksContext } from '../../context/GetTasksContext';
 import ThemeContext from '../../context/ThemeContext';
@@ -23,6 +22,8 @@ const [theme, setTheme] = useState<String | null>()
     localStorage.setItem('StudentTheme', display[0]);
     setTheme(localStorage.getItem('StudentTheme'))
   },[display])
+
+  console.log(theme)
 
   const completeTask = async (id: Number) => {
     let res = await fetch(
@@ -75,12 +76,7 @@ const [theme, setTheme] = useState<String | null>()
   // }
 
   return (
-    // <div className='flex justify-between gap- w-full p-2 mb-1.5 bg-yellow-300 border-none rounded-lg'>
-    <div className={theme === 'tree' || theme === 'universe' || theme === 'ruin' || theme === 'boat' || theme === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
-    // : display[0] === 'universe'? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
-    // : display[0] === 'boat'? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
-    // : display[0] === 'ruin'? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
-    // : display[0] === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white' 
+    <div className={theme === 'tree' || theme === 'universe' || theme === 'ruin' || theme === 'stream' || theme === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
     : 'flex justify-between gap- w-full p-2 mb-1.5 bg-yellow-300 border-none rounded-lg'} >
       <div className='grid grid-cols-5 justify-between w-full'>
         <p className='border-solid border-r-2 border-white pl-2'>

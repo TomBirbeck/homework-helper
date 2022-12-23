@@ -25,8 +25,8 @@ const StudentHomepage = () => {
 
   
   useEffect(()=>{
-    localStorage.setItem('StudentTheme', display[0]);
-    setTheme(localStorage.getItem('StudentTheme'))
+    localStorage.setItem('Theme', display[0]);
+    setTheme(localStorage.getItem('Theme'))
   },[display])
   
   // console.log(user)
@@ -86,7 +86,7 @@ const StudentHomepage = () => {
   return (
     <div className={theme === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
     : theme === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw' 
-    : theme === 'boat'? 'm-0 p-2 bg-cover bg-boat min-h-screen w-100vw' 
+    : theme === 'stream'? 'm-0 p-2 bg-cover bg-stream min-h-screen w-100vw' 
     : theme === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
     : theme === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
     : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
