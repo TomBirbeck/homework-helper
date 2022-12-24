@@ -32,6 +32,14 @@ const list = [
 
 ]
 
+export const artists = [
+    {photo: '', artist: '', link: '' },
+    {photo: 'stream', artist: 'Iam Turnell', link: 'https://www.pexels.com/photo/body-of-water-between-green-leaf-trees-709552/' },
+    {photo: 'universe', artist: 'Miriam Espacio', link: 'https://www.pexels.com/photo/blue-pink-and-white-andromeda-galaxy-way-110854/'},
+    {photo: 'aurora', artist: 'Noel Bauza', link: 'https://pixabay.com/users/noel_bauza-2019050/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1197753">Noel Bauza</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1197753'},
+    {photo: 'ruin', artist: 'Frank Winkler', link: 'https://pixabay.com/users/frankwinkler-64960/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=540835">Frank Winkler</a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=540835'},
+    {photo: 'tree', artist: 'Bessi', link: 'https://pixabay.com/users/bessi-909086/'},
+]
 //stream
 // Photo by Ian Turnell: https://www.pexels.com/photo/body-of-water-between-green-leaf-trees-709552/
 

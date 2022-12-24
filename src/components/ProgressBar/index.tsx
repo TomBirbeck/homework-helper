@@ -20,7 +20,7 @@ const ProgressBar = ({ progress, total }: ProgressIProps) => {
 
   return (
     <>
-      <h3 className='font-bold text-2xl text-center text-white font-mono my-2'>
+      <h3 className='font-bold text-2xl text-center text-white font-mono my-4'>
         Progress
       </h3>
       <div className='w-full h-10 bg-red-400 mt-4 border-solid border-2 border-white rounded-lg'>

@@ -103,7 +103,7 @@ const StudentHomepage = () => {
         <h3 className='font-bold text-2xl text-center text-white font-mono my-3' onClick={()=>{setOpenStaxx(!openStaxx)}}>
         Add Staxx +
       </h3>
-        {openStaxx && <NewTaskForm createTask={createTask} />}
+        {openStaxx && <NewTaskForm createTask={createTask}/>}
          <Tasks tasks={tasks}/>
         </GetTasksContext.Provider>
         <ProgressBar progress={progress} total={total}/>
