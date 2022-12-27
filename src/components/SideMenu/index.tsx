@@ -4,12 +4,14 @@ import LogoutButton from "../LogoutButton";
 import ThemeForm from "../ThemeForm";
 import { artists } from "../../data/data";
 import ThemeContext from "../../context/ThemeContext";
+import { useAuth0 } from "@auth0/auth0-react";
 
 interface Props {
     firstname: string;
     surname: string;
-    studentId?: String;
+    studentId?: Number;
     parentId? : Number;
+    studentCode?: String;
     email?: String;
 }
 
@@ -24,6 +26,34 @@ const [newSurname, setNewSurname] = useState ({surname: ''})
 const [picture, setPicture] = useState({photo: '', artist: '', link: ''})
 const [display, setDisplay] = useState<String | null>()
 const theme = useState(ThemeContext)
+const {user} = useAuth0()
+const [accountUser, setAccountUser] = useState('')
+
+    async function findStudent() {
+      const checkStudent = await fetch(
+        `https://homeworkhelper.onrender.com/student?email=${user?.email}`
+      );
+      const studentData = await checkStudent.json();
+      if (studentData.payload.length > 0) {
+       setAccountUser('student'); }
+      }
+      
+      async function findParent() {
+        const parentCheck = await fetch(
+        `https://homeworkhelper.onrender.com/parent?email=${user?.email}`
+        );
+        const parentData = await parentCheck.json();
+        if (parentData.payload.length > 0) {
+        setAccountUser('parent');
+      }
+    }
+  
+      useEffect(()=>{
+        findStudent()
+        findParent()
+      },[user])
+
+
 
 const findPictureDetails = (arr: {photo: string, artist: string, link: string}[]) => {
 for (let i = 0; i < arr.length; i++ ){
@@ -46,15 +76,60 @@ useEffect(()=>{
     setNewSurname({...newSurname, surname: e.target.value})
   }
 
-  console.log(newFirstname, newSurname)
+  const patchUser = async (object:{}) => {
+    console.log("patch", object, accountUser)
+    if (accountUser === 'student'){
+        let res = await fetch(
+            `https://homeworkhelper.onrender.com/student/${person.studentId}`,
+            // `http://localhost:3001/student`,
+            {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(object)
+            }
+          );
+          let result = await res.json();
+          console.log("result",result)
+          return result
+    }
+   else if (accountUser === 'parent'){
+        let res = await fetch(
+            `https://homeworkhelper.onrender.com/parent/${person.parentId}`,
+            // `http://localhost:3001/parent`,
+            {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(object)
+            }
+          );
+          let result = await res.json();
+          return result
+    }
+}
+
+const handleFirstnameSubmit = () => {
+    patchUser(newFirstname)
+    setOpenFirst(false)
+    setNewFirstname({...newFirstname, firstname: ''})
+    console.log("handle first ran")
+}
+
+const handleSurnameSubmit = () => {
+    patchUser(newSurname)
+    setOpenSur(false)
+    setNewSurname({...newSurname, surname: ''})
+    console.log("handle sur ran")
+}
+
+//   console.log(newFirstname, newSurname, person.studentId)
 
     return (
         <aside className='flex flex-col h-screen fixed right-0 top-10 z-10 w-1/4 p-2 mb-1.5 bg-none backdrop-blur-md border-solid border-2 border-opacity-10 border-white rounded-lg text-white'>
             <LogoutButton/>
             <span className="my-4">Hey {person.firstname} Welcome to your account menu</span>
             <div className="flex flex-col h-12 mb-2">
-            {person.studentId && <span onClick={()=>{setOpenId(!openId)}} className='display flex flex-row items-center gap-1'>Show Student Code<MdKeyboardArrowDown/></span>}
-            {openId && <span className="bg-black text-white">{person.studentId}</span>}
+            {person.studentCode && <span onClick={()=>{setOpenId(!openId)}} className='display flex flex-row items-center gap-1'>Show Student Code<MdKeyboardArrowDown/></span>}
+            {openId && <span className="bg-black text-white">{person.studentCode}</span>}
             </div>
             <div>
                 <span onClick={()=>{setOpenAccount(!openAccount)}} className='grid grid-cols-2 mb-4'>Edit Account <MdEdit className="text-xl" onClick={()=>{setOpenAccount(!openAccount)}}/></span>
@@ -65,7 +140,7 @@ useEffect(()=>{
                     {openFirst ? 
                     <div className="grid grid-cols-2">
                         <input type='text' placeholder={person.firstname} onChange={handleFirstnameEdit} className='text-black'></input>
-                        <span><MdSave className="text-2xl" onClick={()=>{setOpenFirst(!openFirst)}}/></span>
+                        <span><MdSave className="text-2xl" onClick={handleFirstnameSubmit}/></span>
                     </div> : 
                     <span className="grid grid-cols-2">{person.firstname}<MdEdit className="text-xl" onClick={()=> setOpenFirst(!openFirst)}/></span>}
                     </div>
@@ -74,7 +149,7 @@ useEffect(()=>{
                     {openSur ? 
                     <div className="grid grid-cols-2">
                         <input type='text' placeholder={person.surname} onChange={handleSurnameEdit} className='text-black'></input>
-                        <span><MdSave className="text-2xl" onClick={()=>{setOpenSur(!openSur)}}/></span>
+                        <span><MdSave className="text-2xl" onClick={handleSurnameSubmit}/></span>
                     </div> : 
                     <span className="grid grid-cols-2">{person.surname}<MdEdit className="text-xl" onClick={()=> setOpenSur(!openSur)}/></span>}
                     </div>
