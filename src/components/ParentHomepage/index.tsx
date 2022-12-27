@@ -8,10 +8,12 @@ import SideMenu from '../SideMenu';
 const ParentHomepage = () => {
   const [student, setStudent] = useState<String>('');
   const [parent, setParent] = useState<{
+    parentId: Number;
     firstname: String;
     surname: String;
+    parentEmail: String;
     childId: String;
-  }>({ firstname: '', surname: '', childId: '' });
+  }>({ parentId: 0, firstname: '', surname: '', parentEmail: '', childId: '' });
   const [api, setApi] = useState<
     Array<{
       task_id: Number;
@@ -41,17 +43,20 @@ const ParentHomepage = () => {
     async function getStudent() {
       const res = await fetch(`https://homeworkhelper.onrender.com/parent?email=${user?.email}`);
       const data = await res.json();
+      console.log("parent data", data.payload[0])
       setStudent(data.payload[0].child_id);
       setParent({
+        parentId: data.payload[0].parent_id,
         firstname: data.payload[0].firstname,
         surname: data.payload[0].surname,
+        parentEmail: data.payload[0].email,
         childId: data.payload[0].child_id,
       });
     }
     getStudent();
   }, []);
 
-
+console.log("parent", parent)
 //gets the students tasks for the parent
   useEffect(() => {
     async function getTasks() {
@@ -76,7 +81,7 @@ const ParentHomepage = () => {
     : theme === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
     : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
       <span className='fixed right-0 top-0 text-white text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
-    {openMenu &&<SideMenu name={parent.firstname}/>}
+  {openMenu &&<SideMenu firstname={parent.firstname} surname={parent.surname} email={parent.parentEmail} parentId={parent.parentId}/>}
       <h1 className='font-bold text-white text-3xl mb-5 text-center'>
         Welcome to Study Staxx
       </h1>

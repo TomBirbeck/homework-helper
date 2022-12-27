@@ -15,6 +15,7 @@ const StudentHomepage = () => {
     student_id: Number;
     firstname: String;
     surname: String;
+    studentEmail: String;
     student_code: String;
   }>();
   const [progress, setProgress] = useState(0);
@@ -39,7 +40,7 @@ const StudentHomepage = () => {
     );
     const data = await res.json();
     // console.log("student", data.payload[0])
-      setStudent({...student, student_id: data.payload[0].student_id, firstname: data.payload[0].firstname, surname: data.payload[0].surname, student_code: data.payload[0].student_code});
+      setStudent({...student, student_id: data.payload[0].student_id, firstname: data.payload[0].firstname, surname: data.payload[0].surname, studentEmail: data.payload[0].email, student_code: data.payload[0].student_code});
   }
 
   // console.log("student", student)
@@ -93,7 +94,7 @@ const StudentHomepage = () => {
     : theme === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
     : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
       <span className='fixed right-0 top-0 text-white text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
-      {openMenu && <SideMenu name={student?.firstname} Id={student?.student_code}/>}
+      {openMenu && <SideMenu firstname={student?.firstname} surname={student?.surname} email={student?.studentEmail} studentId={student?.student_code}/>}
         {student && (
           <h1 className={theme === 'boat' ? 'font-bold text-black text-3xl mb-5 text-center' :'font-bold text-white text-3xl mb-5 text-center'}>
             Welcome to Study Staxx

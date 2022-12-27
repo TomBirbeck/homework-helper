@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
+import {MdKeyboardArrowDown} from 'react-icons/md'
 import LogoutButton from "../LogoutButton";
 import ThemeForm from "../ThemeForm";
 import { artists } from "../../data/data";
 import ThemeContext from "../../context/ThemeContext";
 
 interface Props {
-    name: String | undefined;
-    Id?: String
+    firstname?: String;
+    surname?: String;
+    studentId?: String;
+    parentId? : Number;
+    email?: String;
 }
 
 const SideMenu = (person : Props) => {
@@ -30,14 +34,14 @@ useEffect(()=>{
     return (
         <aside className='flex flex-col h-screen fixed right-0 top-10 z-10 w-1/4 p-2 mb-1.5 bg-none backdrop-blur-md border-solid border-2 border-opacity-10 border-white rounded-lg text-white'>
             <LogoutButton/>
-            <span className="my-2">Hey {person.name} Welcome to your account menu</span>
+            <span className="my-4">Hey {person.firstname} Welcome to your account menu</span>
             <div className="flex flex-col h-12">
-            {person.Id && <span onClick={()=>{setOpenId(!openId)}}>Show Student Code v</span>}
-            {openId && <span className="bg-black text-white">{person.Id}</span>}
+            {person.studentId && <span onClick={()=>{setOpenId(!openId)}} className='display flex flex-row items-center gap-1'>Show Student Code<MdKeyboardArrowDown/></span>}
+            {openId && <span className="bg-black text-white">{person.studentId}</span>}
             </div>
             <ThemeForm/>
-            <div className="h-1/2 flex items-end hover:text-blue-900">
-            <span><a href={picture.link} target='_blank'>Picture by {picture.artist}</a></span>
+            <div className="h-1/2 flex items-end">
+            <span><a href={picture.link} target='_blank' className="hover:text-blue-900">Picture by {picture.artist}</a></span>
             </div>
         </aside>
     )
