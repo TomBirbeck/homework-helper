@@ -13,11 +13,11 @@ const StudentHomepage = () => {
   const [tasks, setTasks] = useState<Array<any>>(list);
   const [student, setStudent] = useState<{
     student_id: Number;
-    firstname: String;
-    surname: String;
-    studentEmail: String;
-    student_code: String;
-  }>();
+    firstname: string;
+    surname: string;
+    studentEmail: string;
+    student_code: string;
+  }>({ student_id: 0, firstname: '', surname: '', studentEmail: '', student_code: '' });
   const [progress, setProgress] = useState(0);
   const [total, setTotal] = useState(0);
   const [openMenu, setOpenMenu] = useState(false)
@@ -50,7 +50,7 @@ const StudentHomepage = () => {
         // `http://localhost:3001/test?code=${student?.student_code}`
         // `http://localhost:3001/student/tasks/${student?.student_code}`
         // `http://localhost:3001/studenttasks?code=${student?.student_code}`
-        `https://homeworkhelper.onrender.com/studenttasks?code=${student?.student_code}`
+        `https://homeworkhelper.onrender.com/studenttasks?code=${student.student_code}`
       );
       const data = await res.json();
       // console.log("Tasks", data)
@@ -67,7 +67,7 @@ const StudentHomepage = () => {
   }
 
   async function createTask(task: Tasks) {
-    const code = student?.student_code
+    const code = student.student_code
     let res = await fetch(
       `https://homeworkhelper.onrender.com/tasks/${code}`,
       {
@@ -84,7 +84,7 @@ const StudentHomepage = () => {
   useEffect(() => {
     getStudent();
     getTasks()
-  },[student?.student_code]);
+  },[student.student_code]);
 
   return (
     <div className={theme === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
@@ -94,7 +94,7 @@ const StudentHomepage = () => {
     : theme === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
     : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
       <span className='fixed right-0 top-0 text-white text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
-      {openMenu && <SideMenu firstname={student?.firstname} surname={student?.surname} email={student?.studentEmail} studentId={student?.student_code}/>}
+      {openMenu && <SideMenu firstname={student.firstname} surname={student.surname} email={student.studentEmail} studentId={student.student_code}/>}
         {student && (
           <h1 className={theme === 'boat' ? 'font-bold text-black text-3xl mb-5 text-center' :'font-bold text-white text-3xl mb-5 text-center'}>
             Welcome to Study Staxx

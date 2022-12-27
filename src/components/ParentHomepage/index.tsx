@@ -9,10 +9,10 @@ const ParentHomepage = () => {
   const [student, setStudent] = useState<String>('');
   const [parent, setParent] = useState<{
     parentId: Number;
-    firstname: String;
-    surname: String;
-    parentEmail: String;
-    childId: String;
+    firstname: string;
+    surname: string;
+    parentEmail: string;
+    childId: string;
   }>({ parentId: 0, firstname: '', surname: '', parentEmail: '', childId: '' });
   const [api, setApi] = useState<
     Array<{
