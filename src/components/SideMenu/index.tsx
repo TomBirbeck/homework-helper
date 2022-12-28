@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {MdKeyboardArrowDown, MdEdit, MdSave} from 'react-icons/md'
+import {MdKeyboardArrowDown, MdEdit, MdSave, MdOutlineCancel} from 'react-icons/md'
 import LogoutButton from "../LogoutButton";
 import ThemeForm from "../ThemeForm";
 import { artists } from "../../data/data";
@@ -22,7 +22,6 @@ const [openFirst, setOpenFirst] = useState(false)
 const [openSur, setOpenSur] = useState(false)
 const [newFirstname, setNewFirstname] = useState ({firstname: ''})
 const [newSurname, setNewSurname] = useState ({surname: ''})
-// const [openEmail, setOpenEmail] = useState(false)
 const [picture, setPicture] = useState({photo: '', artist: '', link: ''})
 const [display, setDisplay] = useState<String | null>()
 const theme = useState(ThemeContext)
@@ -103,6 +102,7 @@ useEffect(()=>{
             }
           );
           let result = await res.json();
+          console.log("result",result)
           return result
     }
 }
@@ -111,22 +111,20 @@ const handleFirstnameSubmit = () => {
     patchUser(newFirstname)
     setOpenFirst(false)
     setNewFirstname({...newFirstname, firstname: ''})
-    console.log("handle first ran")
 }
 
 const handleSurnameSubmit = () => {
     patchUser(newSurname)
     setOpenSur(false)
     setNewSurname({...newSurname, surname: ''})
-    console.log("handle sur ran")
 }
-
-//   console.log(newFirstname, newSurname, person.studentId)
 
     return (
         <aside className='flex flex-col h-screen fixed right-0 top-10 z-10 w-1/4 p-2 mb-1.5 bg-none backdrop-blur-md border-solid border-2 border-opacity-10 border-white rounded-lg text-white'>
+            <div className="grid place-items-end">
             <LogoutButton/>
-            <span className="my-4">Hey {person.firstname} Welcome to your account menu</span>
+            </div>
+            <span className="my-4">Hey {person.firstname}, Welcome to your account menu</span>
             <div className="flex flex-col h-12 mb-2">
             {person.studentCode && <span onClick={()=>{setOpenId(!openId)}} className='display flex flex-row items-center gap-1'>Show Student Code<MdKeyboardArrowDown/></span>}
             {openId && <span className="bg-black text-white">{person.studentCode}</span>}
@@ -140,7 +138,7 @@ const handleSurnameSubmit = () => {
                     {openFirst ? 
                     <div className="grid grid-cols-2">
                         <input type='text' placeholder={person.firstname} onChange={handleFirstnameEdit} className='text-black'></input>
-                        <span><MdSave className="text-2xl" onClick={handleFirstnameSubmit}/></span>
+                        <span className="grid grid-cols-2 w-1/3"><MdSave className="text-2xl" onClick={handleFirstnameSubmit}/><MdOutlineCancel className="text-2xl" onClick={()=>{setOpenFirst(false)}}/></span>
                     </div> : 
                     <span className="grid grid-cols-2">{person.firstname}<MdEdit className="text-xl" onClick={()=> setOpenFirst(!openFirst)}/></span>}
                     </div>
@@ -149,7 +147,7 @@ const handleSurnameSubmit = () => {
                     {openSur ? 
                     <div className="grid grid-cols-2">
                         <input type='text' placeholder={person.surname} onChange={handleSurnameEdit} className='text-black'></input>
-                        <span><MdSave className="text-2xl" onClick={handleSurnameSubmit}/></span>
+                        <span className="grid grid-cols-2 w-1/3"><MdSave className="text-2xl" onClick={handleSurnameSubmit}/><MdOutlineCancel className="text-2xl" onClick={()=>{setOpenSur(false)}}/></span>
                     </div> : 
                     <span className="grid grid-cols-2">{person.surname}<MdEdit className="text-xl" onClick={()=> setOpenSur(!openSur)}/></span>}
                     </div>
