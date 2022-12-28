@@ -104,7 +104,7 @@ const NewTaskForm = ({ createTask}: formProps) => {
           ></textarea>
         </label>
         <button
-          className='bg-green-400 text-black w-24 border-solid border-2 border-black h-8 rounded place-self-end'
+          className='bg-green-400 text-white w-24 border-solid border-2 border-black h-8 rounded place-self-end'
           type='submit'
         >
           Submit

@@ -52,6 +52,7 @@ return result
     {editOpen &&
     <EditTaskForm 
     updateTask={updateTask}
+    setEditOpen={setEditOpen}
     id={updatedTask.id}
     subject={updatedTask.subject} 
     topic={updatedTask.topic} 

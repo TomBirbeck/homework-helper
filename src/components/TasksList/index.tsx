@@ -1,4 +1,6 @@
 import { FunctionComponent, useContext, useEffect, useState } from 'react';
+import { MdEdit, MdOutlineCancel} from 'react-icons/md'
+
 import { GetTasksContext } from '../../context/GetTasksContext';
 import ThemeContext from '../../context/ThemeContext';
 
@@ -127,16 +129,16 @@ const [theme, setTheme] = useState<String | null>()
            onClick={handleDelete}>Clear</button> */}
           </div>
         ) : (
-          <div className='grid grid-cols-2 place-items-center'>
+          <div className='grid grid-cols-3 place-items-center'>
           <button
-            className='ml-2 w-1/2 border-solid border-2 border-white rounded bg-red-400'
+            className='col-span-2 w-2/3 ml-2 border-solid border-2 border-white rounded bg-red-400'
             onClick={handleComplete}
           >
             Outstanding
           </button>
-          <button onClick={handleEdit}>
-            Edit
-          </button>
+          <span>
+            <MdEdit onClick={handleEdit}/>
+          </span>
           </div>
         )}
       </div>

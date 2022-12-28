@@ -1,7 +1,10 @@
 import { useState } from 'react';
+import {MdOutlineCancel} from 'react-icons/md'
+
 
 type formProps = {
   updateTask: Function;
+  setEditOpen: React.Dispatch<React.SetStateAction<boolean>>;
   id:number;
   subject: string,
     topic: string,
@@ -10,7 +13,7 @@ type formProps = {
     completed: boolean,
 };
 
-const EditTaskForm = ({updateTask, id, subject, topic, description, due, completed}: formProps) => {
+const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description, due, completed}: formProps) => {
   const [updatedTask, setUpdatedTask] = useState({
     id: id,
     subject: subject,
@@ -111,12 +114,16 @@ const EditTaskForm = ({updateTask, id, subject, topic, description, due, complet
             onChange={handleDescription}
           ></textarea>
         </label>
+        <span className='grid grid-cols-2 place-items-end gap-1'>
         <button
-          className='bg-green-400 text-black w-24 border-solid border-2 border-black h-8 rounded place-self-end'
+          className='bg-green-400 text-white w-24 border-solid border-2 border-black h-8 rounded'
           type='submit'
         >
           Submit
         </button>
+            <button  className='bg-red-400 text-white w-24 border-solid border-2 border-black h-8 rounded' onClick={()=>{setEditOpen(false)}}> Cancel</button>
+
+        </span>
       </form>
     </div>
   );
