@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import {MdOutlineCancel} from 'react-icons/md'
-
 
 type formProps = {
   updateTask: Function;
@@ -122,7 +120,6 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
           Submit
         </button>
             <button  className='bg-red-400 text-white w-24 border-solid border-2 border-black h-8 rounded' onClick={()=>{setEditOpen(false)}}> Cancel</button>
-
         </span>
       </form>
     </div>

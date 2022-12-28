@@ -43,7 +43,6 @@ const ParentHomepage = () => {
     async function getStudent() {
       const res = await fetch(`https://homeworkhelper.onrender.com/parent?email=${user?.email}`);
       const data = await res.json();
-      console.log("parent data", data.payload[0])
       setStudent(data.payload[0].child_id);
       setParent({
         parentId: data.payload[0].parent_id,
@@ -56,7 +55,6 @@ const ParentHomepage = () => {
     getStudent();
   }, []);
 
-console.log("parent", parent)
 //gets the students tasks for the parent
   useEffect(() => {
     async function getTasks() {
@@ -66,13 +64,11 @@ console.log("parent", parent)
         );
         const data = await res.json();
         setApi(data.payload);
-        // console.log("tasks", data.payload)
       }
     }
     getTasks();
   }, [student]);
 
-  // console.log(api);
   return (
     <div className={theme === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
     : theme === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw' 
