@@ -105,7 +105,7 @@ const StudentHomepage = () => {
         Add Staxx +
       </h3>
         {openStaxx && <NewTaskForm createTask={createTask}/>}
-         <Tasks tasks={tasks}/>
+         <Tasks tasks={tasks} getTasks={getTasks}/>
         </GetTasksContext.Provider>
         <ProgressBar progress={progress} total={total}/>
     </div>

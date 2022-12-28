@@ -1,10 +1,10 @@
 export type Task = {
-  task_id: Number;
-  subject: String;
-  topic: String;
-  due: String;
-  description: String;
-  completed: Boolean;
+  task_id: number;
+  subject: string;
+  topic: string;
+  due: string;
+  description: string;
+  completed: boolean;
 };
 
 

@@ -3,16 +3,34 @@ import { GetTasksContext } from '../../context/GetTasksContext';
 import ThemeContext from '../../context/ThemeContext';
 
 interface Iprops {
-  taskId: Number;
-  subject: String;
-  topic: String;
-  description?: String;
-  due: String;
-  completed: Boolean;
+  taskId: number;
+  subject: string;
+  topic: string;
+  description: string;
+  due: string;
+  completed: boolean;
+  editOpen: boolean;
+  setEditOpen: React.Dispatch<React.SetStateAction<boolean>>
+  updatedTask: {
+    id: number;
+    subject: string;
+    topic: string;
+    description: string;
+    due: string;
+    completed: boolean;
+  }
+  setUpdatedTask: React.Dispatch<React.SetStateAction<{
+    id: number;
+    subject: string;
+    topic: string;
+    description: string;
+    due: string;
+    completed: boolean;
+}>>
 }
 
 const TaskList: FunctionComponent<Iprops> = (props) => {
-  const { taskId, subject, topic, description, due, completed} = props;
+  const { taskId, subject, topic, description, due, completed, editOpen, setEditOpen, updatedTask, setUpdatedTask} = props;
   const getTasks = useContext(GetTasksContext)
   const display = useContext(ThemeContext)
 const [theme, setTheme] = useState<String | null>()
@@ -73,6 +91,11 @@ const [theme, setTheme] = useState<String | null>()
   //deleteMultipleTasks()
   // }
 
+  const handleEdit = () => {
+    setEditOpen(!editOpen)
+    setUpdatedTask({...updatedTask,id:taskId, subject: subject, topic: topic, description: description, due: due, completed: completed })
+  }
+
   return (
     <div className={theme === 'tree' || theme === 'universe' || theme === 'ruin' || theme === 'stream' || theme === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
     : 'flex justify-between gap- w-full p-2 mb-1.5 bg-yellow-300 border-none rounded-lg'} >
@@ -104,12 +127,15 @@ const [theme, setTheme] = useState<String | null>()
            onClick={handleDelete}>Clear</button> */}
           </div>
         ) : (
-          <div className='grid place-items-center'>
+          <div className='grid grid-cols-2 place-items-center'>
           <button
             className='ml-2 w-1/2 border-solid border-2 border-white rounded bg-red-400'
             onClick={handleComplete}
           >
             Outstanding
+          </button>
+          <button onClick={handleEdit}>
+            Edit
           </button>
           </div>
         )}
