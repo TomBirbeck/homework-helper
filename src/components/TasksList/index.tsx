@@ -1,8 +1,8 @@
 import { FunctionComponent, useContext, useEffect, useState } from 'react';
 import { MdEdit, MdOutlineCancel} from 'react-icons/md'
-
 import { GetTasksContext } from '../../context/GetTasksContext';
 import ThemeContext from '../../context/ThemeContext';
+import compareDates from '../Utilities/compareDates';
 
 interface Iprops {
   taskId: number;
@@ -76,7 +76,6 @@ const [theme, setTheme] = useState<String | null>()
         headers: {'Content-Type': 'application/json'}
       })
       let result = await res.json()
-      console.log('task deleted', ids[i], result)
 }
 
   }
@@ -97,6 +96,8 @@ const [theme, setTheme] = useState<String | null>()
     setEditOpen(!editOpen)
     setUpdatedTask({...updatedTask,id:taskId, subject: subject, topic: topic, description: description, due: due, completed: completed })
   }
+
+  compareDates(due)
 
   return (
     <div className={theme === 'tree' || theme === 'universe' || theme === 'ruin' || theme === 'stream' || theme === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'

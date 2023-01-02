@@ -76,7 +76,7 @@ useEffect(()=>{
   }
 
   const patchUser = async (object:{}) => {
-    console.log("patch", object, accountUser)
+    // console.log("patch", object, accountUser)
     if (accountUser === 'student'){
         let res = await fetch(
             `https://homeworkhelper.onrender.com/student/${person.studentId}`,
@@ -88,7 +88,7 @@ useEffect(()=>{
             }
           );
           let result = await res.json();
-          console.log("result",result)
+          // console.log("result",result)
           return result
     }
    else if (accountUser === 'parent'){
@@ -102,7 +102,7 @@ useEffect(()=>{
             }
           );
           let result = await res.json();
-          console.log("result",result)
+          // console.log("result",result)
           return result
     }
 }

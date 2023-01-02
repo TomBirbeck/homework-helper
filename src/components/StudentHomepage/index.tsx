@@ -86,6 +86,7 @@ const StudentHomepage = () => {
     getTasks()
   },[student.student_code]);
 
+
   return (
     <div className={theme === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
     : theme === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw' 
