@@ -47,8 +47,6 @@ const StudentHomepage = () => {
 
   async function getTasks() {
       const res = await fetch(
-        // `http://localhost:3001/test?code=${student?.student_code}`
-        // `http://localhost:3001/student/tasks/${student?.student_code}`
         // `http://localhost:3001/studenttasks?code=${student?.student_code}`
         `https://homeworkhelper.onrender.com/studenttasks?code=${student.student_code}`
       );

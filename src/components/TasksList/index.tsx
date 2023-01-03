@@ -4,6 +4,7 @@ import { AiOutlineAlert } from 'react-icons/ai'
 import { GetTasksContext } from '../../context/GetTasksContext';
 import ThemeContext from '../../context/ThemeContext';
 import compareDates from '../Utilities/compareDates';
+import reverseDate from '../Utilities/reverseDate';
 
 interface Iprops {
   taskId: number;
@@ -99,7 +100,8 @@ const [dueSoon, setDueSoon] = useState(false)
     setUpdatedTask({...updatedTask,id:taskId, subject: subject, topic: topic, description: description, due: due, completed: completed })
   }
 
-console.log(dueSoon)
+
+
   return (
     <div className={theme === 'tree' || theme === 'universe' || theme === 'ruin' || theme === 'stream' || theme === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
     : 'flex justify-between gap- w-full p-2 mb-1.5 bg-yellow-300 border-none rounded-lg'} >
@@ -111,8 +113,8 @@ console.log(dueSoon)
           {topic}
         </p>
         { dueSoon? <span className='border-solid border-r-2 border-white pl-2' onMouseLeave={()=>{setDueSoon(false)}}>Task due soon</span> : 
-        compareDates(due) < 3 && !completed? <p className='grid grid-cols-2 border-solid border-r-2 border-white pl-2'>{due} <span className='grid justify-end text-2xl text-amber-500' onMouseEnter={()=>{setDueSoon(true)}}><AiOutlineAlert/></span></p> :
-        <p className='border-solid border-r-2 border-white pl-2'>{due}</p>}
+        compareDates(due) < 3 && !completed? <p className='grid grid-cols-2 border-solid border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-amber-500' onMouseEnter={()=>{setDueSoon(true)}}><AiOutlineAlert/></span></p> :
+        <p className='border-solid border-r-2 border-white pl-2'>{reverseDate(due)}</p>}
         {description ? (
           <p className='border-solid border-r-2 border-white pl-2 h-6 overflow-hidden'>
             {description}

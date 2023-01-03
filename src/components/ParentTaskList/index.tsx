@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react';
+import reverseDate from '../Utilities/reverseDate';
 
 interface Iprops {
   id: Number;
@@ -30,7 +31,7 @@ const ParentTaskList: FunctionComponent<Iprops> = (props) => {
         <p className='border-solid border-r-2 border-white pl-2'>
           {topic}
         </p>
-        <p className='border-solid border-r-2 border-white pl-2'>{due}</p>
+        <p className='border-solid border-r-2 border-white pl-2'>{reverseDate(due)}</p>
         {completed ? (
           <div className='grid grid-cols-2'>
             <p className='ml-2 text-center bg-green-400'>Completed</p>
