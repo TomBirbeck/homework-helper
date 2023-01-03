@@ -5,7 +5,6 @@ import {useAuth0} from '@auth0/auth0-react'
 import SignupForm from '../SignupForm';
 
 
-
 const LoginPage = () => {
   const {user, isAuthenticated, isLoading, loginWithRedirect} = useAuth0()
   const [person, setPerson] = useState('')
@@ -33,8 +32,6 @@ const LoginPage = () => {
         findStudent()
         findParent()
       },[user])
-
-     
 
 return (
   <div  className='flex content-center justify-center m-0 p-2 bg-purple-200 min-h-screen w-100vw'>

@@ -18,7 +18,7 @@ const ParentTaskList: FunctionComponent<Iprops> = (props) => {
       headers: {'Content-Type': 'application/json'}
     })
     let result = await res.json()
-    console.log("delete task parent", result)
+    // console.log("delete task parent", result)
   }
 
   return (
