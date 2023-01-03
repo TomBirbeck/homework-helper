@@ -157,7 +157,7 @@ const handleSurnameSubmit = () => {
             </div>
             <ThemeForm/>
             <div className="h-1/2 flex items-end">
-            <span><a href={picture.link} target='_blank' className="hover:text-blue-900">Picture by {picture.artist}</a></span>
+            <span><a href={picture.link} target='_blank' className="hover:text-blue-900">Background Image by {picture.artist}</a></span>
             </div>
         </aside>
     )
