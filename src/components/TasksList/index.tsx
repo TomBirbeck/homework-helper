@@ -33,6 +33,7 @@ interface Iprops {
 
 const TaskList: FunctionComponent<Iprops> = (props) => {
   const { taskId, subject, topic, description, due, completed, editOpen, setEditOpen, updatedTask, setUpdatedTask} = props;
+  const [dueSoon, setDueSoon] = useState(false)
   const getTasks = useContext(GetTasksContext)
   const display = useContext(ThemeContext)
 const [theme, setTheme] = useState<String | null>()
@@ -97,7 +98,18 @@ const [theme, setTheme] = useState<String | null>()
     setUpdatedTask({...updatedTask,id:taskId, subject: subject, topic: topic, description: description, due: due, completed: completed })
   }
 
-  compareDates(due)
+  useEffect(() => {
+    const overdue = () =>{
+      console.log(subject)
+      if (compareDates(due) <= 3){
+        setDueSoon(true)
+      }
+      else if (compareDates(due) > 3){
+        setDueSoon(false)
+      }
+    }
+    overdue()
+  }, [])
 
   return (
     <div className={theme === 'tree' || theme === 'universe' || theme === 'ruin' || theme === 'stream' || theme === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
@@ -109,9 +121,10 @@ const [theme, setTheme] = useState<String | null>()
         <p className='border-solid border-r-2 border-white pl-2'>
           {topic}
         </p>
-        <p className='border-solid border-r-2 border-white pl-2'>{due}</p>
+        {dueSoon && !completed? <p className='grid grid-cols-2 border-solid border-r-2 border-white pl-2'>{due} <span className='grid place-items-center text-xl'>!</span></p> :
+        <p className='border-solid border-r-2 border-white pl-2'>{due}</p>}
         {description ? (
-          <p className='border-solid border-r-2 border-white pl-2 truncate'>
+          <p className='border-solid border-r-2 border-white pl-2 h-6 overflow-hidden'>
             {description}
           </p>
         ) : (

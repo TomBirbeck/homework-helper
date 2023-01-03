@@ -5,7 +5,8 @@ const compareDates = (due: string) => {
     const dueDate = dateChecker(due)
     const today = new Date()
     const days = dateDiffInDays(today, dueDate)
-    console.log(days)
+    // console.log(dueDate, today, days)
+    return days
 }
 
 export default compareDates
