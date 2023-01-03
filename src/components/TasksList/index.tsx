@@ -99,7 +99,6 @@ const [dueSoon, setDueSoon] = useState(false)
     setUpdatedTask({...updatedTask,id:taskId, subject: subject, topic: topic, description: description, due: due, completed: completed })
   }
 
-console.log(dueSoon)
   return (
     <div className={theme === 'tree' || theme === 'universe' || theme === 'ruin' || theme === 'stream' || theme === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
     : 'flex justify-between gap- w-full p-2 mb-1.5 bg-yellow-300 border-none rounded-lg'} >
