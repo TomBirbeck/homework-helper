@@ -29,7 +29,7 @@ const ProgressBar = ({ progress, total }: ProgressIProps) => {
               0%
             </span>
             ) : progressed <= 9 ? (
-              <div className='flex h-full w-2/12 bg-green-400 border-none rounded-l-md'>
+              <div className='flex h-full w-1/12 bg-green-400 border-none rounded-l-md'>
                 <span className='w-full h-full flex items-center justify-center text-white text-2xl'>
                   8%
                 </span>
@@ -94,14 +94,8 @@ const ProgressBar = ({ progress, total }: ProgressIProps) => {
               92%
             </span>
           </div> 
-        ) : progressed < 100 ? (
-          <div className='h-full w-4/5 bg-green-400 border-none rounded-l-md'>
-            <span className='w-full h-full flex items-center justify-center text-white text-2xl'>
-              80%
-            </span>
-          </div>
         ) : progressed === 100 ? (
-          <div className='h-full w-5/5 bg-green-400 border-none rounded-md'>
+          <div className='h-full w-12/12 bg-green-400 border-none rounded-md'>
             <span className='w-full h-full flex items-center justify-center text-white text-2xl'>
               100%
             </span>
