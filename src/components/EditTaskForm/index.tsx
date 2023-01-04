@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 type formProps = {
   updateTask: Function;
@@ -21,7 +21,7 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
     completed: completed,
   });
 
-  const handleSubject = (e: any) => {
+  const handleSubject = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const subject = e.target.value;
     setUpdatedTask({
@@ -29,7 +29,7 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
       subject: subject,
     });
   };
-  const handleTopic = (e: any) => {
+  const handleTopic = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const topic = e.target.value;
     setUpdatedTask({
@@ -37,7 +37,7 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
       topic: topic,
     });
   };
-  const handleDescription = (e: any) => {
+  const handleDescription = (e: ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
     const desc = e.target.value;
     setUpdatedTask({
@@ -45,7 +45,7 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
       description: desc,
     });
   };
-  const handledue = (e: any) => {
+  const handledue = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const due = e.target.value;
     setUpdatedTask({

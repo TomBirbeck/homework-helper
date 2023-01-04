@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 type formProps = {
   createTask: Function;
@@ -13,7 +13,8 @@ const NewTaskForm = ({ createTask}: formProps) => {
     completed: false,
   });
 
-  const handleSubject = (e: any) => {
+  const handleSubject = (e: ChangeEvent<HTMLInputElement>) => {
+  // const handleSubject = (e: any) => {
     e.preventDefault();
     const subject = e.target.value;
     setNewTask({
@@ -21,7 +22,7 @@ const NewTaskForm = ({ createTask}: formProps) => {
       subject: subject,
     });
   };
-  const handleTopic = (e: any) => {
+  const handleTopic = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const topic = e.target.value;
     setNewTask({
@@ -29,7 +30,7 @@ const NewTaskForm = ({ createTask}: formProps) => {
       topic: topic,
     });
   };
-  const handleDescription = (e: any) => {
+  const handleDescription = (e: ChangeEvent<HTMLTextAreaElement>) => {
     e.preventDefault();
     const desc = e.target.value;
     setNewTask({
@@ -37,7 +38,7 @@ const NewTaskForm = ({ createTask}: formProps) => {
       description: desc,
     });
   };
-  const handledue = (e: any) => {
+  const handledue = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const due = e.target.value;
     setNewTask({
