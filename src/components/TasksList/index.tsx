@@ -39,6 +39,7 @@ const TaskList: FunctionComponent<Iprops> = (props) => {
   const display = useContext(ThemeContext)
 const [theme, setTheme] = useState<String | null>()
 const [dueSoon, setDueSoon] = useState(false)
+const [overdue, setOverdue] = useState(false)
 
   
   useEffect(()=>{
@@ -113,6 +114,8 @@ const [dueSoon, setDueSoon] = useState(false)
           {topic}
         </p>
         { dueSoon? <span className='border-solid border-r-2 border-white pl-2' onMouseLeave={()=>{setDueSoon(false)}}>Task due soon</span> : 
+        overdue? <span className='border-solid border-r-2 border-white pl-2' onMouseLeave={()=>{setOverdue(false)}}>Task Overdue</span> : 
+        compareDates(due) < 0 && !completed? <p className='grid grid-cols-2 border-solid border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-red-500' onMouseEnter={()=>{setOverdue(true)}}><AiOutlineAlert/></span></p> :
         compareDates(due) < 3 && !completed? <p className='grid grid-cols-2 border-solid border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-amber-500' onMouseEnter={()=>{setDueSoon(true)}}><AiOutlineAlert/></span></p> :
         <p className='border-solid border-r-2 border-white pl-2'>{reverseDate(due)}</p>}
         {description ? (

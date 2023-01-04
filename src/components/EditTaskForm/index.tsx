@@ -79,7 +79,7 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
             required
             type='text'
             value={updatedTask.subject}
-            className='border-solid border-2 border-black w-24 h-7 bg-transparent pl-1 pb-1 text-white'
+            className='border-solid border-2 border-white w-24 h-7 bg-transparent pl-1 pb-1 text-white'
             placeholder='subject'
             onChange={handleSubject}
           ></input>
@@ -89,7 +89,7 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
           <input
             type='text'
             value={updatedTask.topic}
-            className='border-solid border-2 border-black w-24 h-7 bg-transparent pl-1 pb-1 text-white'
+            className='border-solid border-2 border-white w-24 h-7 bg-transparent pl-1 pb-1 text-white'
             placeholder='topic'
             onChange={handleTopic}
           ></input>
@@ -99,14 +99,14 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
           <input
             type='date'
             value={updatedTask.due}
-            className='border-solid border-2 border-black w-32 h-7 bg-transparent pl-1 pb-1 text-white'
+            className='border-solid border-2 border-white w-32 h-7 bg-transparent pl-1 pb-1 text-white icon-white'
             onChange={handledue}
           ></input>
         </label>
         <label htmlFor='description' className='flex gap-1 col-span-2'>
           Description:
           <textarea
-            className='border-solid border-2 border-black w-3/4 bg-transparent pl-1 pb-1 text-white'
+            className='border-solid border-2 border-white w-3/4 bg-transparent pl-1 pb-1 text-white'
             value={updatedTask.description}
             placeholder='description'
             onChange={handleDescription}
@@ -114,12 +114,12 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
         </label>
         <span className='grid grid-cols-2 place-items-end gap-1'>
         <button
-          className='bg-green-400 text-white w-24 border-solid border-2 border-black h-8 rounded'
+          className='bg-green-400 text-white w-24 border-solid border-2 border-white h-8 rounded'
           type='submit'
         >
           Submit
         </button>
-            <button  className='bg-red-400 text-white w-24 border-solid border-2 border-black h-8 rounded' onClick={()=>{setEditOpen(false)}}> Cancel</button>
+            <button  className='bg-red-400 text-white w-24 border-solid border-2 border-white h-8 rounded' onClick={()=>{setEditOpen(false)}}> Cancel</button>
         </span>
       </form>
     </div>

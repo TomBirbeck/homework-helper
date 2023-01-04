@@ -17,10 +17,10 @@ const ParentHomepage = () => {
   const [api, setApi] = useState<
     Array<{
       task_id: Number;
-      subject: String;
-      topic: String;
-      description: String;
-      due: String;
+      subject: string;
+      topic: string;
+      description: string;
+      due: string;
       completed: Boolean;
       creator_id: Number;
     }>

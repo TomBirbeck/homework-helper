@@ -70,7 +70,7 @@ const NewTaskForm = ({ createTask}: formProps) => {
             required
             type='text'
             value={newTask.subject}
-            className='border-solid border-2 border-black w-24 h-7 bg-transparent pl-1 pb-1 text-white'
+            className='border-solid border-2 border-white w-24 h-7 bg-transparent pl-1 pb-1 text-white'
             placeholder='subject'
             onChange={handleSubject}
           ></input>
@@ -80,7 +80,7 @@ const NewTaskForm = ({ createTask}: formProps) => {
           <input
             type='text'
             value={newTask.topic}
-            className='border-solid border-2 border-black w-24 h-7 bg-transparent pl-1 pb-1 text-white'
+            className='border-solid border-2 border-white w-24 h-7 bg-transparent pl-1 pb-1 text-white'
             placeholder='topic'
             onChange={handleTopic}
           ></input>
@@ -90,21 +90,21 @@ const NewTaskForm = ({ createTask}: formProps) => {
           <input
             type='date'
             value={newTask.due}
-            className='border-solid border-2 border-black w-32 h-7 bg-transparent pl-1 pb-1 text-white'
+            className='border-solid border-2 border-white w-32 h-7 bg-transparent pl-1 pb-1 text-white'
             onChange={handledue}
           ></input>
         </label>
         <label htmlFor='description' className='flex gap-1 col-span-2'>
           Description:
           <textarea
-            className='border-solid border-2 border-black w-3/4 bg-transparent pl-1 pb-1 text-white'
+            className='border-solid border-2 border-white w-3/4 bg-transparent pl-1 pb-1 text-white'
             value={newTask.description}
             placeholder='description'
             onChange={handleDescription}
           ></textarea>
         </label>
         <button
-          className='bg-green-400 text-white w-24 border-solid border-2 border-black h-8 rounded place-self-end'
+          className='bg-green-400 text-white w-24 border-solid border-2 border-white h-8 rounded place-self-end'
           type='submit'
         >
           Submit

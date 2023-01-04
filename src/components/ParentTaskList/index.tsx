@@ -3,9 +3,9 @@ import reverseDate from '../Utilities/reverseDate';
 
 interface Iprops {
   id: Number;
-  subject: String;
-  topic: String;
-  due: String;
+  subject: string;
+  topic: string;
+  due: string;
   completed: Boolean;
 }
 
