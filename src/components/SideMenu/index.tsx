@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import {MdKeyboardArrowDown, MdEdit, MdSave, MdOutlineCancel} from 'react-icons/md'
 import LogoutButton from "../LogoutButton";
 import ThemeForm from "../ThemeForm";
@@ -11,8 +11,8 @@ interface Props {
     surname: string;
     studentId?: Number;
     parentId? : Number;
-    studentCode?: String;
-    email?: String;
+    studentCode?: string;
+    email?: string;
 }
 
 const SideMenu = (person : Props) => {
@@ -66,11 +66,11 @@ useEffect(()=>{
     findPictureDetails(artists)
   },[theme])
 
-  const handleFirstnameEdit = (e:any) => {
+  const handleFirstnameEdit = (e:ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
     setNewFirstname({...newFirstname, firstname: e.target.value})
   }
-  const handleSurnameEdit = (e:any) => {
+  const handleSurnameEdit = (e:ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
     setNewSurname({...newSurname, surname: e.target.value})
   }
@@ -157,7 +157,7 @@ const handleSurnameSubmit = () => {
             </div>
             <ThemeForm/>
             <div className="h-1/2 flex items-end">
-            <span><a href={picture.link} target='_blank' className="hover:text-blue-900">Background Image by {picture.artist}</a></span>
+            <span className="grid grid-cols-2 gap-1"><p>Background Image by</p><a href={picture.link} target='_blank' className="hover:text-blue-900">{picture.artist}</a></span>
             </div>
         </aside>
     )
