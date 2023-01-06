@@ -117,7 +117,7 @@ const [overdue, setOverdue] = useState(false)
         compareDates(due) < 3 && !completed? <p className='grid grid-cols-2 border-solid border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-amber-500' onMouseEnter={()=>{setDueSoon(true)}}><AiOutlineAlert/></span></p> :
         <p className='border-solid border-r-2 border-white pl-2'>{reverseDate(due)}</p>}
         {description ? (
-          <p className='border-solid border-r-2 border-white pl-2 h-6 overflow-hidden'>
+          <p className='border-solid border-r-2 border-white pl-2 h-6 truncate hover:overflow-visible hover:whitespace-normal hover:h-fit'>
             {description}
           </p>
         ) : (
