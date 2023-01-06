@@ -104,29 +104,29 @@ const [overdue, setOverdue] = useState(false)
   return (
     <div className={theme === 'tree' || theme === 'universe' || theme === 'ruin' || theme === 'stream' || theme === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
     : 'flex justify-between gap- w-full p-2 mb-1.5 bg-yellow-300 border-none rounded-lg'} >
-      <div className='grid grid-cols-5 justify-between w-full'>
-        <p className='border-solid border-r-2 border-white pl-2'>
+      <div className='md:grid md:grid-cols-5 justify-between w-full'>
+        <p className='border-solid md:border-r-2 border-white pl-2'>
           {subject}
         </p>
-        <p className='border-solid border-r-2 border-white pl-2'>
+        <p className='border-solid md:border-r-2 border-white pl-2'>
           {topic}
         </p>
-        { dueSoon? <span className='border-solid border-r-2 border-white pl-2' onMouseLeave={()=>{setDueSoon(false)}}>Task due soon</span> : 
-        overdue? <span className='border-solid border-r-2 border-white pl-2' onMouseLeave={()=>{setOverdue(false)}}>Task Overdue</span> : 
-        compareDates(due) < 0 && !completed? <p className='grid grid-cols-2 border-solid border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-red-500' onMouseEnter={()=>{setOverdue(true)}}><AiOutlineAlert/></span></p> :
-        compareDates(due) < 3 && !completed? <p className='grid grid-cols-2 border-solid border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-amber-500' onMouseEnter={()=>{setDueSoon(true)}}><AiOutlineAlert/></span></p> :
-        <p className='border-solid border-r-2 border-white pl-2'>{reverseDate(due)}</p>}
+        { dueSoon? <span className='border-solid md:border-r-2 border-white pl-2' onMouseLeave={()=>{setDueSoon(false)}}>Task due soon</span> : 
+        overdue? <span className='border-solid md:border-r-2 border-white pl-2' onMouseLeave={()=>{setOverdue(false)}}>Task Overdue</span> : 
+        compareDates(due) < 0 && !completed? <p className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-red-500' onMouseEnter={()=>{setOverdue(true)}}><AiOutlineAlert/></span></p> :
+        compareDates(due) < 3 && !completed? <p className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-amber-500' onMouseEnter={()=>{setDueSoon(true)}}><AiOutlineAlert/></span></p> :
+        <p className='border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)}</p>}
         {description ? (
-          <p className='border-solid border-r-2 border-white pl-2 h-6 truncate hover:overflow-visible hover:whitespace-normal hover:h-fit'>
+          <p className='border-solid  md:border-r-2 border-white pl-2 h-6 truncate hover:overflow-visible hover:whitespace-normal hover:h-fit'>
             {description}
           </p>
         ) : (
           <p></p>
         )}
         {completed ? (
-          <div className='grid place-items-center'>
+          <div className='grid place-items-center p-2 md:p-0'>
           <button
-            className='ml-2 border-solid border-2 border-white rounded bg-green-400 w-1/2'
+            className='ml-2 border-solid border-2 border-white rounded bg-green-400 w-1/2 md:w-fit px-2 text-sm lg:text-base'
             onClick={handleComplete}
           >
             Completed
@@ -136,9 +136,9 @@ const [overdue, setOverdue] = useState(false)
            onClick={handleDelete}>Clear</button> */}
           </div>
         ) : (
-          <div className='grid grid-cols-3 place-items-center'>
+          <div className='grid grid-cols-3 place-items-center p-2 md:p-0'>
           <button
-            className='col-span-2 w-2/3 ml-2 border-solid border-2 border-white rounded bg-red-400'
+            className='col-span-2 w-2/3 md:w-fit px-2 ml-2 border-solid border-2 border-white rounded bg-red-400 text-sm lg:text-base'
             onClick={handleComplete}
           >
             Outstanding
