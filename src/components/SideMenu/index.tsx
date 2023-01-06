@@ -120,7 +120,7 @@ const handleSurnameSubmit = () => {
 }
 
     return (
-        <aside className='flex flex-col h-screen fixed right-0 top-10 z-10 w-1/4 p-2 mb-1.5 bg-none backdrop-blur-md border-solid border-2 border-opacity-10 border-white rounded-lg text-white'>
+        <aside className='flex flex-col h-screen fixed right-0 top-10 z-10 w-10/12 md:w-1/4 p-2 mb-1.5 bg-none backdrop-blur-md border-solid border-2 border-opacity-10 border-white rounded-lg text-white'>
             <div className="grid place-items-end">
             <LogoutButton/>
             </div>

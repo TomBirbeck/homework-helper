@@ -57,7 +57,6 @@ return result
     };
   },[])
 
-console.log(windowSize)
   return (
     <>
     {editOpen &&
