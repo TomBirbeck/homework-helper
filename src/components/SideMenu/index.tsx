@@ -130,7 +130,7 @@ const handleSurnameSubmit = () => {
             {openId && <span className="bg-black text-white">{person.studentCode}</span>}
             </div>
             <div>
-                <span onClick={()=>{setOpenAccount(!openAccount)}} className='grid grid-cols-2 mb-4'>Edit Account <MdEdit className="text-xl" onClick={()=>{setOpenAccount(!openAccount)}}/></span>
+                <span onClick={()=>{setOpenAccount(!openAccount)}} className='grid grid-cols-2 my-4'>Edit Account <MdEdit className="text-xl" onClick={()=>{setOpenAccount(!openAccount)}}/></span>
                 {openAccount && 
                 <div className="grid grid-col-1 gap-1">
                     <div className="grid grid-col-1">
@@ -157,7 +157,7 @@ const handleSurnameSubmit = () => {
             </div>
             <ThemeForm/>
             <div className="h-1/2 flex items-end">
-            <span className="grid grid-cols-2 gap-1"><p>Background Image by</p><a href={picture.link} target='_blank' className="hover:text-blue-900">{picture.artist}</a></span>
+            <span className="grid grid-cols-2 gap-1 text-sm md:text-base"><p>Background Image by</p><a href={picture.link} target='_blank' className="hover:text-blue-900 text-sm md:text-base">{picture.artist}</a></span>
             </div>
         </aside>
     )
