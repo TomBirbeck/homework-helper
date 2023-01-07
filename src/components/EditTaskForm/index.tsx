@@ -114,12 +114,12 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
         </label>
         <span className='grid grid-cols-2 place-items-end gap-1'>
         <button
-          className='bg-green-400 text:sm mb:text-base text-white w-auto border-solid border-2 border-white h-8 rounded px-2'
+          className='bg-green-400 text:sm mb:text-base text-white w-auto border-solid border-2 border-white h-8 rounded px-2 hover:bg-green-600'
           type='submit'
         >
           Submit
         </button>
-            <button  className='bg-red-400 text:sm mb:text-base text-white w-auto border-solid border-2 border-white h-8 rounded px-2' onClick={()=>{setEditOpen(false)}}> Cancel</button>
+            <button  className='bg-red-400 text:sm mb:text-base text-white w-auto border-solid border-2 border-white h-8 rounded px-2 hover:bg-red-600' onClick={()=>{setEditOpen(false)}}> Cancel</button>
         </span>
       </form>
     </div>
