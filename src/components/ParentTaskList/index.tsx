@@ -33,9 +33,9 @@ const ParentTaskList: FunctionComponent<Iprops> = (props) => {
         </p>
         <p className='border-solid border-r-2 border-white pl-2'>{reverseDate(due)}</p>
         {completed ? (
-          <div className='grid grid-cols-2'>
-            <p className='ml-2 text-center bg-green-400'>Completed</p>
-            <button onClick={()=>{deleteTask(id)}}>Clear</button>
+          <div className='grid grid-cols-1 md:grid-cols-2'>
+            <p className='ml-2 text:xs text-center bg-green-400'>Completed</p>
+            <button onClick={()=>{deleteTask(id)}} className='hover:bg-green-500'>Clear</button>
           </div>
         ) : (
           <p className='ml-2 text-center bg-red-400'>Outstanding</p>

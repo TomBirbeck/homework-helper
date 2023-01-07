@@ -34,16 +34,16 @@ const LoginPage = () => {
       },[user])
 
 return (
-  <div  className='flex content-center justify-center m-0 p-2 bg-purple-200 min-h-screen w-100vw'>
+  <div  className='flex content-center justify-center m-0 p-2 bg-teal-800 min-h-screen w-100vw'>
   {isAuthenticated && !isLoading && person === 'student'?
    <Navigate to='/student'/> : 
    isAuthenticated && !isLoading && person === 'parent'? 
    <Navigate to='/parent'/> : 
    person !=='student' && person !=='parent' && isAuthenticated && !isLoading? 
    <div className='flex flex-col items-center'>
-   <div className='flex flex-col items-center bg-gray-400 border-solid-2 rounded-lg p-2'>
+   <div className='flex flex-col items-center bg-teal-800 text-white text-center border-solid-2 rounded-lg p-2'>
      <LogoutButton/>
-    <h1>Hey! We just need a few more pieces of information to sign you up to the app</h1>
+    <h1 className='mt-2'>Hey! We just need a few more pieces of information to sign you up to the app</h1>
     <SignupForm setPerson={setPerson}/>
    </div>
 </div>

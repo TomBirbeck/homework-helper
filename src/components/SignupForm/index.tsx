@@ -78,7 +78,7 @@ const SignupForm = ({setPerson} : SignUpIProps) => {
             e.preventDefault()
             CreateUser(newUser)
             }}
-            className='flex flex-col gap-2 w-3/4 md:w-1/2 bg-gray-400'
+            className='flex flex-col gap-2 w-3/4 md:w-1/2 bg-teal-800 text-left mb-2'
             >
             <label htmlFor="email" className="flex flex-col mt-2">
                 Email
@@ -92,7 +92,7 @@ const SignupForm = ({setPerson} : SignUpIProps) => {
                 Surname
                 <input type='text' className="pl-2" value={newUser.surname} onChange={handleSurname}/>
             </label>
-            <select name='role' onChange={handleAccountType} onBlur={handleAccountType} className="flex flex-col mt-2">
+            <select name='role' onChange={handleAccountType} onBlur={handleAccountType} className="flex flex-col mt-2 text-black">
           <option value='initial'>
             Select account type
           </option>
