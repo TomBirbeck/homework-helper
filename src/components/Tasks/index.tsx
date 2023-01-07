@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from 'react';
+import { FunctionComponent, useEffect, useState } from 'react';
 import { Task } from '../../Types';
 import EditTaskForm from '../EditTaskForm';
 import TaskList from '../TasksList';
@@ -21,6 +21,7 @@ interface UpdatedTasks {
 }
 
 const Tasks: FunctionComponent<{ tasks: Task[], getTasks: Function  }> = ({ tasks, getTasks }) => {
+  const [windowSize, setWindowSize] = useState<number>(window.innerWidth)
   const [editOpen, setEditOpen] = useState(false)
   const [updatedTask, setUpdatedTask] = useState({
     id: 0,
@@ -46,6 +47,15 @@ getTasks()
 return result
   }
 
+  useEffect(()=>{
+    const handleResizeWindow = () => setWindowSize(window.innerWidth);
+    // subscribe to window resize event "onComponentDidMount"
+    window.addEventListener("resize", handleResizeWindow);
+    return () => {
+      // unsubscribe "onComponentDestroy"
+      window.removeEventListener("resize", handleResizeWindow);
+    };
+  },[])
 
   return (
     <>
@@ -61,7 +71,7 @@ return result
     completed={updatedTask.completed}
     />
 }
-      <div className='grid grid-cols-5 w-full mb-2 border-solid border-b-2 border-white pl-2'>
+      {windowSize > 762 && <div className='grid grid-cols-5 w-full mb-2 border-solid border-b-2 border-white pl-2'>
         <h2 className='font-bold text-2xl text-center text-white font-mono'>
           Subject
         </h2>
@@ -77,7 +87,7 @@ return result
         <h2 className='font-bold text-2xl col-center-5 text-center text-white font-mono'>
           Completed ?
         </h2>
-      </div>
+      </div>}
 
       {tasks &&
         tasks.map((task: Task, index: any) => {

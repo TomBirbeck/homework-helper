@@ -76,13 +76,13 @@ const ParentHomepage = () => {
     : theme === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
     : theme === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
     : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
-      <span className='fixed right-0 top-0 text-white text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
+      <span className='fixed right-1 top-1 mb:right-0  mb:top-0 text-white text-xl md:text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
   {openMenu &&<SideMenu firstname={parent.firstname} surname={parent.surname} email={parent.parentEmail} parentId={parent.parentId}/>}
-      <h1 className='font-bold text-white text-3xl mb-5 text-center'>
+      <h1 className='font-bold text-white text-base md:text-3xl mb-5 text-center'>
         Welcome to Study Staxx
       </h1>
       {api && (
-        <h2 className='font-bold text-white text-2xl mb-5 text-center'>
+        <h2 className='font-bold text-white text-base md:text-2xl mb-5 text-center'>
           This is how your child is progressing...
         </h2>
       )}

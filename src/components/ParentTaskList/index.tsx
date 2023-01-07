@@ -23,7 +23,7 @@ const ParentTaskList: FunctionComponent<Iprops> = (props) => {
   }
 
   return (
-    <div className='flex justify-between bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'>
+    <div className='flex justify-between bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white text-sm md:text-base'>
       <div className='grid grid-cols-4 justify-between w-full'>
         <p className='border-solid border-r-2 border-white pl-2'>
           {subject}

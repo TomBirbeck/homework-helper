@@ -71,9 +71,9 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
           });
         }}
         // className='w-1/2 h-60 grid grid-flow-row-dense grid-cols-3 border-solid rounded-lg border-2 border-black bg-yellow-300 space-around p-2 my-2'
-        className='z-20 w-1/2 h-60 grid grid-flow-row-dense grid-cols-3 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white space-around p-6 my-2'
+        className='z-20 w-2/2 mb:w-1/2 h-80 md:h-60 grid grid-auto-flow grid-cols-2 md:grid-cols-3 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white space-around p-2 mb:p-6 my-2'
       >
-        <label htmlFor='subject' className='flex gap-1'>
+        <label htmlFor='subject' className='flex flex-wrap gap-1'>
           Subject:
           <input
             required
@@ -84,7 +84,7 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
             onChange={handleSubject}
           ></input>
         </label>
-        <label htmlFor='topic' className='flex gap-1'>
+        <label htmlFor='topic' className='flex flex-wrap gap-1'>
           Topic:
           <input
             type='text'
@@ -94,7 +94,7 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
             onChange={handleTopic}
           ></input>
         </label>
-        <label htmlFor='date' className='flex gap-1'>
+        <label htmlFor='date' className='flex flex-wrap gap-1'>
           Due:
           <input
             type='date'
@@ -103,7 +103,7 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
             onChange={handledue}
           ></input>
         </label>
-        <label htmlFor='description' className='flex gap-1 col-span-2'>
+        <label htmlFor='description' className='flex gap-1 flex-wrap col-span-2'>
           Description:
           <textarea
             className='border-solid border-2 border-white w-3/4 bg-transparent pl-1 pb-1 text-white'
@@ -114,12 +114,12 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
         </label>
         <span className='grid grid-cols-2 place-items-end gap-1'>
         <button
-          className='bg-green-400 text-white w-24 border-solid border-2 border-white h-8 rounded'
+          className='bg-green-400 text:sm mb:text-base text-white w-auto border-solid border-2 border-white h-8 rounded px-2'
           type='submit'
         >
           Submit
         </button>
-            <button  className='bg-red-400 text-white w-24 border-solid border-2 border-white h-8 rounded' onClick={()=>{setEditOpen(false)}}> Cancel</button>
+            <button  className='bg-red-400 text:sm mb:text-base text-white w-auto border-solid border-2 border-white h-8 rounded px-2' onClick={()=>{setEditOpen(false)}}> Cancel</button>
         </span>
       </form>
     </div>
