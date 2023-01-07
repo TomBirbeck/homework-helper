@@ -103,7 +103,7 @@ const [overdue, setOverdue] = useState(false)
 
   return (
     <div className={theme === 'tree' || theme === 'universe' || theme === 'ruin' || theme === 'stream' || theme === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
-    : 'flex justify-between gap- w-full p-2 mb-1.5 bg-yellow-300 border-none rounded-lg'} >
+    : 'flex justify-between w-full p-2 mb-1.5 bg-teal-400 border-none rounded-lg'} >
       <div className='md:grid md:grid-cols-5 justify-between w-full'>
         <p className='border-solid md:border-r-2 border-white pl-2'>
           {subject}

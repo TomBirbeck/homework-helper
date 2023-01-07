@@ -91,8 +91,8 @@ const StudentHomepage = () => {
     : theme === 'stream'? 'm-0 p-2 bg-cover bg-stream min-h-screen w-100vw' 
     : theme === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
     : theme === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
-    : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
-      <span className='fixed right-0 top-0 text-white text-xl md:text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
+    : 'm-0 p-2 bg-teal-800 min-h-screen w-100vw'} >
+      <span className='z-10 fixed right-0 top-0 text-white text-xl md:text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
       {openMenu && <SideMenu firstname={student.firstname} surname={student.surname} studentId={student.student_id} email={student.studentEmail} studentCode={student.student_code}/>}
         {student && (
           <h1 className={theme === 'boat' ? 'font-bold text-black text-base md:text-3xl mb-5 text-center' :'font-bold text-white text-base md:text-3xl mb-5 text-center'}>
@@ -100,9 +100,11 @@ const StudentHomepage = () => {
           </h1>
         )}
         <GetTasksContext.Provider value={getTasks}>
-        <h3 className='font-bold md:text-2xl text-center text-white font-mono my-3' onClick={()=>{setOpenStaxx(!openStaxx)}}>
+          <div className='grid place-items-center my-3'>
+        <h3 className='font-bold md:text-2xl text-center text-white font-mono w-fit' onClick={()=>{setOpenStaxx(!openStaxx)}}>
         Add Staxx +
       </h3>
+      </div>
         {openStaxx && <NewTaskForm createTask={createTask}/>}
          <Tasks tasks={tasks} getTasks={getTasks}/>
         </GetTasksContext.Provider>

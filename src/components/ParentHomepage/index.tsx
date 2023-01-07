@@ -75,8 +75,8 @@ const ParentHomepage = () => {
     : theme === 'stream'? 'm-0 p-2 bg-cover bg-stream min-h-screen w-100vw' 
     : theme === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
     : theme === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
-    : 'm-0 p-2 bg-purple-600 min-h-screen w-100vw'} >
-      <span className='fixed right-1 top-1 mb:right-0  mb:top-0 text-white text-xl md:text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
+    : 'm-0 p-2 bg-teal-800 min-h-screen w-100vw'} >
+      <span className='z-10 fixed right-1 top-1 mb:right-0  mb:top-0 text-white text-xl md:text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
   {openMenu &&<SideMenu firstname={parent.firstname} surname={parent.surname} email={parent.parentEmail} parentId={parent.parentId}/>}
       <h1 className='font-bold text-white text-base md:text-3xl mb-5 text-center'>
         Welcome to Study Staxx
