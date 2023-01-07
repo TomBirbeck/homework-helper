@@ -78,7 +78,7 @@ const SignupForm = ({setPerson} : SignUpIProps) => {
             e.preventDefault()
             CreateUser(newUser)
             }}
-            className='flex flex-col gap-2 w-1/2 bg-yellow-300'
+            className='flex flex-col gap-2 w-3/4 md:w-1/2 bg-gray-400'
             >
             <label htmlFor="email" className="flex flex-col mt-2">
                 Email
@@ -103,7 +103,7 @@ const SignupForm = ({setPerson} : SignUpIProps) => {
                 Student Code (Parent account only)
                 <input type='text' className="pl-2" value={newUser.child_id} onChange={handleChildId} placeholder="Please enter your Child's student code"/>
             </label>
-          <button type="submit" className="border solid-2 border-black rounded-md w-1/2 self-center bg-green-500">Submit</button>
+          <button type="submit" className="border solid-2 border-white rounded-md w-1/2 self-center bg-green-300 hover:bg-green-600 text-white">Submit</button>
         </form>
     )
 }

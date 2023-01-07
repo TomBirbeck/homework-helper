@@ -124,9 +124,9 @@ const [overdue, setOverdue] = useState(false)
           <p></p>
         )}
         {completed ? (
-          <div className='grid place-items-center p-2 md:p-0'>
+          <div className='grid grid-cols-3 place-items-center p-2 md:p-0'>
           <button
-            className='ml-2 border-solid border-2 border-white rounded bg-green-400 w-1/2 md:w-fit px-2 text-sm lg:text-base'
+            className='col-span-2 w-2/3 md:w-fit ml-2 border-solid border-2 border-white rounded bg-green-400 hover:bg-green-600 px-2 text-sm lg:text-base'
             onClick={handleComplete}
           >
             Completed
@@ -138,7 +138,7 @@ const [overdue, setOverdue] = useState(false)
         ) : (
           <div className='grid grid-cols-3 place-items-center p-2 md:p-0'>
           <button
-            className='col-span-2 w-2/3 md:w-fit px-2 ml-2 border-solid border-2 border-white rounded bg-red-400 text-sm lg:text-base'
+            className='col-span-2 w-2/3 md:w-fit px-2 ml-2 border-solid border-2 border-white rounded bg-red-400 hover:bg-red-600 text-sm lg:text-base'
             onClick={handleComplete}
           >
             Outstanding

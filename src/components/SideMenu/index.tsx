@@ -130,7 +130,7 @@ const handleSurnameSubmit = () => {
             {openId && <span className="bg-black text-white">{person.studentCode}</span>}
             </div>
             <div>
-                <span onClick={()=>{setOpenAccount(!openAccount)}} className='grid grid-cols-2 my-4'>Edit Account <MdEdit className="text-xl" onClick={()=>{setOpenAccount(!openAccount)}}/></span>
+                <span onClick={()=>{setOpenAccount(!openAccount)}} className='grid grid-cols-2 my-4 place-items-center'>Edit Account <MdEdit className="text-lg hover:text-green-600 hover:text-2xl" onClick={()=>{setOpenAccount(!openAccount)}}/></span>
                 {openAccount && 
                 <div className="grid grid-col-1 gap-1">
                     <div className="grid grid-col-1">
@@ -138,18 +138,18 @@ const handleSurnameSubmit = () => {
                     {openFirst ? 
                     <div className="grid grid-cols-2">
                         <input type='text' placeholder={person.firstname} onChange={handleFirstnameEdit} className='text-black'></input>
-                        <span className="grid grid-cols-2 w-1/3"><MdSave className="text-2xl" onClick={handleFirstnameSubmit}/><MdOutlineCancel className="text-2xl" onClick={()=>{setOpenFirst(false)}}/></span>
+                        <span className="grid grid-cols-2 w-1/3"><MdSave className="text-2xl hover:text-green-600" onClick={handleFirstnameSubmit}/><MdOutlineCancel className="text-2xl hover:text-red-600" onClick={()=>{setOpenFirst(false)}}/></span>
                     </div> : 
-                    <span className="grid grid-cols-2">{person.firstname}<MdEdit className="text-xl" onClick={()=> setOpenFirst(!openFirst)}/></span>}
+                    <span className="grid grid-cols-2">{person.firstname}<MdEdit className="text-xl hover:text-green-600 hover:text-2xl" onClick={()=> setOpenFirst(!openFirst)}/></span>}
                     </div>
                     <div className="grid grid-col-1">
                     <span>Surname:</span>
                     {openSur ? 
                     <div className="grid grid-cols-2">
                         <input type='text' placeholder={person.surname} onChange={handleSurnameEdit} className='text-black'></input>
-                        <span className="grid grid-cols-2 w-1/3"><MdSave className="text-2xl" onClick={handleSurnameSubmit}/><MdOutlineCancel className="text-2xl" onClick={()=>{setOpenSur(false)}}/></span>
+                        <span className="grid grid-cols-2 w-1/3"><MdSave className="text-2xl hover:text-green-600" onClick={handleSurnameSubmit}/><MdOutlineCancel className="text-2xl hover:text-red-600" onClick={()=>{setOpenSur(false)}}/></span>
                     </div> : 
-                    <span className="grid grid-cols-2">{person.surname}<MdEdit className="text-xl" onClick={()=> setOpenSur(!openSur)}/></span>}
+                    <span className="grid grid-cols-2">{person.surname}<MdEdit className="text-xl hover:text-green-600 hover:text-2xl" onClick={()=> setOpenSur(!openSur)}/></span>}
                     </div>
                     <span>Email:</span>
                     <span>{person.email}</span>

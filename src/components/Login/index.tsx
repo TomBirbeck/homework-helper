@@ -41,7 +41,7 @@ return (
    <Navigate to='/parent'/> : 
    person !=='student' && person !=='parent' && isAuthenticated && !isLoading? 
    <div className='flex flex-col items-center'>
-   <div className='flex flex-col items-center bg-yellow-300 border-solid-2 rounded-lg p-2'>
+   <div className='flex flex-col items-center bg-gray-400 border-solid-2 rounded-lg p-2'>
      <LogoutButton/>
     <h1>Hey! We just need a few more pieces of information to sign you up to the app</h1>
     <SignupForm setPerson={setPerson}/>
