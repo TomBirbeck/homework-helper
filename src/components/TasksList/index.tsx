@@ -100,6 +100,7 @@ const [overdue, setOverdue] = useState(false)
   const handleEdit = () => {
     setEditOpen(!editOpen)
     setUpdatedTask({...updatedTask,id:taskId, subject: subject, topic: topic, description: description, due: due, completed: completed })
+    window.scrollTo({top:0,behavior:'smooth'})
   }
 
   return (
