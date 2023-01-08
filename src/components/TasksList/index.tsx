@@ -31,10 +31,11 @@ interface Iprops {
     due: string;
     completed: boolean;
 }>>
+windowSize: number
 }
 
 const TaskList: FunctionComponent<Iprops> = (props) => {
-  const { taskId, subject, topic, description, due, completed, editOpen, setEditOpen, updatedTask, setUpdatedTask} = props;
+  const { taskId, subject, topic, description, due, completed, editOpen, setEditOpen, updatedTask, setUpdatedTask, windowSize} = props;
   const getTasks = useContext(GetTasksContext)
   const display = useContext(ThemeContext)
 const [theme, setTheme] = useState<String | null>()
@@ -111,10 +112,14 @@ const [overdue, setOverdue] = useState(false)
         <p className='border-solid md:border-r-2 border-white pl-2'>
           {topic}
         </p>
-        { dueSoon? <span className='border-solid md:border-r-2 border-white pl-2' onMouseLeave={()=>{setDueSoon(false)}}>Task due soon</span> : 
-        overdue? <span className='border-solid md:border-r-2 border-white pl-2' onMouseLeave={()=>{setOverdue(false)}}>Task Overdue</span> : 
-        compareDates(due) < 0 && !completed? <p className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-red-500' onMouseEnter={()=>{setOverdue(true)}}><AiOutlineAlert/></span></p> :
-        compareDates(due) < 3 && !completed? <p className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-amber-500' onMouseEnter={()=>{setDueSoon(true)}}><AiOutlineAlert/></span></p> :
+        { dueSoon && windowSize > 762? <span className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2' onMouseLeave={()=>{setDueSoon(false)}}>Task due soon</span> : 
+         dueSoon && windowSize < 762? < div className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'><span>Task due soon</span><span className='grid justify-end text-2xl text-amber-500' onClick={()=>{setDueSoon(false)}}><AiOutlineAlert/></span></div> : 
+        overdue && windowSize > 762? <span className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2' onMouseLeave={()=>{setOverdue(false)}}>Task Overdue</span> : 
+        overdue && windowSize < 762? <div className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'><span>Task Overdue</span><span className='grid justify-end text-2xl text-red-500' onClick={()=>{setOverdue(false)}}><AiOutlineAlert/></span></div>: 
+        compareDates(due) < 0 && !completed && windowSize > 762? <p className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-red-500' onMouseEnter={()=>{setOverdue(true)}}><AiOutlineAlert/></span></p> :
+        compareDates(due) < 0 && !completed && windowSize < 762? <p className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-red-500' onClick={()=>{setOverdue(true)}}><AiOutlineAlert/></span></p> :
+        compareDates(due) < 3 && !completed && windowSize > 762? <p className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-amber-500' onMouseEnter={()=>{setDueSoon(true)}}><AiOutlineAlert/></span></p> :
+        compareDates(due) < 3 && !completed && windowSize < 762? <p className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-amber-500' onClick={()=>{setDueSoon(true)}}><AiOutlineAlert/></span></p> :
         <p className='border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)}</p>}
         {description ? (
           <p className='border-solid  md:border-r-2 border-white pl-2 h-6 truncate hover:overflow-visible hover:whitespace-normal hover:h-fit'>
