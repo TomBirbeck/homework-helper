@@ -128,7 +128,7 @@ const handleSurnameSubmit = () => {
             <span className="my-4">Hey {person.firstname}, Welcome to your account menu</span>
             <div className="flex flex-col h-12 mb-2">
             {person.studentCode && <span onClick={()=>{setOpenId(!openId)}} className='display flex flex-row items-center gap-1'>Show Student Code<MdKeyboardArrowDown/></span>}
-            {openId && <div className="grid grid-cols-6 place-items-center"><span className="text-xs md:text-sm col-span-5 bg-black text-white">{person.studentCode}</span><CopyToClipboard text={person.studentCode}><MdOutlineContentCopy className="md:text-lg"/></CopyToClipboard></div>}
+            {openId && <div className="grid grid-cols-6 place-items-center"><span className="text-xs md:text-sm col-span-5 bg-black text-white">{person.studentCode}</span><CopyToClipboard text={person.studentCode}><MdOutlineContentCopy className="md:text-lg hover:text-xl"/></CopyToClipboard></div>}
             </div>
             <div>
                 <div className="grid grid-cols-3 place-items-center"><span>Edit Account</span> <MdEdit className="text-xl hover:text-green-600 hover:text-2xl" onClick={()=>{setOpenAccount(!openAccount)}}/></div>
