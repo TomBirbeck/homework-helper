@@ -104,6 +104,7 @@ return result
               setEditOpen={setEditOpen}
               updatedTask={updatedTask}
               setUpdatedTask={setUpdatedTask}
+              windowSize={windowSize}
             />
           );
         })}
