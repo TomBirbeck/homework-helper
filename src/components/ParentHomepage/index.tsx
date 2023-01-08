@@ -83,7 +83,7 @@ const ParentHomepage = () => {
       </h1>
       {api && (
         <h2 className='font-bold text-white text-base md:text-2xl mb-5 text-center'>
-          This is how your child is progressing...
+          This is how your child is progressing
         </h2>
       )}
       {api && <ParentTasks tasks={api} />}

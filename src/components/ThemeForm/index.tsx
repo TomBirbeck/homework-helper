@@ -5,7 +5,7 @@ const ThemeForm = () => {
 
 const [display, setDisplay] = useContext(ThemeContext)
  return (
-<form className="text-white my-2">
+<form className="text-white my-2 ml-1 md:ml-2">
     <label htmlFor='theme' className="flex flex-col">
           Change Page Theme
           <select

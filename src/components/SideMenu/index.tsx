@@ -130,9 +130,9 @@ const handleSurnameSubmit = () => {
             {openId && <span className="bg-black text-white">{person.studentCode}</span>}
             </div>
             <div>
-                <span onClick={()=>{setOpenAccount(!openAccount)}} className='grid grid-cols-2 my-4 place-items-center'>Edit Account <MdEdit className="text-lg hover:text-green-600 hover:text-2xl" onClick={()=>{setOpenAccount(!openAccount)}}/></span>
+                <div className="grid grid-cols-3 place-items-center"><span>Edit Account</span> <MdEdit className="text-xl hover:text-green-600 hover:text-2xl" onClick={()=>{setOpenAccount(!openAccount)}}/></div>
                 {openAccount && 
-                <div className="grid grid-col-1 gap-1">
+                <div className="grid grid-col-1 mt-2 pl-1 md:pl-2">
                     <div className="grid grid-col-1">
                     <span>Firstname:</span>
                     {openFirst ? 
