@@ -149,7 +149,7 @@ const [overdue, setOverdue] = useState(false)
           >
             Outstanding
           </button>
-          <span>
+          <span className='justify-self-start'>
             <MdEdit onClick={handleEdit}/>
           </span>
           </div>
