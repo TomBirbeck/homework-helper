@@ -63,9 +63,9 @@ const NewTaskForm = ({ createTask}: formProps) => {
           });
         }}
         // className='w-1/2 h-60 grid grid-flow-row-dense grid-cols-3 border-solid rounded-lg border-2 border-black bg-yellow-300 space-around p-2 my-2'
-        className='z-20 w-2/2 mb:w-1/2 h-60 grid grid-auto-flow grid-cols-2 md:grid-cols-3 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white space-around p-2 mb:p-6 my-2'
+        className='z-20 w-100 mb:w-1/2 h-60 grid grid-cols-2 md:grid-cols-3 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white space-around p-2 mb:p-6 my-2'
       >
-        <label htmlFor='subject' className='flex flex-wrap gap-1'>
+        <label htmlFor='subject' className='flex flex-wrap gap-1 col-span-2 md:col-span-1'>
           Subject:
           <input
             required
@@ -76,7 +76,7 @@ const NewTaskForm = ({ createTask}: formProps) => {
             onChange={handleSubject}
           ></input>
         </label>
-        <label htmlFor='topic' className='flex flex-wrap gap-1'>
+        <label htmlFor='topic' className='flex flex-wrap gap-1 place-self-center'>
           Topic:
           <input
             type='text'
@@ -86,7 +86,7 @@ const NewTaskForm = ({ createTask}: formProps) => {
             onChange={handleTopic}
           ></input>
         </label>
-        <label htmlFor='date' className='flex flex-wrap gap-1'>
+        <label htmlFor='date' className='col-span-2 md:col-span-1 place-self-start'>
           Due:
           <input
             type='date'
@@ -95,7 +95,15 @@ const NewTaskForm = ({ createTask}: formProps) => {
             onChange={handledue}
           ></input>
         </label>
-        <label htmlFor='description' className='flex flex-wrap gap-1 col-span-2'>
+        <select name='priority' onChange={()=>{}} onBlur={()=>{}} className='border-solid border-2 border-white h-7 text-black place-self-start md:place-self-center'>
+          <option value='initial'>
+            Task Priority
+          </option>
+          <option value='parent'>High</option>
+          <option value='parent'>Medium</option>
+          <option value='student'>Low</option>
+          </select>
+        <label htmlFor='description' className='flex flex-wrap gap-1 col-span-3 md:col-span-2'>
           Description:
           <textarea
             className='border-solid border-2 border-white w-3/4 bg-transparent pl-1 pb-1 text-white'

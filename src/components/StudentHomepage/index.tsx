@@ -66,6 +66,7 @@ const StudentHomepage = () => {
 
   async function createTask(task: Tasks) {
     const code = student.student_code
+    
     let res = await fetch(
       `https://homeworkhelper.onrender.com/tasks/${code}`,
       {
