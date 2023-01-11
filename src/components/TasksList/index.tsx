@@ -12,6 +12,7 @@ interface Iprops {
   topic: string;
   description: string;
   due: string;
+  priority: string;
   completed: boolean;
   editOpen: boolean;
   setEditOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -20,6 +21,7 @@ interface Iprops {
     subject: string;
     topic: string;
     description: string;
+    priority: string;
     due: string;
     completed: boolean;
   }
@@ -29,13 +31,14 @@ interface Iprops {
     topic: string;
     description: string;
     due: string;
+    priority: string;
     completed: boolean;
 }>>
 windowSize: number
 }
 
 const TaskList: FunctionComponent<Iprops> = (props) => {
-  const { taskId, subject, topic, description, due, completed, editOpen, setEditOpen, updatedTask, setUpdatedTask, windowSize} = props;
+  const { taskId, subject, topic, description, due, priority, completed, editOpen, setEditOpen, updatedTask, setUpdatedTask, windowSize} = props;
   const getTasks = useContext(GetTasksContext)
   const display = useContext(ThemeContext)
 const [theme, setTheme] = useState<String | null>()
@@ -99,7 +102,7 @@ const [overdue, setOverdue] = useState(false)
 
   const handleEdit = () => {
     setEditOpen(!editOpen)
-    setUpdatedTask({...updatedTask,id:taskId, subject: subject, topic: topic, description: description, due: due, completed: completed })
+    setUpdatedTask({...updatedTask,id:taskId, subject: subject, topic: topic, description: description, due: due, priority: priority, completed: completed })
     window.scrollTo({top:0,behavior:'smooth'})
   }
 

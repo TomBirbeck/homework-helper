@@ -9,6 +9,7 @@ interface Tasks {
   topic: string;
   due: string;
   description?: string | undefined;
+  priority: string;
   completed: boolean;
 }
 interface UpdatedTasks {
@@ -17,6 +18,7 @@ interface UpdatedTasks {
   topic: string;
   due: string;
   description?: string | undefined;
+  priority: string;
   completed: boolean;
 }
 
@@ -29,11 +31,12 @@ const Tasks: FunctionComponent<{ tasks: Task[], getTasks: Function  }> = ({ task
     topic: '',
     description: '',
     due: '',
+    priority: '',
     completed: false,
   });
 
   const updateTask = async (task: UpdatedTasks) => {
-    const updatedTask = {subject: task.subject, topic: task.topic, description: task.description, due: task.due, completed: task.completed}
+    const updatedTask = {subject: task.subject, topic: task.topic, description: task.description, due: task.due, priority: task.priority,                  completed: task.completed}
     let res = await fetch(`https://homeworkhelper.onrender.com/tasks/${task.id}`,
     {
       method: 'PATCH',
@@ -68,6 +71,7 @@ return result
     topic={updatedTask.topic} 
     description={updatedTask.description || ''}
     due={updatedTask.due}
+    priority={updatedTask.priority}
     completed={updatedTask.completed}
     />
 }
@@ -99,6 +103,7 @@ return result
               topic={task.topic}
               due={task.due}
               description={task.description}
+              priority={task.priority}
               completed={task.completed}
               editOpen={editOpen}
               setEditOpen={setEditOpen}

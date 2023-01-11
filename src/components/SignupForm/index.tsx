@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react"
-import { useState } from "react"
+import { ChangeEvent, useState } from "react"
 
 type UserProps = {
     email: String | undefined;
@@ -51,23 +51,23 @@ const SignupForm = ({setPerson} : SignUpIProps) => {
         }
     }
 
-    function handleAccountType(e: any) {
+    function handleAccountType(e: ChangeEvent<HTMLSelectElement>) {
         e.preventDefault();
         const input = e.target.value;
         setNewUser({...newUser, role: input})
       }
-    function handleFirstname(e: any) {
+    function handleFirstname(e: ChangeEvent<HTMLInputElement>) {
         e.preventDefault();
         const input = e.target.value;
         setNewUser({...newUser, firstname: input})
       }
-    function handleSurname(e: any) {
+    function handleSurname(e: ChangeEvent<HTMLInputElement>) {
         e.preventDefault();
         const input = e.target.value;
         setNewUser({...newUser, surname: input})
       }
     
-    function handleChildId(e: any) {
+    function handleChildId(e: ChangeEvent<HTMLInputElement>) {
         e.preventDefault();
         const input = e.target.value;
         setNewUser({...newUser, child_id: input});

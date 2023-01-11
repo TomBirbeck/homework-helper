@@ -8,16 +8,18 @@ type formProps = {
     topic: string,
     description: string,
     due: string,
+    priority: string,
     completed: boolean,
 };
 
-const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description, due, completed}: formProps) => {
+const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description, due, priority, completed}: formProps) => {
   const [updatedTask, setUpdatedTask] = useState({
     id: id,
     subject: subject,
     topic: topic,
     description: description,
     due: due,
+    priority: priority,
     completed: completed,
   });
 
@@ -53,6 +55,14 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
       due: due,
     });
   };
+  const handlePrio = (e: ChangeEvent<HTMLSelectElement>) => {
+    e.preventDefault();
+    const prio = e.target.value;
+    setUpdatedTask({
+        ...updatedTask,
+      priority: prio,
+    });
+  };
 
   return (
     <div 
@@ -67,6 +77,7 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
             topic: '',
             description: '',
             due: '',
+            priority: '',
             completed: false,
           });
         }}
@@ -103,13 +114,12 @@ const EditTaskForm = ({updateTask, setEditOpen, id, subject, topic, description,
             onChange={handledue}
           ></input>
         </label>
-        <select name='priority' onChange={()=>{}} onBlur={()=>{}} className='border-solid border-2 border-white mt-1 md:mt-0 h-7 text-black md:place-self-center'>
-          <option value='initial'>
+        <select name='priority' onChange={handlePrio} onBlur={handlePrio} className='border-solid border-2 border-white mt-1 md:mt-0 h-7 text-black md:place-self-center'>
+          <option value='low'>
             Task Priority
           </option>
-          <option value='parent'>High</option>
-          <option value='parent'>Medium</option>
-          <option value='student'>Low</option>
+          <option value='high'>High</option>
+          <option value='low'>Low</option>
           </select>
         <label htmlFor='description' className='flex flex-wrap gap-1 col-span-3 md:col-span-2'>
           Description:
