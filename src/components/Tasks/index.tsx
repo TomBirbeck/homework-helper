@@ -75,7 +75,7 @@ return result
     completed={updatedTask.completed}
     />
 }
-      {windowSize > 762 && <div className='grid grid-cols-5 w-full mb-2 border-solid border-b-2 border-white pl-2'>
+      {windowSize > 762 && <div className='grid grid-cols-6 w-full mb-2 border-solid border-b-2 border-white pl-2'>
         <h2 className='font-bold text-2xl text-center text-white font-mono'>
           Subject
         </h2>
@@ -87,6 +87,9 @@ return result
         </h2>
         <h2 className='font-bold text-2xl text-center text-white font-mono'>
           Description
+        </h2>
+        <h2 className='font-bold text-2xl text-center text-white font-mono'>
+          Priority
         </h2>
         <h2 className='font-bold text-2xl col-center-5 text-center text-white font-mono'>
           Completed ?

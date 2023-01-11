@@ -109,7 +109,7 @@ const [overdue, setOverdue] = useState(false)
   return (
     <div className={theme === 'tree' || theme === 'universe' || theme === 'ruin' || theme === 'stream' || theme === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
     : 'flex justify-between w-full p-2 mb-1.5 bg-teal-400 border-none rounded-lg'} >
-      <div className='md:grid md:grid-cols-5 justify-between w-full'>
+      <div className='md:grid md:grid-cols-6 justify-between w-full'>
         <p className='border-solid md:border-r-2 border-white pl-2'>
           {subject}
         </p>
@@ -132,6 +132,9 @@ const [overdue, setOverdue] = useState(false)
         ) : (
           <p></p>
         )}
+        <p className='border-solid md:border-r-2 border-white pl-2'>
+          {priority === 'high' ? <span>High Priority</span> : <span>Low Priority</span>}
+        </p>
         {completed ? (
           <div className='grid grid-cols-3 place-items-center p-2 md:p-0'>
           <button
@@ -152,7 +155,7 @@ const [overdue, setOverdue] = useState(false)
           >
             Outstanding
           </button>
-          <span className='justify-self-start'>
+          <span className='col-span-1 justify-self-center'>
             <MdEdit onClick={handleEdit}/>
           </span>
           </div>
