@@ -36,7 +36,7 @@ const Tasks: FunctionComponent<{ tasks: Task[], getTasks: Function  }> = ({ task
   });
 
   const updateTask = async (task: UpdatedTasks) => {
-    const updatedTask = {subject: task.subject, topic: task.topic, description: task.description, due: task.due, priority: task.priority,                  completed: task.completed}
+    const updatedTask = {subject: task.subject, topic: task.topic, description: task.description, due: task.due, priority: task.priority, completed: task.completed}
     let res = await fetch(`https://homeworkhelper.onrender.com/tasks/${task.id}`,
     {
       method: 'PATCH',
@@ -44,9 +44,9 @@ const Tasks: FunctionComponent<{ tasks: Task[], getTasks: Function  }> = ({ task
       body: JSON.stringify(updatedTask),
     }
   )
-let result = await res.json()
-setEditOpen(false)
-getTasks()
+  let result = await res.json()
+  setEditOpen(false)
+  getTasks()
 return result
   }
 
@@ -59,6 +59,21 @@ return result
       window.removeEventListener("resize", handleResizeWindow);
     };
   },[])
+
+  const sortComplete = (task:Task) => {
+    if (task.completed === false){
+      return 1
+    } else {
+      return 0
+    }
+  }
+  const sortPrio = (task:Task) => {
+    if (task.priority === 'high'){
+      return 1
+    } else {
+      return 0
+    }
+  }
 
   return (
     <>
@@ -95,9 +110,8 @@ return result
           Completed ?
         </h2>
       </div>}
-
       {tasks &&
-        tasks.map((task: Task, index: any) => {
+        tasks.sort((a,b)=>sortPrio(b)-sortPrio(a)).sort((a,b)=>sortComplete(b)-sortComplete(a)).map((task: Task, index: any) => {
           return (
             <TaskList
               key={index}
