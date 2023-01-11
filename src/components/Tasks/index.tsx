@@ -9,6 +9,7 @@ interface Tasks {
   topic: string;
   due: string;
   description?: string | undefined;
+  priority: string;
   completed: boolean;
 }
 interface UpdatedTasks {
@@ -17,6 +18,7 @@ interface UpdatedTasks {
   topic: string;
   due: string;
   description?: string | undefined;
+  priority: string;
   completed: boolean;
 }
 
@@ -29,11 +31,12 @@ const Tasks: FunctionComponent<{ tasks: Task[], getTasks: Function  }> = ({ task
     topic: '',
     description: '',
     due: '',
+    priority: '',
     completed: false,
   });
 
   const updateTask = async (task: UpdatedTasks) => {
-    const updatedTask = {subject: task.subject, topic: task.topic, description: task.description, due: task.due, completed: task.completed}
+    const updatedTask = {subject: task.subject, topic: task.topic, description: task.description, due: task.due, priority: task.priority, completed: task.completed}
     let res = await fetch(`https://homeworkhelper.onrender.com/tasks/${task.id}`,
     {
       method: 'PATCH',
@@ -41,9 +44,9 @@ const Tasks: FunctionComponent<{ tasks: Task[], getTasks: Function  }> = ({ task
       body: JSON.stringify(updatedTask),
     }
   )
-let result = await res.json()
-setEditOpen(false)
-getTasks()
+  let result = await res.json()
+  setEditOpen(false)
+  getTasks()
 return result
   }
 
@@ -57,6 +60,21 @@ return result
     };
   },[])
 
+  const sortComplete = (task:Task) => {
+    if (task.completed === false){
+      return 1
+    } else {
+      return 0
+    }
+  }
+  const sortPrio = (task:Task) => {
+    if (task.priority === 'high'){
+      return 1
+    } else {
+      return 0
+    }
+  }
+
   return (
     <>
     {editOpen &&
@@ -68,10 +86,11 @@ return result
     topic={updatedTask.topic} 
     description={updatedTask.description || ''}
     due={updatedTask.due}
+    priority={updatedTask.priority}
     completed={updatedTask.completed}
     />
 }
-      {windowSize > 762 && <div className='grid grid-cols-5 w-full mb-2 border-solid border-b-2 border-white pl-2'>
+      {windowSize > 762 && <div className='grid grid-cols-6 w-full mb-2 border-solid border-b-2 border-white pl-2'>
         <h2 className='font-bold text-2xl text-center text-white font-mono'>
           Subject
         </h2>
@@ -84,13 +103,15 @@ return result
         <h2 className='font-bold text-2xl text-center text-white font-mono'>
           Description
         </h2>
+        <h2 className='font-bold text-2xl text-center text-white font-mono'>
+          Priority
+        </h2>
         <h2 className='font-bold text-2xl col-center-5 text-center text-white font-mono'>
           Completed ?
         </h2>
       </div>}
-
       {tasks &&
-        tasks.map((task: Task, index: any) => {
+        tasks.sort((a,b)=>sortPrio(b)-sortPrio(a)).sort((a,b)=>sortComplete(b)-sortComplete(a)).map((task: Task, index: any) => {
           return (
             <TaskList
               key={index}
@@ -99,6 +120,7 @@ return result
               topic={task.topic}
               due={task.due}
               description={task.description}
+              priority={task.priority}
               completed={task.completed}
               editOpen={editOpen}
               setEditOpen={setEditOpen}

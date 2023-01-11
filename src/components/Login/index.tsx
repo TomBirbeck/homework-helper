@@ -35,7 +35,8 @@ const LoginPage = () => {
 
 return (
   <div  className='flex content-center justify-center m-0 p-2 bg-teal-800 min-h-screen w-100vw'>
-  {isAuthenticated && !isLoading && person === 'student'?
+  {isLoading ? <div>Loading...</div>:
+  isAuthenticated && !isLoading && person === 'student'?
    <Navigate to='/student'/> : 
    isAuthenticated && !isLoading && person === 'parent'? 
    <Navigate to='/parent'/> : 

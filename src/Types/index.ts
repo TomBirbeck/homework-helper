@@ -4,6 +4,7 @@ export type Task = {
   topic: string;
   due: string;
   description: string;
+  priority: string;
   completed: boolean;
 };
 
