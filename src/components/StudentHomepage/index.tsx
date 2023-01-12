@@ -78,6 +78,7 @@ const StudentHomepage = () => {
     let result = await res.json();
     // console.log('new task posted', result);
     getTasks();
+    setOpenStaxx(false)
   }
 
   useEffect(() => {
