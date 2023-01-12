@@ -97,9 +97,13 @@ const StudentHomepage = () => {
       <span className='z-10 fixed right-0 top-0 text-white text-xl md:text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
       {openMenu && <SideMenu firstname={student.firstname} surname={student.surname} studentId={student.student_id} email={student.studentEmail} studentCode={student.student_code}/>}
         {student && (
-          <h1 className={theme === 'boat' ? 'font-bold text-black text-base md:text-3xl mb-5 text-center' :'font-bold text-white text-base md:text-3xl mb-5 text-center'}>
+          <div>
+          <h1 className={theme === 'boat' ? 'font-bold text-black text-base md:text-4xl mb-2 text-center' :'font-bold text-white text-base md:text-4xl mb-2 text-center'}>
             Welcome to Study Staxx
           </h1>
+          <h2 className={theme === 'boat' ? 'font-bold text-black text-xs md:text-xl mb-4 text-center' :'font-bold text-white text-xs md:text-xl mb-4 text-center'}>
+            Track, Stack & Succeed</h2>
+          </div>
         )}
         <GetTasksContext.Provider value={getTasks}>
           <div className='grid place-items-center my-3'>

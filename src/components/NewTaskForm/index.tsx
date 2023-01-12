@@ -73,7 +73,7 @@ const NewTaskForm = ({ createTask}: formProps) => {
           });
         }}
         // className='w-1/2 h-60 grid grid-flow-row-dense grid-cols-3 border-solid rounded-lg border-2 border-black bg-yellow-300 space-around p-2 my-2'
-        className='w-full h-fit md:h-80 grid grid-cols-1 md:grid-cols-3 bg-none backdrop-blur-md border-solid border-2 border-opacity-10 border-white rounded-lg text-white space-around p-2 md:pl-6 my-2'
+        className='w-full h-fit md:h-80 grid grid-cols-1 md:grid-cols-3 bg-none backdrop-blur-sm md:backdrop-blur-md border-solid border-2 border-opacity-10 border-white rounded-lg text-white space-around p-2 md:pl-6 my-2'
       >
         <label htmlFor='subject' className='col-span-3 md:col-span-1 place-self-start'>
           Subject:
