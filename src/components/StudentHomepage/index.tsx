@@ -98,17 +98,17 @@ const StudentHomepage = () => {
       {openMenu && <SideMenu firstname={student.firstname} surname={student.surname} studentId={student.student_id} email={student.studentEmail} studentCode={student.student_code}/>}
         {student && (
           <div>
-          <h1 className={theme === 'boat' ? 'font-bold text-black text-base md:text-4xl mb-2 text-center' :'font-bold text-white text-base md:text-4xl mb-2 text-center'}>
+          <h1 className={theme === 'boat' ? 'font-bold text-black text-base md:text-4xl mb-2 text-center' :'italic font-bold text-white text-base md:text-4xl mb-2 text-center'}>
             Welcome to Study Staxx
           </h1>
-          <h2 className={theme === 'boat' ? 'font-bold text-black text-xs md:text-xl mb-4 text-center' :'font-bold text-white text-xs md:text-xl mb-4 text-center'}>
+          <h2 className={theme === 'boat' ? 'font-bold text-black text-xs md:text-xl mb-4 text-center' :'italic font-bold text-white text-xs md:text-xl mb-4 text-center'}>
             Track, Stack & Succeed</h2>
           </div>
         )}
         <GetTasksContext.Provider value={getTasks}>
           <div className='grid place-items-center my-3'>
-        <h3 className='font-bold md:text-2xl text-center text-white font-mono w-fit' onClick={()=>{setOpenStaxx(!openStaxx)}}>
-        Add Staxx +
+        <h3 className='italic font-bold md:text-2xl text-center text-white font-mono w-fit' onClick={()=>{setOpenStaxx(!openStaxx)}}>
+        Add Staxx {!openStaxx ? <span>+</span> : <span>-</span>}
       </h3>
       </div>
         {openStaxx && <NewTaskForm createTask={createTask}/>}
