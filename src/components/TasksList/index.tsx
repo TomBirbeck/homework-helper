@@ -65,11 +65,13 @@ const [overdue, setOverdue] = useState(false)
   };
 
   const deleteTask = async (id: Number) => {
-    let res = await fetch(`https://homeworkhelper.onrender.com/tasks/${id}`, 
+    const shadowDelete = {id: id, deleted: true}
+    let res = await fetch(`https://homeworkhelper.onrender.com/tasksshadowdelete`, 
     {
-      method: 'DELETE',
-      headers: {'Content-Type': 'application/json'}
-    })
+      method: 'PATCH',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(shadowDelete)
+    }) 
     let result = await res.json()
     // console.log('task deleted', result)
     getTasks()
@@ -143,9 +145,9 @@ const [overdue, setOverdue] = useState(false)
           >
             Completed
           </button>
-          {/* <button
-          className='ml-2 w-1/2 border-solid border-2 border-white rounded bg-red-400 items-end'
-           onClick={handleDelete}>Clear</button> */}
+          <button
+          className='col-span-1 md:w-fit border-solid border-2 border-white rounded bg-red-400 hover:bg-red-600 px-2 text-sm lg:text-base'
+           onClick={handleDelete}>Clear</button>
           </div>
         ) : (
           <div className='grid grid-cols-3 place-items-center p-2 md:p-0'>

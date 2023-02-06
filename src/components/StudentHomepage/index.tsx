@@ -9,6 +9,18 @@ import { useAuth0 } from '@auth0/auth0-react';
 import ThemeContext from '../../context/ThemeContext';
 import SideMenu from '../SideMenu';
 
+type API = {
+  task_id: number;
+  subject: string;
+  topic: string;
+  due: string;
+  description: string;
+  priority: string;
+  completed: boolean;
+  deleted: boolean;
+}
+
+
 const StudentHomepage = () => {
   const [tasks, setTasks] = useState<Array<any>>(list);
   const [student, setStudent] = useState<{
@@ -51,12 +63,12 @@ const StudentHomepage = () => {
         `https://homeworkhelper.onrender.com/studenttasks?code=${student.student_code}`
       );
       const data = await res.json();
-      // console.log("Tasks", data)
-      setTasks(data.payload);
-      setTotal(data.payload.length);
+      const tasks = data.payload?.filter((task: API) => {return task.deleted === false})
+      setTasks(tasks);
+      setTotal(tasks.length);
       let count = 0
-      for (let i = 0; i < data.payload.length; i++) {
-        if (data.payload[i].completed) {
+      for (let i = 0; i < tasks.length; i++) {
+        if (tasks[i].completed) {
           count++
         }
         setProgress(count);
@@ -85,7 +97,6 @@ const StudentHomepage = () => {
     getStudent();
     getTasks()
   },[student.student_code]);
-
 
   return (
     <div className={theme === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
