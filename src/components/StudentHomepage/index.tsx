@@ -99,26 +99,26 @@ const StudentHomepage = () => {
   },[student.student_code]);
 
   return (
-    <div className={theme === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
+    <div aria-label='student homepage' className={theme === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
     : theme === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw' 
     : theme === 'stream'? 'm-0 p-2 bg-cover bg-stream min-h-screen w-100vw' 
     : theme === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
     : theme === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
     : 'm-0 p-2 bg-teal-800 min-h-screen w-100vw'} >
-      <span className='z-10 fixed right-0 top-0 text-white text-xl md:text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
+      <span aria-label='hamburger menu' className='z-10 fixed right-0 top-0 text-white text-xl md:text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
       {openMenu && <SideMenu firstname={student.firstname} surname={student.surname} studentId={student.student_id} email={student.studentEmail} studentCode={student.student_code}/>}
         {student && (
           <div>
-          <h1 className={theme === 'boat' ? 'font-bold text-black text-base md:text-4xl mb-2 text-center' :'italic font-bold text-white text-base md:text-4xl mb-2 text-center'}>
+          <h1 aria-label='study staxx title' className={theme === 'boat' ? 'font-bold text-black text-base md:text-4xl mb-2 text-center' :'italic font-bold text-white text-base md:text-4xl mb-2 text-center'}>
             Welcome to Study Staxx
           </h1>
-          <h2 className={theme === 'boat' ? 'font-bold text-black text-xs md:text-xl mb-4 text-center' :'italic font-bold text-white text-xs md:text-xl mb-4 text-center'}>
+          <h2 aria-label='subtitle' className={theme === 'boat' ? 'font-bold text-black text-xs md:text-xl mb-4 text-center' :'italic font-bold text-white text-xs md:text-xl mb-4 text-center'}>
             Track, Stack & Succeed</h2>
           </div>
         )}
         <GetTasksContext.Provider value={getTasks}>
           <div className='grid place-items-center my-3'>
-        <h3 className='italic font-bold md:text-2xl text-center text-white font-mono w-fit' onClick={()=>{setOpenStaxx(!openStaxx)}}>
+        <h3 aria-label='add staxx label' className='italic font-bold md:text-2xl text-center text-white font-mono w-fit' onClick={()=>{setOpenStaxx(!openStaxx)}}>
         Add Staxx {!openStaxx ? <span>+</span> : <span>-</span>}
       </h3>
       </div>
