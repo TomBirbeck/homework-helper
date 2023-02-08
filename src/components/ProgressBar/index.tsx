@@ -23,7 +23,7 @@ const ProgressBar = ({ progress, total }: ProgressIProps) => {
       <h3 className='font-bold md:text-2xl text-center text-white font-mono my-4'>
         Progress
       </h3>
-      <div className='w-full h-6 bg-red-400 mt-4 border-solid border-2 border-white rounded-lg'>
+      <div aria-label='progress bar' className='w-full h-6 bg-red-400 mt-4 border-solid border-2 border-white rounded-lg'>
         {progressed > 0 ?
       <div style={{width:`${progressed}%`}}className='flex h-full bg-green-400 border-none rounded-l-md'>
                 <span className='w-full h-full flex items-center justify-center text-white text-xl'>

@@ -109,56 +109,59 @@ const [overdue, setOverdue] = useState(false)
   }
 
   return (
-    <div className={theme === 'tree' || theme === 'universe' || theme === 'ruin' || theme === 'stream' || theme === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
+    <div aria-label='task item' className={theme === 'tree' || theme === 'universe' || theme === 'ruin' || theme === 'stream' || theme === 'aurora' ? 'flex justify-between w-full p-2 mb-1.5 bg-none backdrop-blur-sm border-solid border-2 border-opacity-10 border-white rounded-lg text-white'
     : 'flex justify-between w-full p-2 mb-1.5 bg-teal-400 border-none rounded-lg'} >
       <div className='md:grid md:grid-cols-6 justify-between w-full'>
-        <p className='border-solid md:border-r-2 border-white pl-2'>
+        <p aria-label='task subject' className='border-solid md:border-r-2 border-white pl-2'>
           {subject}
         </p>
-        <p className='border-solid md:border-r-2 border-white pl-2'>
+        <p aria-label='task topic' className='border-solid md:border-r-2 border-white pl-2'>
           {topic}
         </p>
-        { dueSoon && windowSize > 762? <span className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2' onMouseLeave={()=>{setDueSoon(false)}}>Task due soon</span> : 
+        { dueSoon && windowSize > 762? <span aria-label='task due soon icon' className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2' onMouseLeave={()=>{setDueSoon(false)}}>Task due soon</span> : 
          dueSoon && windowSize < 762? < div className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'><span>Task due soon</span><span className='grid justify-end text-2xl text-amber-500' onClick={()=>{setDueSoon(false)}}><AiOutlineAlert/></span></div> : 
-        overdue && windowSize > 762? <span className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2' onMouseLeave={()=>{setOverdue(false)}}>Task Overdue</span> : 
+        overdue && windowSize > 762? <span aria-label='task overdue icon' className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2' onMouseLeave={()=>{setOverdue(false)}}>Task Overdue</span> : 
         overdue && windowSize < 762? <div className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'><span>Task Overdue</span><span className='grid justify-end text-2xl text-red-500' onClick={()=>{setOverdue(false)}}><AiOutlineAlert/></span></div>: 
         compareDates(due) < 0 && !completed && windowSize > 762? <p className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-red-500' onMouseEnter={()=>{setOverdue(true)}}><AiOutlineAlert/></span></p> :
         compareDates(due) < 0 && !completed && windowSize < 762? <p className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-red-500' onClick={()=>{setOverdue(true)}}><AiOutlineAlert/></span></p> :
         compareDates(due) < 3 && !completed && windowSize > 762? <p className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-amber-500' onMouseEnter={()=>{setDueSoon(true)}}><AiOutlineAlert/></span></p> :
         compareDates(due) < 3 && !completed && windowSize < 762? <p className='grid grid-cols-2 border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)} <span className='grid justify-end text-2xl text-amber-500' onClick={()=>{setDueSoon(true)}}><AiOutlineAlert/></span></p> :
-        <p className='border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)}</p>}
+        <p aria-label='task due date' className='border-solid md:border-r-2 border-white pl-2'>{reverseDate(due)}</p>}
         {description ? (
-          <p className='border-solid  md:border-r-2 border-white pl-2 h-6 truncate hover:overflow-visible hover:whitespace-normal hover:h-fit'>
+          <p aria-label='task description' className='border-solid  md:border-r-2 border-white pl-2 h-6 truncate hover:overflow-visible hover:whitespace-normal hover:h-fit'>
             {description}
           </p>
         ) : (
           <p></p>
         )}
-        <p className='border-solid md:border-r-2 border-white pl-2'>
+        <p aria-label='task priority' className='border-solid md:border-r-2 border-white pl-2'>
           {priority === 'high' ? <span>High Priority</span> : <span>Low Priority</span>}
         </p>
         {completed ? (
           <div className='grid grid-cols-3 place-items-center p-2 md:p-0'>
           <button
+            aria-label='task completed button'
             className='col-span-2 w-2/3 md:w-fit ml-2 border-solid border-2 border-white rounded bg-green-400 hover:bg-green-600 px-2 text-sm lg:text-base'
             onClick={handleComplete}
           >
             Completed
           </button>
           <button
+          aria-label='task clear button'
           className='col-span-1 md:w-fit border-solid border-2 border-white rounded bg-red-400 hover:bg-red-600 px-2 text-sm lg:text-base'
            onClick={handleDelete}>Clear</button>
           </div>
         ) : (
           <div className='grid grid-cols-3 place-items-center p-2 md:p-0'>
           <button
+            aria-label='task outstanding button'
             className='col-span-2 w-2/3 md:w-fit px-2 ml-2 border-solid border-2 border-white rounded bg-red-400 hover:bg-red-600 text-sm lg:text-base'
             onClick={handleComplete}
           >
             Outstanding
           </button>
           <span className='col-span-1 justify-self-center'>
-            <MdEdit onClick={handleEdit}/>
+            <MdEdit aria-label='edit task icon' onClick={handleEdit}/>
           </span>
           </div>
         )}
