@@ -121,44 +121,44 @@ const handleSurnameSubmit = () => {
 }
 
     return (
-        <aside className='flex flex-col h-screen fixed right-0 top-10 z-10 w-10/12 md:w-1/4 p-2 mb-1.5 bg-none backdrop-blur-md border-solid border-2 border-opacity-10 border-white rounded-lg text-white'>
+        <aside aria-label='aside sidebar menu' className='flex flex-col h-screen fixed right-0 top-10 z-10 w-10/12 md:w-1/4 p-2 mb-1.5 bg-none backdrop-blur-md border-solid border-2 border-opacity-10 border-white rounded-lg text-white'>
             <div className="grid place-items-end">
             <LogoutButton/>
             </div>
-            <span className="my-4">Hey {person.firstname}, Welcome to your account menu</span>
+            <span aria-label='aside header' className="my-4">Hey {person.firstname}, Welcome to your account menu</span>
             <div className="flex flex-col h-12 mb-2">
-            {person.studentCode && <span onClick={()=>{setOpenId(!openId)}} className='display flex flex-row items-center gap-1'>Show Student Code<MdKeyboardArrowDown/></span>}
-            {openId && <div className="grid grid-cols-6 place-items-center"><span className="text-xs md:text-sm col-span-5 bg-black text-white">{person.studentCode}</span><CopyToClipboard text={person.studentCode}><MdOutlineContentCopy className="md:text-lg hover:text-xl"/></CopyToClipboard></div>}
+            {person.studentCode && <span aria-label='open student code span' onClick={()=>{setOpenId(!openId)}} className='display flex flex-row items-center gap-1'>Show Student Code<MdKeyboardArrowDown/></span>}
+            {openId && <div aria-label='student code' className="grid grid-cols-6 place-items-center"><span className="text-xs md:text-sm col-span-5 bg-black text-white">{person.studentCode}</span><CopyToClipboard text={person.studentCode}><MdOutlineContentCopy className="md:text-lg hover:text-xl"/></CopyToClipboard></div>}
             </div>
             <div>
-                <div className="grid grid-cols-3 place-items-center"><span>Edit Account</span> <MdEdit className="text-xl hover:text-green-600 hover:text-2xl" onClick={()=>{setOpenAccount(!openAccount)}}/></div>
+                <div aria-label='edit account text' className="grid grid-cols-3 place-items-center"><span>Edit Account</span> <MdEdit aria-label='edit account icon' className="text-xl hover:text-green-600 hover:text-2xl" onClick={()=>{setOpenAccount(!openAccount)}}/></div>
                 {openAccount && 
                 <div className="grid grid-col-1 mt-2 pl-1 md:pl-2">
                     <div className="grid grid-col-1">
-                    <span>Firstname:</span>
+                    <span aria-label='firstname label'>Firstname:</span>
                     {openFirst ? 
                     <div className="grid grid-cols-2">
-                        <input type='text' placeholder={person.firstname} onChange={handleFirstnameEdit} className='text-black'></input>
-                        <span className="grid grid-cols-2 w-1/3"><MdSave className="text-2xl hover:text-green-600" onClick={handleFirstnameSubmit}/><MdOutlineCancel className="text-2xl hover:text-red-600" onClick={()=>{setOpenFirst(false)}}/></span>
+                        <input aria-label='firstname input' type='text' placeholder={person.firstname} onChange={handleFirstnameEdit} className='text-black'></input>
+                        <span className="grid grid-cols-2 w-1/3"><MdSave aria-label='save firstname icon' className="text-2xl hover:text-green-600" onClick={handleFirstnameSubmit}/><MdOutlineCancel aria-label='cancel edit firstname icon' className="text-2xl hover:text-red-600" onClick={()=>{setOpenFirst(false)}}/></span>
                     </div> : 
-                    <span className="grid grid-cols-2">{person.firstname}<MdEdit className="text-xl hover:text-green-600 hover:text-2xl" onClick={()=> setOpenFirst(!openFirst)}/></span>}
+                    <span aria-label='first name text' className="grid grid-cols-2">{person.firstname}<MdEdit aria-label='edit firstname icon' className="text-xl hover:text-green-600 hover:text-2xl" onClick={()=> setOpenFirst(!openFirst)}/></span>}
                     </div>
                     <div className="grid grid-col-1">
-                    <span>Surname:</span>
+                    <span aria-label='surname label'>Surname:</span>
                     {openSur ? 
                     <div className="grid grid-cols-2">
-                        <input type='text' placeholder={person.surname} onChange={handleSurnameEdit} className='text-black'></input>
-                        <span className="grid grid-cols-2 w-1/3"><MdSave className="text-2xl hover:text-green-600" onClick={handleSurnameSubmit}/><MdOutlineCancel className="text-2xl hover:text-red-600" onClick={()=>{setOpenSur(false)}}/></span>
+                        <input aria-label='edit surname input' type='text' placeholder={person.surname} onChange={handleSurnameEdit} className='text-black'></input>
+                        <span className="grid grid-cols-2 w-1/3"><MdSave aria-label='save edit surname icon' className="text-2xl hover:text-green-600" onClick={handleSurnameSubmit}/><MdOutlineCancel aria-label='cancel edit surname icon' className="text-2xl hover:text-red-600" onClick={()=>{setOpenSur(false)}}/></span>
                     </div> : 
-                    <span className="grid grid-cols-2">{person.surname}<MdEdit className="text-xl hover:text-green-600 hover:text-2xl" onClick={()=> setOpenSur(!openSur)}/></span>}
+                    <span aria-label='surname text' className="grid grid-cols-2">{person.surname}<MdEdit aria-label='edit surname icon' className="text-xl hover:text-green-600 hover:text-2xl" onClick={()=> setOpenSur(!openSur)}/></span>}
                     </div>
-                    <span>Email:</span>
-                    <span>{person.email}</span>
+                    <span aria-label='email label'>Email:</span>
+                    <span aria-label='email text'>{person.email}</span>
                 </div>}
             </div>
             <ThemeForm/>
             <div className="h-1/2 flex items-end">
-            <span className="grid grid-cols-2 gap-1 text-sm md:text-base"><p>Background Image by</p><a href={picture.link} target='_blank' className="hover:text-blue-900 text-sm md:text-base">{picture.artist}</a></span>
+            <span aria-label='background image information area' className="grid grid-cols-2 gap-1 text-sm md:text-base"><p>Background Image by</p><a href={picture.link} target='_blank' className="hover:text-blue-900 text-sm md:text-base">{picture.artist}</a></span>
             </div>
         </aside>
     )
