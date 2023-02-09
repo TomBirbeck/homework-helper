@@ -82,17 +82,17 @@ const SignupForm = ({setPerson} : SignUpIProps) => {
             >
             <label htmlFor="email" className="flex flex-col mt-2">
                 Email
-                <input type='email' className="pl-2 text-black" defaultValue={user?.email}/>
+                <input type='email' data-testId='emailInput' className="pl-2 text-black" defaultValue={user?.email}/>
             </label>
             <label htmlFor="firstname" className="flex flex-col">
                 Firstname
-                <input type='text' className="pl-2 text-black" value={newUser.firstname} onChange={handleFirstname}/>
+                <input type='text' data-testId='firstnameInput'  className="pl-2 text-black" value={newUser.firstname} onChange={handleFirstname}/>
             </label>
             <label htmlFor="surname" className="flex flex-col">
                 Surname
-                <input type='text' className="pl-2 text-black" value={newUser.surname} onChange={handleSurname}/>
+                <input type='text' data-testId='surnameInput'  className="pl-2 text-black" value={newUser.surname} onChange={handleSurname}/>
             </label>
-            <select name='role' onChange={handleAccountType} onBlur={handleAccountType} className="flex flex-col mt-2 text-black">
+            <select name='role' data-testId='typeInput' onChange={handleAccountType} onBlur={handleAccountType} className="flex flex-col mt-2 text-black">
           <option value='initial'>
             Select account type
           </option>
@@ -101,7 +101,7 @@ const SignupForm = ({setPerson} : SignUpIProps) => {
           </select>
           <label htmlFor="studentCode" className="flex flex-col">
                 Student Code (Parent account only)
-                <input type='text' className="pl-2 text-black" value={newUser.child_id} onChange={handleChildId} placeholder="Please enter your Child's student code"/>
+                <input type='text' data-testId='studentCode'  className="pl-2 text-black" value={newUser.child_id} onChange={handleChildId} placeholder="Please enter your Child's student code"/>
             </label>
           <button type="submit" className="border solid-2 border-white rounded-md w-1/2 self-center bg-green-300 hover:bg-green-600 text-white">Submit</button>
         </form>
