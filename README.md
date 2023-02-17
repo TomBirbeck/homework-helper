@@ -6,8 +6,8 @@
 
 ## Overview
 
-A web app that enables a student to create/edit tasks and track their progress on those tasks, with added parent side to view how a student is doing and clear and tasks that the student has completed.
-The app uses Auth0 to handle signing up/signing and has in a number of backgrounds that a user can choose from in order to personalise thier experience.
+A web app that enables a student to create/edit tasks and track their progress on those tasks, with an added parent side to view how a student is doing and clear tasks that the student has completed.
+The app uses Auth0 to handle signing up/signin and has a number of backgrounds that a user can choose from in order to personalise their experience.
 
 ## Tech Stack
 - Vite

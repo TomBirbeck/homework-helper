@@ -1,6 +1,6 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import {useContext, useEffect, useState } from 'react';
-import {GiHamburgerMenu} from 'react-icons/gi'
+import { useContext, useEffect, useState } from 'react';
+import { GiHamburgerMenu, GiCancel } from 'react-icons/gi';
 import ThemeContext from '../../context/ThemeContext';
 import ParentTasks from '../ParentTasks';
 import SideMenu from '../SideMenu';
@@ -25,23 +25,24 @@ const ParentHomepage = () => {
       creator_id: Number;
     }>
   >();
-  const [openMenu, setOpenMenu] = useState(false)
-  const display = useContext(ThemeContext)
-  const {user} = useAuth0()
+  const [openMenu, setOpenMenu] = useState(false);
+  const display = useContext(ThemeContext);
+  const { user } = useAuth0();
 
   const [theme, setTheme] = useState<string | null>()
 
-  
-  useEffect(()=>{
+  useEffect(() => {
     localStorage.setItem('Theme', display[0]);
-    setTheme(localStorage.getItem('Theme'))
-  },[display])
+    setTheme(localStorage.getItem('Theme'));
+  }, [display]);
 
-//uses the parent email to get the child id and pass it to setStudent so that the correct students tasks will be shown
-//also sets parents details in state
+  //uses the parent email to get the child id and pass it to setStudent so that the correct students tasks will be shown
+  //also sets parents details in state
   useEffect(() => {
     async function getStudent() {
-      const res = await fetch(`https://homeworkhelper.onrender.com/parent?email=${user?.email}`);
+      const res = await fetch(
+        `https://homeworkhelper.onrender.com/parent?email=${user?.email}`
+      );
       const data = await res.json();
       setStudent(data.payload[0].child_id);
       setParent({
@@ -55,7 +56,7 @@ const ParentHomepage = () => {
     getStudent();
   }, []);
 
-//gets the students tasks for the parent
+  //gets the students tasks for the parent
   useEffect(() => {
     async function getTasks() {
       if (parent.childId.length) {
@@ -70,19 +71,62 @@ const ParentHomepage = () => {
   }, [student]);
 
   return (
-    <div className={theme === 'tree'? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
-    : theme === 'universe'? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw' 
-    : theme === 'stream'? 'm-0 p-2 bg-cover bg-stream min-h-screen w-100vw' 
-    : theme === 'ruin'? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw' 
-    : theme === 'aurora' ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw' 
-    : 'm-0 p-2 bg-teal-800 min-h-screen w-100vw'} >
-      <span aria-label='burger menu' className='z-10 fixed right-1 top-1 mb:right-0  mb:top-0 text-white text-xl md:text-4xl mt-2 grid grid-cols-2 place-items-center' onClick={()=>{setOpenMenu(!openMenu)}}><GiHamburgerMenu/></span>
-  {openMenu &&<SideMenu firstname={parent.firstname} surname={parent.surname} email={parent.parentEmail} parentId={parent.parentId} studentCode=''/>}
-      <h1 aria-label='page title' className='font-bold text-white text-base md:text-3xl mb-5 text-center'>
+    <div
+      className={
+        theme === 'tree'
+          ? 'm-0 p-2 bg-cover bg-tree min-h-screen w-100vw'
+          : theme === 'universe'
+          ? 'm-0 p-2 bg-cover bg-universe min-h-screen w-100vw'
+          : theme === 'stream'
+          ? 'm-0 p-2 bg-cover bg-stream min-h-screen w-100vw'
+          : theme === 'ruin'
+          ? 'm-0 p-2 bg-cover bg-ruin min-h-screen w-100vw'
+          : theme === 'aurora'
+          ? 'm-0 p-2 bg-cover bg-aurora min-h-screen w-100vw'
+          : 'm-0 p-2 bg-teal-800 min-h-screen w-100vw'
+      }
+    >
+      {openMenu ? (
+        <span
+          aria-label='hamburger menu'
+          className='z-10 fixed right-0 top-0 text-white text-xl md:text-4xl mt-2 grid grid-cols-2 place-items-center'
+          onClick={() => {
+            setOpenMenu(false);
+          }}
+        >
+          <GiCancel />
+        </span>
+      ) : (
+        <span
+          aria-label='hamburger menu'
+          className='z-10 fixed right-0 top-0 text-white text-xl md:text-4xl mt-2 grid grid-cols-2 place-items-center'
+          onClick={() => {
+            setOpenMenu(true);
+          }}
+        >
+          <GiHamburgerMenu />
+        </span>
+      )}
+      {openMenu && (
+        <SideMenu
+          firstname={parent.firstname}
+          surname={parent.surname}
+          email={parent.parentEmail}
+          parentId={parent.parentId}
+          studentCode=''
+        />
+      )}
+      <h1
+        aria-label='page title'
+        className='font-bold text-white text-base md:text-3xl mb-5 text-center'
+      >
         Welcome to Study Staxx
       </h1>
       {api && (
-        <h2 aria-label='page subtitle' className='font-bold text-white text-base md:text-2xl mb-5 text-center'>
+        <h2
+          aria-label='page subtitle'
+          className='font-bold text-white text-base md:text-2xl mb-5 text-center'
+        >
           This is how your child is progressing
         </h2>
       )}
