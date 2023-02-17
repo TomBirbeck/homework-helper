@@ -6,6 +6,7 @@ export type Task = {
   description: string;
   priority: string;
   completed: boolean;
+  deleted: boolean;
 };
 
 
@@ -17,4 +18,19 @@ export type ParentTask = {
   due: string;
   completed: Boolean;
   creator_id: Number;
+};
+
+export type API = {
+  task_id: number;
+  subject: string;
+  topic: string;
+  due: string;
+  description: string;
+  priority: string;
+  completed: boolean;
+  deleted: boolean;
+}
+
+export type formProps = {
+  createTask: Function;
 };

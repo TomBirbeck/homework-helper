@@ -12,6 +12,7 @@ interface Tasks {
   priority: string;
   completed: boolean;
 }
+
 interface UpdatedTasks {
   id: number;
   subject: string;

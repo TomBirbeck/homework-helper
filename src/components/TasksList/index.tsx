@@ -97,11 +97,7 @@ const [overdue, setOverdue] = useState(false)
   const handleDelete = () => {
     deleteTask(taskId);
   }
-
-  // const handleMultipleDeletes = () => {
-  //deleteMultipleTasks()
-  // }
-
+  
   const handleEdit = () => {
     setEditOpen(!editOpen)
     setUpdatedTask({...updatedTask,id:taskId, subject: subject, topic: topic, description: description, due: due, priority: priority, completed: completed })

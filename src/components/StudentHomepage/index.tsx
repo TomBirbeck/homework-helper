@@ -8,21 +8,11 @@ import { GetTasksContext } from '../../context/GetTasksContext';
 import { useAuth0 } from '@auth0/auth0-react';
 import ThemeContext from '../../context/ThemeContext';
 import SideMenu from '../SideMenu';
-
-type API = {
-  task_id: number;
-  subject: string;
-  topic: string;
-  due: string;
-  description: string;
-  priority: string;
-  completed: boolean;
-  deleted: boolean;
-}
+import { API } from '../../Types';
 
 
 const StudentHomepage = () => {
-  const [tasks, setTasks] = useState<Array<any>>(list);
+  const [tasks, setTasks] = useState<Array<API>>(list);
   const [student, setStudent] = useState<{
     student_id: Number;
     firstname: string;
@@ -44,22 +34,17 @@ const StudentHomepage = () => {
     setTheme(localStorage.getItem('Theme'))
   },[display])
   
-  // console.log(user)
   
   async function getStudent() {
     const res = await fetch(
       `https://homeworkhelper.onrender.com/student?email=${user?.email}`
     );
     const data = await res.json();
-    // console.log("student", data.payload[0])
       setStudent({...student, student_id: data.payload[0].student_id, firstname: data.payload[0].firstname, surname: data.payload[0].surname, studentEmail: data.payload[0].email, student_code: data.payload[0].student_code});
   }
 
-  // console.log("student", student)
-
   async function getTasks() {
       const res = await fetch(
-        // `http://localhost:3001/studenttasks?code=${student?.student_code}`
         `https://homeworkhelper.onrender.com/studenttasks?code=${student.student_code}`
       );
       const data = await res.json();
@@ -73,7 +58,6 @@ const StudentHomepage = () => {
         }
         setProgress(count);
     }
-    // console.log('get tasks ran', student?.student_code);
   }
 
   async function createTask(task: Tasks) {
@@ -88,7 +72,6 @@ const StudentHomepage = () => {
       }
     );
     let result = await res.json();
-    // console.log('new task posted', result);
     getTasks();
     setOpenStaxx(false)
   }

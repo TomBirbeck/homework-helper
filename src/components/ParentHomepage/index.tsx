@@ -6,7 +6,7 @@ import ParentTasks from '../ParentTasks';
 import SideMenu from '../SideMenu';
 
 const ParentHomepage = () => {
-  const [student, setStudent] = useState<String>('');
+  const [student, setStudent] = useState<string>('');
   const [parent, setParent] = useState<{
     parentId: Number;
     firstname: string;
@@ -29,7 +29,7 @@ const ParentHomepage = () => {
   const display = useContext(ThemeContext)
   const {user} = useAuth0()
 
-  const [theme, setTheme] = useState<String | null>()
+  const [theme, setTheme] = useState<string | null>()
 
   
   useEffect(()=>{
