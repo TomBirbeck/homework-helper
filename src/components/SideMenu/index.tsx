@@ -140,7 +140,7 @@ const SideMenu = (person: Props) => {
       </span>
       <div className='flex flex-col h-12 mb-2'>
         {person.studentCode && (
-          <span
+          <button
             aria-label='open student code span'
             onClick={() => {
               setOpenId(!openId);
@@ -149,7 +149,7 @@ const SideMenu = (person: Props) => {
           >
             Show Student Code
             <MdKeyboardArrowDown />
-          </span>
+          </button>
         )}
         {openId && (
           <div
@@ -171,13 +171,13 @@ const SideMenu = (person: Props) => {
           className='grid grid-cols-3 place-items-center'
         >
           <span>Edit Account</span>{' '}
-          <MdEdit
-            aria-label='edit account icon'
-            className='text-xl hover:text-green-600 hover:text-2xl'
-            onClick={() => {
-              setOpenAccount(!openAccount);
-            }}
-          />
+          <button aria-label='edit account icon'
+           onClick={() => {
+            setOpenAccount(!openAccount);
+          }}
+          >
+          <MdEdit className='text-xl hover:text-green-600 hover:text-2xl'/>
+          </button>
         </div>
         {openAccount && (
           <div className='grid grid-col-1 mt-2 pl-1 md:pl-2'>
@@ -193,28 +193,37 @@ const SideMenu = (person: Props) => {
                     className='text-black'
                   ></input>
                   <span className='grid grid-cols-2 w-1/3'>
+                    <button
+                       aria-label='save firstname icon'
+                       onClick={handleFirstnameSubmit}
+                    >
                     <MdSave
-                      aria-label='save firstname icon'
                       className='text-2xl hover:text-green-600'
-                      onClick={handleFirstnameSubmit}
                     />
+                    </button>
+                    <button
+                     aria-label='cancel edit firstname icon'
+                     onClick={() => {
+                       setOpenFirst(false);
+                     }}
+                    >
                     <MdOutlineCancel
-                      aria-label='cancel edit firstname icon'
                       className='text-2xl hover:text-red-600'
-                      onClick={() => {
-                        setOpenFirst(false);
-                      }}
                     />
+                    </button>
                   </span>
                 </div>
               ) : (
                 <span aria-label='first name text' className='grid grid-cols-2'>
                   {person.firstname}
+                  <button
+                  aria-label='edit firstname icon'
+                  onClick={() => setOpenFirst(!openFirst)}
+                  >
                   <MdEdit
-                    aria-label='edit firstname icon'
                     className='text-xl hover:text-green-600 hover:text-2xl'
-                    onClick={() => setOpenFirst(!openFirst)}
                   />
+                  </button>
                 </span>
               )}
             </div>
@@ -230,28 +239,37 @@ const SideMenu = (person: Props) => {
                     className='text-black'
                   ></input>
                   <span className='grid grid-cols-2 w-1/3'>
+                    <button
+                    aria-label='save edit surname icon'
+                    onClick={handleSurnameSubmit}
+                    >
                     <MdSave
-                      aria-label='save edit surname icon'
                       className='text-2xl hover:text-green-600'
-                      onClick={handleSurnameSubmit}
                     />
+                    </button>
+                    <button
+                     aria-label='cancel edit surname icon'
+                     onClick={() => {
+                       setOpenSur(false);
+                     }}
+                    >
                     <MdOutlineCancel
-                      aria-label='cancel edit surname icon'
                       className='text-2xl hover:text-red-600'
-                      onClick={() => {
-                        setOpenSur(false);
-                      }}
                     />
+                    </button>
                   </span>
                 </div>
               ) : (
                 <span aria-label='surname text' className='grid grid-cols-2'>
                   {person.surname}
+                  <button
+                   aria-label='edit surname icon'
+                   onClick={() => setOpenSur(!openSur)}
+                  >
                   <MdEdit
-                    aria-label='edit surname icon'
                     className='text-xl hover:text-green-600 hover:text-2xl'
-                    onClick={() => setOpenSur(!openSur)}
                   />
+                  </button>
                 </span>
               )}
             </div>

@@ -156,9 +156,9 @@ const [overdue, setOverdue] = useState(false)
           >
             Outstanding
           </button>
-          <span className='col-span-1 justify-self-center'>
-            <MdEdit aria-label='edit task icon' onClick={handleEdit}/>
-          </span>
+          <button className='col-span-1 justify-self-center' onClick={handleEdit}>
+            <MdEdit aria-label='edit task icon'/>
+          </button>
           </div>
         )}
       </div>

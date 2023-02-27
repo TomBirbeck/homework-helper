@@ -108,7 +108,7 @@ const StudentHomepage = () => {
       }
     >
       {openMenu ? (
-        <span
+        <button
           aria-label='hamburger menu'
           className='z-10 fixed right-0 top-0 text-white text-xl md:text-4xl mt-2 grid grid-cols-2 place-items-center'
           onClick={() => {
@@ -116,9 +116,9 @@ const StudentHomepage = () => {
           }}
         >
           <GiCancel />
-        </span>
+        </button>
       ) : (
-        <span
+        <button
           aria-label='hamburger menu'
           className='z-10 fixed right-0 top-0 text-white text-xl md:text-4xl mt-2 grid grid-cols-2 place-items-center'
           onClick={() => {
@@ -126,7 +126,7 @@ const StudentHomepage = () => {
           }}
         >
           <GiHamburgerMenu />
-        </span>
+        </button>
       )}
       {openMenu && (
         <SideMenu
@@ -170,7 +170,7 @@ const StudentHomepage = () => {
               setOpenStaxx(!openStaxx);
             }}
           >
-            Add Staxx {!openStaxx ? <span>+</span> : <span>-</span>}
+            Add Staxx {!openStaxx ? <button>+</button> : <button>-</button>}
           </h3>
         </div>
         {openStaxx && <NewTaskForm createTask={createTask} />}
