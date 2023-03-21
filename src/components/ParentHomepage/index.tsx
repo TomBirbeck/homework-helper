@@ -2,29 +2,14 @@ import { useAuth0 } from '@auth0/auth0-react';
 import { useContext, useEffect, useState } from 'react';
 import { GiHamburgerMenu, GiCancel } from 'react-icons/gi';
 import ThemeContext from '../../context/ThemeContext';
+import { Parent, ParentTask } from '../../Types';
 import ParentTasks from '../ParentTasks';
 import SideMenu from '../SideMenu';
 
 const ParentHomepage = () => {
   const [student, setStudent] = useState<string>('');
-  const [parent, setParent] = useState<{
-    parentId: Number;
-    firstname: string;
-    surname: string;
-    parentEmail: string;
-    childId: string;
-  }>({ parentId: 0, firstname: '', surname: '', parentEmail: '', childId: '' });
-  const [api, setApi] = useState<
-    Array<{
-      task_id: Number;
-      subject: string;
-      topic: string;
-      description: string;
-      due: string;
-      completed: Boolean;
-      creator_id: Number;
-    }>
-  >();
+  const [parent, setParent] = useState<Parent>({ parentId: 0, firstname: '', surname: '', parentEmail: '', childId: '' });
+  const [api, setApi] = useState<ParentTask[]>();
   const [openMenu, setOpenMenu] = useState(false);
   const display = useContext(ThemeContext);
   const { user } = useAuth0();

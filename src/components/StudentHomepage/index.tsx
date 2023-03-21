@@ -8,18 +8,12 @@ import { GetTasksContext } from '../../context/GetTasksContext';
 import { useAuth0 } from '@auth0/auth0-react';
 import ThemeContext from '../../context/ThemeContext';
 import SideMenu from '../SideMenu';
-import { API } from '../../Types';
+import { API, Student, Task } from '../../Types';
 
 
 const StudentHomepage = () => {
   const [tasks, setTasks] = useState<Array<API>>(list);
-  const [student, setStudent] = useState<{
-    student_id: Number;
-    firstname: string;
-    surname: string;
-    studentEmail: string;
-    student_code: string;
-  }>({
+  const [student, setStudent] = useState<Student>({
     student_id: 0,
     firstname: '',
     surname: '',
@@ -72,7 +66,7 @@ const StudentHomepage = () => {
     }
   }
 
-  async function createTask(task: Tasks) {
+  async function createTask(task: Task) {
     const code = student.student_code;
 
     let res = await fetch(`https://homeworkhelper.onrender.com/tasks/${code}`, {

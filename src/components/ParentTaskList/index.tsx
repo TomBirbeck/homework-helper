@@ -1,15 +1,8 @@
 import { FunctionComponent } from 'react';
+import { ParentTaskIprops } from '../../Types';
 import reverseDate from '../Utilities/reverseDate';
 
-interface Iprops {
-  id: Number;
-  subject: string;
-  topic: string;
-  due: string;
-  completed: Boolean;
-}
-
-const ParentTaskList: FunctionComponent<Iprops> = (props) => {
+const ParentTaskList: FunctionComponent<ParentTaskIprops> = (props) => {
   const { id, subject, topic, due, completed } = props;
 
   const deleteTask = async (id: Number) => {

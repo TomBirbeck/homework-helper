@@ -5,39 +5,9 @@ import { GetTasksContext } from '../../context/GetTasksContext';
 import ThemeContext from '../../context/ThemeContext';
 import compareDates from '../Utilities/compareDates';
 import reverseDate from '../Utilities/reverseDate';
+import { TaskListIprops } from '../../Types';
 
-interface Iprops {
-  taskId: number;
-  subject: string;
-  topic: string;
-  description: string;
-  due: string;
-  priority: string;
-  completed: boolean;
-  editOpen: boolean;
-  setEditOpen: React.Dispatch<React.SetStateAction<boolean>>
-  updatedTask: {
-    id: number;
-    subject: string;
-    topic: string;
-    description: string;
-    priority: string;
-    due: string;
-    completed: boolean;
-  }
-  setUpdatedTask: React.Dispatch<React.SetStateAction<{
-    id: number;
-    subject: string;
-    topic: string;
-    description: string;
-    due: string;
-    priority: string;
-    completed: boolean;
-}>>
-windowSize: number
-}
-
-const TaskList: FunctionComponent<Iprops> = (props) => {
+const TaskList: FunctionComponent<TaskListIprops> = (props) => {
   const { taskId, subject, topic, description, due, priority, completed, editOpen, setEditOpen, updatedTask, setUpdatedTask, windowSize} = props;
   const getTasks = useContext(GetTasksContext)
   const display = useContext(ThemeContext)

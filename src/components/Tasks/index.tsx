@@ -1,27 +1,7 @@
 import { FunctionComponent, useEffect, useState } from 'react';
-import { Task } from '../../Types';
+import { Task, UpdatedTasks } from '../../Types';
 import EditTaskForm from '../EditTaskForm';
 import TaskList from '../TasksList';
-
-interface Tasks {
-  task_id: number;
-  subject: string;
-  topic: string;
-  due: string;
-  description?: string | undefined;
-  priority: string;
-  completed: boolean;
-}
-
-interface UpdatedTasks {
-  id: number;
-  subject: string;
-  topic: string;
-  due: string;
-  description?: string | undefined;
-  priority: string;
-  completed: boolean;
-}
 
 const Tasks: FunctionComponent<{ tasks: Task[], getTasks: Function  }> = ({ tasks, getTasks }) => {
   const [windowSize, setWindowSize] = useState<number>(window.innerWidth)

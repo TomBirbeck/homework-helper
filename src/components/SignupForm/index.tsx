@@ -1,17 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react"
 import { ChangeEvent, useState } from "react"
-
-type UserProps = {
-    email: String | undefined;
-    firstname: String;
-    surname: String;
-    child_id: String;
-    role: String
-}
-
-type SignUpIProps = {
-  setPerson: React.Dispatch<React.SetStateAction<string>>
-}
+import { SignUpIProps, UserProps } from "../../Types"
 
 const SignupForm = ({setPerson} : SignUpIProps) => {
     const {user} = useAuth0()

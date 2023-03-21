@@ -21,7 +21,7 @@ const ParentTasks: FunctionComponent<{ tasks: ParentTask[] }> = ({ tasks }) => {
       </div>
 
       {tasks &&
-        tasks.map((task: ParentTask,) => {
+        tasks.map((task: ParentTask) => {
           return (
             <ParentTaskList
               key={Number(task.task_id)}

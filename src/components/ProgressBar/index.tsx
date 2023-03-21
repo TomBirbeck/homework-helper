@@ -1,9 +1,6 @@
 import { useEffect, useState } from 'react';
+import { ProgressIProps } from '../../Types';
 
-interface ProgressIProps {
-  progress: number;
-  total: number;
-}
 
 const ProgressBar = ({ progress, total }: ProgressIProps) => {
   

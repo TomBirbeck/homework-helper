@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
-import { formProps } from '../../Types';
+import { newFormProps } from '../../Types';
 
-const NewTaskForm = ({ createTask}: formProps) => {
+const NewTaskForm = ({ createTask}: newFormProps) => {
   const [newTask, setNewTask] = useState({
     subject: '',
     topic: '',

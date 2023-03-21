@@ -12,17 +12,10 @@ import ThemeForm from '../ThemeForm';
 import { artists } from '../../data/data';
 import ThemeContext from '../../context/ThemeContext';
 import { useAuth0 } from '@auth0/auth0-react';
+import { SidemenuIProps } from '../../Types';
 
-interface Props {
-  firstname: string;
-  surname: string;
-  studentId?: Number;
-  parentId?: Number;
-  studentCode: string;
-  email?: string;
-}
 
-const SideMenu = (person: Props) => {
+const SideMenu = (person: SidemenuIProps) => {
   const [openId, setOpenId] = useState(false);
   const [openAccount, setOpenAccount] = useState(false);
   const [openFirst, setOpenFirst] = useState(false);
