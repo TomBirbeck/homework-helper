@@ -13,7 +13,6 @@ const ParentHomepage = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const display = useContext(ThemeContext);
   const { user } = useAuth0();
-
   const [theme, setTheme] = useState<string | null>()
 
   useEffect(() => {

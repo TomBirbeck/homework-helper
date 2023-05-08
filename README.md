@@ -22,15 +22,15 @@ The app uses Auth0 to handle signing up/signin and has a number of backgrounds t
 Clone down the github repository and use npm i to install all the dependencies.
 Due to the use of Auth0 you will need an account with them so that you can obtain the client Id and Domain that you will need to run a version of the app.
 
-### App layout
+## App layout
 
-## Login
+### Login
 
 The login component uses user, isAuthenticated, isLoading, and loginWithRedirect from Auth0 and has 1 state, 'person'.
 When a user first enters the website the component will check to see if they are a registered user, using the findStudent and findParent functions, and if they have authorisation.\
 If they have neither, they will be shown the Auth0 sign up, if they are authorised but are not a user in the database they will be shown the form to complete their sign up. If they are a user and authorised then they will be redirected to their home page.
 
-## Student Homepage
+### Student Homepage
 
 The student home page has states for, tasks, student, progress, total, open menu, open staxx, and theme. It uses the user from Auth0 and context from ThemeContext for it's display.
 
@@ -49,3 +49,17 @@ The student home page has states for, tasks, student, progress, total, open menu
 - Theme: This state is used to track the theme that the uses has selected and show the correct background image and colour scheme.
 
 The createTask function is used to collect the information for a new task and submit it into the database.
+
+### Parent Homepage
+
+This component contains the states student, parent, api, openMenu, and theme as well as the user object from Auth0 and the context from ThemeContext for the display.
+
+- Student: This is the unqiue id for the student. It is populated using the getStudent function, which uses the user.email (is this case it will the email of a parent) to get the users information from the database. A parent's information will come with a student_code attatched.
+
+- Parent: This is an object conataining a parentId, firstname, surname, parentEmail, and childId. It is populated using the getStudent function. Passed to the side menu component.
+
+- Api: This is the list of tasks for the parent's child. It is populated using the getTasks function, which uses the childId from the parent object. Passed to the parent tasks component.
+
+- Open menu: This state tracks whether or not the side menu is open.
+
+- Theme: This state is used to track the theme that the uses has selected and show the correct background image and colour scheme.
