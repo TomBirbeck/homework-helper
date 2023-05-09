@@ -89,3 +89,37 @@ This component takes in props of a tasks array and the getTasks function. It con
 The updateTask function will update the task information in the database whenever a task is edited.
 
 The sortComplete function is used to check through the items in the tasks array and only display ones that aren't stored as 'completed' in the database. The sortPrio function is used to order the tasks based on their priority.
+
+### ProgressBar
+
+This component takes in the props of progress and total. They are use within the percentage function to calculate what percentage of their tasks a student has completed.\
+This component contains the state for progressed.
+
+- Progressed: This state keeps track of what percentage of tasks a student has completed using the percentage function.
+
+### ParentTaskList
+
+This component takes in props of the type  ParentTaskIprops and deconstructs them to take out id, subject, topic, due, completed.
+The component contains the function deleteTask, which allows the user to delete a task that is stored in the database as 'completed' permanently from the database.
+
+### ParentTasks
+
+This component takes in props of tasks, an array of the ParentTask type.
+
+## Utilities
+
+### compareDates
+
+This function takes in a date and compares it against the current date, returning the difference.
+
+### dateChecker
+
+This function takes in a date in string form then converts it into a date format before returning.
+
+### dateDifferenceDays
+
+Takes in two dates and returns the difference between them in days.
+
+### reverseDate
+
+Takes in a date string and returns in reversed.
