@@ -63,3 +63,29 @@ This component contains the states student, parent, api, openMenu, and theme as 
 - Open menu: This state tracks whether or not the side menu is open.
 
 - Theme: This state is used to track the theme that the uses has selected and show the correct background image and colour scheme.
+
+### TasksList
+
+This component takes in props of the Iprops type and then they are deconstructed. It contains states for dueSoon, overdue and theme, as well as using the context of ThemeContext to control it's display properties.
+
+- dueSoon: This state is used to track whether or not a task is due within the next 3 days.
+
+- overdue: This state is used to track whether or not a task's due date has expired.
+
+- theme: This state is used to keep track of the users desired theme.
+
+This component contains the handleComplete function which will update the database when the user changes the status of the task, and the handleDelete function which will update the database when the user selects to delete a completed task. On the student side, the task still exists in the database, but will no longer be visible to them.
+
+### Tasks
+
+This component takes in props of a tasks array and the getTasks function. It contains the states for windowSize, editOpen and updatedTask.
+
+- Window size: This state is updated to track the current size of the viewing window, it is used to conditionally render certain parts of the UI.
+
+- Edit open: This state tracks whether or not the edit task menu is open.
+
+- Updated task: This state is used to track the data from a for a task that is being updated by the user.
+
+The updateTask function will update the task information in the database whenever a task is edited.
+
+The sortComplete function is used to check through the items in the tasks array and only display ones that aren't stored as 'completed' in the database. The sortPrio function is used to order the tasks based on their priority.
